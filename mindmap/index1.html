@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Token Lebnani Mindmap</title>
+  <!-- Theme & Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Markmap Core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.12/dist/style.css">
+  <style>
+    /* ===== BASE & ANIMATED BACKGROUND ===== */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Cormorant Garamond', serif;
+      background: #0a192f;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0a192f url('../images/background.png') bottom left repeat-x;
+      background-size: 1500px auto;
+      animation: bgScroll 80s linear infinite;
+      z-index: -2;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: -1;
+    }
+    @keyframes bgScroll {
+      0% { background-position: 0 0; }
+      100% { background-position: -3000px 0; }
+    }
+
+    /* ===== HEADER & NAVIGATION ===== */
+    .site-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+      background: rgba(10, 25, 47, 0.85);
+      backdrop-filter: blur(5px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-img {
+      width: 50px;
+      height: auto;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+    }
+    .brand-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #D4AF37;
+      margin: 0;
+      letter-spacing: 1.2px;
+    }
+    .brand-tagline {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 4px;
+      letter-spacing: 0.8px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .nav-link {
+      color: #D4AF37;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    .nav-link:hover {
+      color: white;
+      background: rgba(212, 175, 55, 0.15);
+    }
+    .nav-link i { font-size: 0.95rem; }
+
+    /* ===== MARKMAP VIEWPORT ===== */
+    #mindmap {
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+    }
+
+    /* ===== MARKMAP THEME OVERRIDE ===== */
+    .markmap-dark {
+      background: transparent !important;
+      color: white !important;
+    }
+    .markmap-node-content {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-size: 14px !important;
+      color: rgba(255, 255, 255, 0.95) !important;
+    }
+    .markmap-node-content:hover {
+      color: #D4AF37 !important;
+    }
+    .markmap-link {
+      stroke: rgba(212, 175, 55, 0.4) !important;
+    }
+    .markmap-toolbar {
+      background: rgba(10, 25, 47, 0.9) !important;
+      border: 1px solid rgba(212, 175, 55, 0.3) !important;
+      border-radius: 6px !important;
+      padding: 8px !important;
+    }
+    .markmap-toolbar button {
+      background: rgba(212, 175, 55, 0.15) !important;
+      color: #D4AF37 !important;
+      border: 1px solid rgba(212, 175, 55, 0.4) !important;
+      margin: 2px !important;
+    }
+    .markmap-toolbar button:hover {
+      background: rgba(212, 175, 55, 0.3) !important;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px;
+      }
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 5px 0;
+      }
+      .brand-name { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Themed Navigation Header -->
+  <header class="site-header">
+    <div class="logo-container">
+      <img src="../images/logo.png" alt="Token Lebnani Logo" class="logo-img">
+      <div>
+        <h1 class="brand-name">TOKEN LEBNANI</h1>
+        <p class="brand-tagline">A Regulated Path to Fractional Real-Estate</p>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="../" class="nav-link"><i class="fas fa-home"></i> Home</a>
+      <a href="../business-plan/" class="nav-link"><i class="fas fa-file-alt"></i> Business Plan</a>
+      <!-- Self-link omitted -->
+      <a href="../whitepaper/" class="nav-link"><i class="fas fa-book"></i> Whitepaper</a>
+      <a href="../legal/" class="nav-link"><i class="fas fa-gavel"></i> Legal</a>
+      <a href="../pathway/" class="nav-link"><i class="fas fa-road"></i> Pathway</a>
+    </nav>
+  </header>
+
+  <!-- Markmap SVG Container -->
+  <svg id="mindmap"></svg>
+
+  <!-- Markmap Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.12/dist/browser/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.12/dist/index.js"></script>
+  <script>
+    // Initialize Markmap with your data
+    (() => {
+      const data = {"content":"Token-Lebnani &#x2013; Real Estate Tokenization Venture","children":[{"content":"1. Concept & Vision","children":[{"content":"Core Thesis","children":[{"content":"Platform connecting Lebanese property owners with global retail investors"},{"content":"Owners tokenize existing assets via new SPVs — we do not buy or own real estate"},{"content":"Token holders own SPV shares; we act as regulated issuance & trading facilitator"}]},{"content":"Unique Value","children":[{"content":"For owners: Sell in pieces, no need to wait for single buyer"},{"content":"For investors: Low entry (<$1K), USD/stablecoin-denominated, transparent ownership"},{"content":"For market: First compliant bridge from Lebanon to global retail capital"}]},{"content":"What We're NOT Doing","children":[{"content":"❌ No asset acquisition or balance sheet exposure"},{"content":"❌ No LBP or Lebanese banking involvement"},{"content":"❌ No buybacks or guaranteed returns"},{"content":"❌ No institutional-only focus — retail is primary"}]},{"content":"Liquidity Pathway","children":[{"content":"Year 1: Primary issuance only (no trading)"},{"content":"By end of Year 2: Connect to existing ADGM-regulated secondary market (e.g., ADDX)"},{"content":"Tokens trade freely among verified investors — price set by market"}]}]},{"content":"2. Financials","children":[{"content":"CapEx (One-Time)","children":[{"content":"▶️ Project Financial Model — CapEx & Timeline"}]},{"content":"OpEx (Recurring)","children":[{"content":"▶️ Project Financial Model — OpEx & Variable Costs"}]},{"content":"Revenue Streams","children":[{"content":"Onboarding: 3.0% (Property Owner)"},{"content":"Primary Market","children":[{"content":"Buyer Fee: 2.5%"},{"content":"Seller Fee: 2.5%"}]},{"content":"Secondary Market (Year 2+)","children":[{"content":"Buyer Fee: 1.5%"},{"content":"Seller Fee: 1.5%"}]}]},{"content":"Funding Summary","children":[{"content":"Category Amount\nYear 1 CapEx $254,000\nYear 1 Compliance (sandbox) $22,000\nYear 1 MLRO Outsourcing $50,000\nYear 1 Facility Mgmt Setup $30,000\nContingency Buffer $100,000\nTotal Funding Target $456,000"}]},{"content":"Profitability Timeline","children":[{"content":"Months 0–6: Platform build + ADGM sandbox entry"},{"content":"Months 7–12: First issuances; revenue from primary fees"},{"content":"Year 2: Scale issuances + launch secondary trading via ADGM venue"},{"content":"Target breakeven: Month 14–16"}]}]},{"content":"3. Registration & Licensing","children":[{"content":"ADGM Licensing Pathway","children":[{"content":"Year 1: Regulatory Sandbox","children":[{"content":"Cost: $22K ($80K AED)"},{"content":"Activities: Primary issuance only"},{"content":"Retail Access: Permitted with risk disclosures"},{"content":"Duration: Up to 18 months (extendable)"}]},{"content":"Exit Sandbox → Full Category 3D License","children":[{"content":"Capital Required: $500K (upon exit confirmation)"},{"content":"Criteria: 12 months ops, clean audit, FSRA approval"},{"content":"Activities: Primary + Secondary trading via MTF partner"}]}]},{"content":"Exit Requirements","children":[{"content":"12 months of compliant operations"},{"content":"Clean annual AML/CFT audit report"},{"content":"Sustained transaction volume (>5 properties)"},{"content":"Established compliance framework"},{"content":"Designated MLRO established and approved by FSRA"},{"content":"FSRA approval and readiness assessment"}]},{"content":"Lebanese SPV Structure","children":[{"content":"One SPV per property, legally owned by token holders"},{"content":"Your role: facilitate formation, no ownership or control"},{"content":"SPV setup steps:","children":[{"content":"Owner transfers title to newly formed Lebanese SPV"},{"content":"Notarized deed + land registry update"},{"content":"SPV opens non-Lebanese USD bank account (e.g., UAE, Cyprus)"}]},{"content":"No Central Bank of Lebanon approval required (no LBP, no local banking)"}]},{"content":"Cross-Border Flow","children":[{"content":"Owner → Lebanese SPV (title transfer)"},{"content":"SPV shares → tokenized on ADGM platform (ERC-3643)"},{"content":"Investor pays in USD or approved stablecoin (USDC)"},{"content":"Funds flow: Investor → ADGM escrow → SPV foreign account"},{"content":"Zero interaction with Lebanese banks or LBP"}]}]},{"content":"4. Legal Framework","children":[{"content":"Lebanon Legal Considerations","children":[{"content":"Foreign ownership: allowed via Lebanese corporate entity (SPV)"},{"content":"Fractional transfer: permitted if done through SPV equity"},{"content":"Capital repatriation: allowed in foreign currency for foreign-funded SPVs"},{"content":"Key risk: Title clarity → mitigated by:","children":[{"content":"Pre-tokenization legal opinion per property"},{"content":"Optional title verification report"}]}]},{"content":"ADGM Legal Alignment","children":[{"content":"Tokens = Digital Securities under ADGM Financial Services and Markets Regulations (FSMR)"},{"content":"Retail offering permitted within Sandbox parameters"},{"content":"Investor onboarding:","children":[{"content":"KYC/AML + risk warning (\"no buyback\", \"illiquid until Year 2\")"},{"content":"No suitability assessment required for sandbox retail"}]},{"content":"Secondary trading compliant as long as venue is ADGM-licensed MTF"}]},{"content":"Key Legal Safeguards","children":[{"content":"Platform disclaimers:","children":[{"content":"\"We do not own or manage assets\""},{"content":"\"Tokens represent SPV shares — not debt or equity in Token-Lebnani\""},{"content":"\"No redemption or buyback obligation\""}]},{"content":"Governing law:","children":[{"content":"Platform terms: ADGM law"},{"content":"Property title: Lebanese law"}]},{"content":"Dispute resolution:","children":[{"content":"Platform issues: ADGM Courts"},{"content":"Title disputes: Lebanese courts"}]}]}]},{"content":"5. Capital Strategy","children":[{"content":"Seed Funding (Pre-ADGM)","children":[{"content":"Source: Founder + diaspora angels"},{"content":"Exact target: $254K (Year 1) + $22K (Compliance) + $50K (MLRO) + $30K (Facility Mgmt) = $356K"},{"content":"Contingency buffer: +$100K → Total raise: $456K"},{"content":"Use of funds:","children":[{"content":"ADGM entity setup & sandbox application"},{"content":"White-label platform + secondary market integration"},{"content":"Cross-border legal structuring (ADGM + Lebanon)"},{"content":"18-month operational runway (marketing, compliance, support)"},{"content":"Contingency for delays or pipeline gaps"}]}]},{"content":"No Traditional Series A","children":[{"content":"Capital-light model: no asset ownership = no balance sheet risk"},{"content":"Growth funded by issuance + trading fees, not equity rounds"},{"content":"Future funding only for regional expansion or MTF enhancement"}]},{"content":"Revenue-Driven Scaling","children":[{"content":"Breakeven target: Month 14–16"},{"content":"Reinvest profits into:","children":[{"content":"Property sourcing (Lebanon, commission-based)"},{"content":"Investor acquisition (digital, diaspora-focused)"},{"content":"Compliance automation (KYC/AML tools")}]}]}]},{"content":"6. Team & Staffing","children":[{"content":"Core Team (Remote from Lebanon)","children":[{"content":"CEO / Compliance Officer:","children":[{"content":"ADGM-resident (travels as needed)"},{"content":"Wears 3 hats: Legal oversight, tech coordination, investor relations"},{"content":"Covered under OpEx ($7K/month)"}]},{"content":"Tech Lead: Remote, part-time — manages white-label platform"},{"content":"Investor Relations: Handled by CEO + automated dashboard"}]},{"content":"Lebanon Operations (Commission-Based)","children":[{"content":"Property Sourcing Agent: Per-deal commission (no salary)"},{"content":"Legal Liaison: Retained law firm (fixed retainer, not per SPV)"}]},{"content":"Advisors (On-Demand)","children":[{"content":"ADGM Regulatory Consultant: Sandbox + ongoing compliance"},{"content":"International Tax Advisor: Prevents unintended tax nexus"},{"content":"Blockchain Legal Counsel: Token structure, investor disclaimers"}]}]},{"content":"7. Go-to-Market & Marketing","children":[{"content":"Digital Channels","children":[{"content":"Targeted Ads: Meta + LinkedIn → Lebanese diaspora (Canada, Australia, EU, GCC, West Africa)"},{"content":"SEO Keywords: \"Fractional Beirut property\", \"Tokenized Lebanon real estate\", \"Own Lebanese property in USD\""},{"content":"Lead Funnel:","children":[{"content":"Lead magnet: \"Guide to Lebanon Real Estate Tokenization\""},{"content":"Email sequence → whitepaper → 1:1 investor call"},{"content":"Onboarding via DigiShares KYC + e-sign"}]}]},{"content":"GCC Community Events","children":[{"content":"Sponsor Lebanese cultural/religious gatherings in UAE, KSA, Qatar"},{"content":"Cost: $500–$1,500/event (booth + banner)"},{"content":"Setup: Laptop + prompter at entrance → live demo + lead capture"},{"content":"Value: High concentration of retail diaspora investors already emotionally/financially connected to Lebanon"}]},{"content":"Investor Communications","children":[{"content":"LinkedIn thought leadership (primary)"},{"content":"Personalized email sequences"},{"content":"Monthly video webinars (platform-hosted)"},{"content":"GCC community events (UAE, KSA, Qatar)"}]}]},{"content":"8. Technology Stack","children":[{"content":"Technology Stack","children":[{"content":"Year 1: DigiShares Launch Plan","children":[{"content":"Cost: €3K setup + €300/month"},{"content":"Tokens: ERC-1404 standard"},{"content":"Features: Issuance, KYC, internal marketplace"},{"content":"Limitations: Self-custody, no white-label"}]},{"content":"Year 2: DigiShares Standard Plan","children":[{"content":"Cost: €25K setup + €850/month"},{"content":"Tokens: Upgrade to ERC-3643"},{"content":"Features: White-label UI, institutional custody API"}]}]},{"content":"Secondary Market Integration","children":[{"content":"Secondary Trading Options (ADGM)","children":[{"content":"Real Estate Exchange (REX) - MTF"},{"content":"Hubbis Digital Assets - MTF"},{"content":"ADDX.io - Institutional platform"}]}]},{"content":"Must-Have Features (Live from Day 1)","children":[{"content":"ERC-1404 token standard (compliant, transfer-restricted)"},{"content":"KYC/AML via SumSub ($299/month + $2–$60/check)"},{"content":"USD & USDC payment rails (Stripe + Coinbase on-ramp)"},{"content":"Investor dashboard (portfolio, docs, transactions)"},{"content":"Self-custody + custodial wallet support"}]}]},{"content":"9. Lebanese Side of the Operation","children":[{"content":"Asset Sourcing","children":[{"content":"Target: Property owners seeking liquidity (not distressed assets)"},{"content":"Local agents: Commission-based (paid per closed tokenization)"},{"content":"Vetting: Title clarity, USD rental income potential, no legal encumbrances"}]},{"content":"SPV Structure","children":[{"content":"One Lebanese SPV per property"},{"content":"Ownership: 100% held by token investors (not by Token-Lebnani)"},{"content":"Process: Owner → transfers title to SPV → SPV equity tokenized via ADGM platform"},{"content":"Documentation: Notarized deed + land registry update (Lebanese law)"}]},{"content":"Lebanese Operations (Zero Token-Lebnani Banking)","children":[{"content":"Facility Management Contractor","children":[{"content":"Role: Licensed Lebanese property firm"},{"content":"Responsibilities:","children":[{"content":"Pay all LBP expenses (taxes, utilities, maintenance)"},{"content":"Handle tenant relations"},{"content":"File SPV tax returns"}]},{"content":"Funding: USD from Token-Lebnani → Contractor → LBP conversion"}]},{"content":"Token-Lebnani Exposure: Zero LBP, zero Lebanese bank accounts"}]},{"content":"Risk Mitigation","children":[{"content":"Pre-tokenization legal opinion per asset (title + transfer validity)"},{"content":"No operational presence in Lebanon — all coordination remote"},{"content":"Disclaimers: \"Platform does not guarantee title or value\""}]}]},{"content":"10. UAE Side of the Operation (ADGM)","children":[{"content":"Core Functions","children":[{"content":"Token issuance via DigiShares Launch Plan"},{"content":"Investor onboarding: KYC (SumSub), risk disclosures, e-signing"},{"content":"Connect to RealEstate.Exchange (ADGM-compliant secondary venue"},{"content":"Custody: Self-custody + optional custodial wallet (Coinbase)"}]},{"content":"Physical & Regulatory Presence","children":[{"content":"ADGM flexi-desk (meets licensing requirement)"},{"content":"CEO: ADGM-resident for compliance; travels as needed"},{"content":"Licensing: VASP under ADGM sandbox (no MTF license)"}]},{"content":"Compliance Officer Function","children":[{"content":"Can be outsourced to ADGM-licensed firm"},{"content":"Cost: ~$50K/year (cheaper than in-house)"},{"content":"Required: MLRO, AML/CFT monitoring, FSRA reporting"}]},{"content":"Tech & Compliance","children":[{"content":"Platform: Hosted on Google Cloud (managed by DigiShares)"},{"content":"AML/CFT: Automated monitoring + manual review"},{"content":"Reporting: Quarterly to ADGM FSRA (via compliance officer)"},{"content":"No on-premise infrastructure required"}]}]},{"content":"11. News & Regulatory Watch (\"News\" Thread)","children":[{"content":"ADGM Sandbox Updates","children":[{"content":"Monitor retail investor allowances under sandbox"},{"content":"Track approved secondary trading venues (e.g., RealEstate.Exchange listing eligibility)"}]},{"content":"UAE Central Bank","children":[{"content":"Stablecoin regulations (impact on USDC on-ramp via Coinbase)"},{"content":"VASP licensing guidance updates"}]},{"content":"Lebanon","children":[{"content":"Central Bank or Ministry of Justice changes to foreign ownership or SPV formation"},{"content":"Land registry digitization efforts (could speed up title transfer)"}]},{"content":"Global Developments","children":[{"content":"MiCA Phase 2 (EU): Affects EU investor access — may require passported disclosures"},{"content":"BIS/IMF tokenization standards (ISO 24165): Ensures future interoperability"}]},{"content":"Action Protocol","children":[{"content":"Monthly regulatory scan (dedicated advisor or founder)"},{"content":"Quarterly investor updates on compliance posture"}]}]},{"content":"12. Project Risks & Mitigation","children":[{"content":"Regulatory Risk","children":[{"content":"ADGM sandbox rejection → Mitigation: Pre-submission engagement with FSRA; use regulatory consultant"}]},{"content":"Title Risk (Lebanon)","children":[{"content":"Disputed ownership or encumbrances → Mitigation: Mandatory pre-tokenization legal opinion per asset + owner indemnity clause"}]},{"content":"Liquidity Risk","children":[{"content":"Low secondary trading volume in Year 2 → Mitigation: Exclusive listing on RealEstate.Exchange; investor education on exit timeline"}]},{"content":"Tech Risk","children":[{"content":"DigiShares downtime or gas fee spikes → Mitigation: Use Polygon (low gas); SLA-backed support; backup communication via WhatsApp/email"}]},{"content":"Reputational Risk","children":[{"content":"Investors confuse platform with asset owner → Mitigation: Clear disclaimers in all materials: \"We do not own or manage assets — tokens represent SPV shares only\""}]},{"content":"FX & Banking Risk","children":[{"content":"Lebanese banking instability → Mitigation: Zero LBP, zero Lebanese banking — all flows via non-Lebanese USD accounts"}]}]}]};
+
+      // Create Markmap instance
+      const { Markmap } = window.markmap;
+      const mindmap = Markmap.create('#mindmap', { fitRatio: 0.95 }, data);
+
+      // Auto-fit on load
+      setTimeout(() => mindmap.fit(), 500);
+
+      // Add toolbar
+      const toolbar = new window.markmap.Toolbar();
+      toolbar.attach(mindmap);
+      const toolbarEl = toolbar.render();
+      toolbarEl.style.position = 'absolute';
+      toolbarEl.style.bottom = '20px';
+      toolbarEl.style.right = '20px';
+      toolbarEl.style.zIndex = '20';
+      document.body.appendChild(toolbarEl);
+
+      // Ensure dark theme class
+      document.documentElement.classList.add('markmap-dark');
+    })();
+  </script>
+</body>
+</html>
