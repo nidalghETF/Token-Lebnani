@@ -1,0 +1,329 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Token Lebnani - Fractional Real Estate Investment</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+        }
+        /* ===== ANIMATED BACKGROUND ===== */
+        body {
+            background: #1a365d url('./images/background.png') bottom left repeat-x; /* Updated path for assets */
+            background-size: 1500px auto;
+            animation: bgScroll 80s linear infinite;
+        }
+        @keyframes bgScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: -3000px 0; }
+        }
+        /* ===== OVERLAY & CONTENT CONTAINER ===== */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .content {
+            padding: 2rem;
+            max-width: 900px;
+            animation: fadeIn 1.5s ease-out;
+        }
+        /* ===== LOGO & COMPANY NAME HEADER ===== */
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .company-name-text {
+            font-family: 'Cinzel', serif;
+            font-size: 3.8rem;
+            font-weight: 700;
+            color: #D4AF37;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            line-height: 1;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+        }
+        .logo-img {
+            max-width: 180px;
+            height: auto;
+            filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.4));
+        }
+        /* ===== SLOGAN ===== */
+        .slogan-container {
+            margin-top: -0.5rem;
+            margin-bottom: 3rem;
+        }
+        .slogan {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+            letter-spacing: 1.5px;
+            margin: 0;
+            line-height: 1.4;
+        }
+        /* ===== EXPLANATION ===== */
+        .explanation {
+            color: white;
+            padding: 1.5rem 0;
+            margin: 2rem auto;
+            max-width: 700px;
+            text-align: left;
+            font-size: 1.3rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        .explanation h3 {
+            margin-top: 0;
+            color: white;
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 0.5rem;
+        }
+        /* ===== NAVIGATION LINKS ===== */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2.5rem 0;
+            flex-wrap: wrap;
+        }
+        /* Clean text links without frames */
+        .nav-link {
+            color: #D4AF37;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 1px;
+            padding: 0.7rem 1.5rem;
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover {
+            color: white;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        .nav-link i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        .nav-link:hover i {
+            transform: translateX(5px);
+        }
+        /* Link descriptions */
+        .link-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 0.3rem;
+            font-style: italic;
+        }
+        /* ===== FOOTER & ATTRIBUTION ===== */
+        .attribution {
+            position: absolute;
+            bottom: 1rem;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            color: white;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .attribution a {
+            color: #D4AF37;
+            text-decoration: none;
+        }
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes subtleGoldGlow {
+            0%, 100% {
+                text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+            }
+            50% {
+                text-shadow: 3px 3px 12px rgba(212, 175, 55, 0.5), 3px 3px 10px rgba(0, 0, 0, 0.7);
+            }
+        }
+        .company-name-text {
+            animation: subtleGoldGlow 4s ease-in-out infinite;
+        }
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .content { padding: 1rem; }
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            .company-name-text {
+                font-size: 2.8rem;
+                order: 1;
+            }
+            .slogan {
+                font-size: 1rem;
+                letter-spacing: 1px;
+                order: 2;
+            }
+            .logo-img {
+                max-width: 140px;
+                order: 3;
+            }
+            .explanation {
+                padding: 1rem 0;
+                font-size: 1.1rem;
+            }
+            .explanation h3 {
+                font-size: 1.4rem;
+            }
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            .nav-link {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+            .link-desc {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Dark Overlay -->
+    <div class="overlay">
+        <!-- Main Content Container -->
+        <div class="content">
+            <!-- Logo & Company Name Header -->
+            <div class="header-container">
+                <!-- Company Name Text (LEFT SIDE) -->
+                <div>
+                    <div class="company-name-text">TOKEN LEBNANI</div>
+                    <div class="slogan-container">
+                        <p class="slogan">A Regulated Path to Fractional Real-Estate</p>
+                    </div>
+                </div>
+                <!-- Logo Image (RIGHT SIDE) -->
+                <img src="./images/logo.png" alt="Token Lebnani Logo" class="logo-img"> <!-- Updated path for assets -->
+            </div>
+            <!-- Simple Explanation -->
+            <div class="explanation">
+                <h3>What is Tokenization?</h3>
+                <p>
+                    Imagine owning a small piece of a luxury property instead of needing to buy the whole building.
+                    Tokenization turns real-world assets (like real estate) into digital tokens on a blockchain.
+                    This makes investment accessible, secure, and tradable—democratizing ownership for everyone.
+                </p>
+            </div>
+            <!-- Navigation Links to OTHER PAGES -->
+            <div class="nav-links">
+                <!-- Business Plan -->
+                <div class="nav-item">
+                    <a href="./business-plan/" class="nav-link"> <!-- Relative path to subdirectory -->
+                        <i class="fas fa-file-alt"></i> Business Plan
+                    </a>
+                    <div class="link-desc">Our strategic roadmap</div>
+                </div>
+                <!-- Mindmap -->
+                <div class="nav-item">
+                    <a href="./mindmap/" class="nav-link"> <!-- Relative path to subdirectory -->
+                        <i class="fas fa-project-diagram"></i> Mindmap
+                    </a>
+                    <div class="link-desc">Visual project overview</div>
+                </div>
+                <!-- Whitepaper -->
+                <div class="nav-item">
+                    <a href="./whitepaper/" class="nav-link"> <!-- Relative path to subdirectory -->
+                        <i class="fas fa-book"></i> Whitepaper
+                    </a>
+                    <div class="link-desc">Technical documentation</div>
+                </div>
+                <!-- Legal -->
+                <div class="nav-item">
+                    <a href="./legal/" class="nav-link"> <!-- Relative path to subdirectory -->
+                        <i class="fas fa-gavel"></i> Legal
+                    </a>
+                    <div class="link-desc">Regulatory framework</div>
+                </div>
+                <!-- Pathway -->
+                <div class="nav-item">
+                    <a href="./pathway/" class="nav-link"> <!-- Relative path to subdirectory -->
+                        <i class="fas fa-road"></i> Pathway
+                    </a>
+                    <div class="link-desc">Development journey</div>
+                </div>
+            </div>
+            <!-- Footer Attribution -->
+            <div class="attribution">
+                Design based on <a href="https://html5up.net/aerial" target="_blank">Aerial</a> by HTML5 UP |
+                Licensed under <a href="https://html5up.net/license" target="_blank">CCA 3.0</a> |
+                Modified for Token Lebnani
+            </div>
+        </div>
+    </div>
+    <!-- Simple script for smooth interactions -->
+    <script>
+        // Add subtle hover effect
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('mouseenter', function(e) {
+                this.querySelector('i').style.transform = 'translateX(5px)';
+            });
+            link.addEventListener('mouseleave', function(e) {
+                this.querySelector('i').style.transform = 'translateX(0)';
+            });
+        });
+        // Background animation speed based on scroll (optional)
+        let speed = 80;
+        document.addEventListener('wheel', (e) => {
+            if (e.deltaY > 0) speed = Math.min(speed + 5, 150);
+            else speed = Math.max(speed - 5, 40);
+            document.body.style.animationDuration = speed + 's';
+        });
+    </script>
+</body>
+</html>
