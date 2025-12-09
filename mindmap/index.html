@@ -1,0 +1,828 @@
+<!DOCTYPE HTML>
+<!--
+	Aerial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Modified for Token Lebnani - Mindmap
+-->
+<html lang="en">
+<head>
+    <title>Token Lebnani - Mindmap</title>
+	<!-- Add this RIGHT AFTER <title> -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+    /* ===== BASE THEME (Matching Homepage & Business Plan) ===== */
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+        background: #0a192f !important; /* FORCE dark background */
+        color: rgba(255, 255, 255, 0.9) !important; /* FORCE white text */
+    }
+    /* ===== ANIMATED BACKGROUND ===== */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #0a192f url('../images/background.png') bottom left repeat-x !important; /* Updated path for assets */
+        background-size: 1500px auto !important;
+        animation: bgScroll 80s linear infinite !important;
+        z-index: -2;
+    }
+    body::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7) !important;
+        z-index: -1;
+    }
+    @keyframes bgScroll {
+        0% { background-position: 0 0; }
+        100% { background-position: -3000px 0; }
+    }
+    /* Rest of your CSS remains the same... */
+    .main-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+    }
+    /* ===== HEADER WITH NAVIGATION ===== */
+    .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+    }
+    .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .logo-img {
+        width: 60px;
+        height: auto;
+        filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.4));
+    }
+    .brand-text {
+        font-family: 'Cinzel', serif;
+        color: #D4AF37;
+    }
+    .brand-name {
+        font-size: 2rem; /* Kept consistent with previous size */
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin: 0;
+        line-height: 1;
+    }
+    .brand-tagline {
+        font-size: 0.8rem; /* Reduced size relative to brand name */
+        font-weight: 300;
+        letter-spacing: 1px;
+        margin: 5px 0 0 0;
+        color: rgba(255, 255, 255, 0.8);
+        font-style: italic;
+        max-width: 250px;
+        line-height: 1.2;
+    }
+    /* ===== NAVIGATION ===== */
+    .nav-links {
+        display: flex;
+        gap: 25px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .nav-link {
+        color: #D4AF37;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        padding: 8px 0;
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #D4AF37;
+        transition: width 0.3s ease;
+    }
+    .nav-link:hover {
+        color: #fff;
+    }
+    .nav-link:hover::after {
+        width: 100%;
+    }
+    .nav-link i {
+        font-size: 0.9rem;
+    }
+    /* ===== MINDMAP CONTENT ===== */
+    .document-container {
+        background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.03) 0%,
+            rgba(212, 175, 55, 0.03) 100%);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        border-radius: 12px;
+        padding: 50px;
+        margin-bottom: 50px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+    .document-header {
+        text-align: center;
+        margin-bottom: 50px;
+        padding-bottom: 30px;
+        border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+        position: relative;
+    }
+    .document-header::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 25%;
+        width: 50%;
+        height: 2px;
+        background: linear-gradient(90deg,
+            transparent 0%,
+            #D4AF37 50%,
+            transparent 100%);
+    }
+    .document-title {
+        font-family: 'Cinzel', serif;
+        font-size: 2.8rem;
+        color: #D4AF37;
+        margin: 0 0 15px 0;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+    .document-subtitle {
+        font-size: 1.3rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin: 0 0 20px 0;
+        font-style: italic;
+        font-weight: 300;
+    }
+    .version-badge {
+        display: inline-block;
+        background: rgba(212, 175, 55, 0.15);
+        color: #D4AF37;
+        padding: 6px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    /* ===== SECTIONS ===== */
+    .document-section {
+        margin-bottom: 40px;
+        padding: 30px;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 8px;
+        border-left: 4px solid #D4AF37;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .document-section:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+    .section-title {
+        font-family: 'Cinzel', serif;
+        font-size: 1.8rem;
+        color: #D4AF37;
+        margin: 0 0 20px 0;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        font-weight: 600;
+    }
+    .section-subtitle {
+        font-family: 'Cinzel', serif;
+        font-size: 1.4rem;
+        color: rgba(212, 175, 55, 0.9);
+        margin: 25px 0 15px 0;
+        font-weight: 500;
+    }
+    .section-text {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.15rem;
+        line-height: 1.7;
+        margin-bottom: 20px;
+    }
+    /* ===== LISTS ===== */
+    .section-list {
+        color: rgba(255, 255, 255, 0.9);
+        padding-left: 20px;
+        margin: 15px 0;
+    }
+    .section-list li {
+        margin-bottom: 12px;
+        line-height: 1.6;
+        position: relative;
+    }
+    .section-list li::before {
+        content: '•';
+        color: #D4AF37;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+        font-size: 1.2em;
+    }
+    .section-list strong {
+        color: #D4AF37;
+        font-weight: 600;
+    }
+    .section-list em {
+        color: rgba(255, 255, 255, 0.7);
+        font-style: italic;
+    }
+    .section-list ol {
+        list-style-type: decimal;
+        padding-left: 25px;
+    }
+    .section-list ol li {
+        margin-bottom: 8px;
+    }
+    /* ===== TABLES ===== */
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 25px 0;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .data-table th {
+        background: rgba(212, 175, 55, 0.2);
+        color: #D4AF37;
+        font-weight: 600;
+        padding: 18px 20px;
+        text-align: left;
+        border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+        font-family: 'Cinzel', serif;
+        font-size: 1.1rem;
+    }
+    .data-table td {
+        color: rgba(255, 255, 255, 0.9);
+        padding: 16px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .data-table tr:hover {
+        background: rgba(212, 175, 55, 0.05);
+    }
+    .data-table tr:last-child td {
+        border-bottom: none;
+    }
+    /* ===== SPECIAL BOXES ===== */
+    .info-box {
+        background: rgba(212, 175, 55, 0.08);
+        border-left: 4px solid #D4AF37;
+        padding: 20px;
+        margin: 25px 0;
+        border-radius: 0 6px 6px 0;
+    }
+    .note-box {
+        background: rgba(212, 175, 55, 0.05);
+        border-left: 4px solid rgba(212, 175, 55, 0.6);
+        padding: 18px;
+        margin: 20px 0;
+        border-radius: 0 6px 6px 0;
+        font-style: italic;
+    }
+    .highlight-box {
+        background: linear-gradient(135deg,
+            rgba(212, 175, 55, 0.1) 0%,
+            rgba(212, 175, 55, 0.05) 100%);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        padding: 22px;
+        margin: 25px 0;
+        border-radius: 8px;
+    }
+    .updated-badge {
+        display: inline-block;
+        background: rgba(46, 125, 50, 0.2); /* Green background */
+        color: #4CAF50; /* Green text */
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.75em;
+        font-weight: 600;
+        margin-left: 5px;
+        vertical-align: middle;
+    }
+    /* ===== LINKS ===== */
+    .content-link {
+        color: #D4AF37;
+        text-decoration: none;
+        border-bottom: 1px dashed rgba(212, 175, 55, 0.5);
+        transition: all 0.3s ease;
+    }
+    .content-link:hover {
+        color: #fff;
+        border-bottom: 1px solid #D4AF37;
+    }
+    /* ===== DOCUMENT FOOTER ===== */
+    .document-footer {
+        text-align: center;
+        padding: 30px;
+        margin-top: 50px;
+        border-top: 1px solid rgba(212, 175, 55, 0.3);
+        color: rgba(255, 255, 255, 0.7);
+    }
+    /* ===== SITE FOOTER ===== */
+    .site-footer {
+        text-align: center;
+        padding: 25px 0;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+        border-top: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .site-footer a {
+        color: #D4AF37;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .site-footer a:hover {
+        color: #fff;
+    }
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .document-section {
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+    }
+    .document-section:nth-child(1) { animation-delay: 0.1s; }
+    .document-section:nth-child(2) { animation-delay: 0.2s; }
+    .document-section:nth-child(3) { animation-delay: 0.3s; }
+    .document-section:nth-child(4) { animation-delay: 0.4s; }
+    .document-section:nth-child(5) { animation-delay: 0.5s; }
+    .document-section:nth-child(6) { animation-delay: 0.6s; }
+    .document-section:nth-child(7) { animation-delay: 0.7s; }
+    .document-section:nth-child(8) { animation-delay: 0.8s; }
+    .document-section:nth-child(9) { animation-delay: 0.9s; }
+    .document-section:nth-child(10) { animation-delay: 1.0s; }
+    .document-section:nth-child(11) { animation-delay: 1.1s; }
+    .document-section:nth-child(12) { animation-delay: 1.2s; }
+    .document-section:nth-child(13) { animation-delay: 1.3s; }
+    .document-section:nth-child(14) { animation-delay: 1.4s; }
+    .document-section:nth-child(15) { animation-delay: 1.5s; }
+    .document-section:nth-child(16) { animation-delay: 1.6s; }
+    .document-section:nth-child(17) { animation-delay: 1.7s; }
+    .document-section:nth-child(18) { animation-delay: 1.8s; }
+    .document-section:nth-child(19) { animation-delay: 1.9s; }
+    .document-section:nth-child(20) { animation-delay: 2.0s; }
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 992px) {
+        .document-container {
+            padding: 30px;
+        }
+        .document-title {
+            font-size: 2.3rem;
+        }
+        .section-title {
+            font-size: 1.6rem;
+        }
+    }
+    @media (max-width: 768px) {
+        .site-header {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+        .brand-tagline {
+            max-width: 100%;
+        }
+        .nav-links {
+            justify-content: center;
+            gap: 15px;
+        }
+        .main-container {
+            padding: 15px;
+        }
+        .document-container {
+            padding: 20px;
+        }
+        .document-title {
+            font-size: 2rem;
+        }
+        .document-subtitle {
+            font-size: 1.1rem;
+        }
+        .document-section {
+            padding: 20px;
+        }
+        .data-table th,
+        .data-table td {
+            padding: 12px 15px;
+        }
+    }
+    @media (max-width: 480px) {
+        .nav-links {
+            flex-direction: column;
+            gap: 10px;
+        }
+        .document-title {
+            font-size: 1.8rem;
+        }
+        .brand-name {
+            font-size: 1.6rem;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Header with Navigation -->
+        <header class="site-header">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="Token Lebnani Logo" class="logo-img"> <!-- Updated path for assets -->
+                <div class="brand-text">
+                    <h1 class="brand-name">TOKEN LEBNANI</h1>
+                    <p class="brand-tagline">A Regulated Path to Fractional Real-Estate</p>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="../" class="nav-link"> <!-- Relative path to root -->
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="../business-plan/" class="nav-link"> <!-- Relative path to subdirectory -->
+                    <i class="fas fa-file-alt"></i> Business Plan
+                </a>
+                <!-- Removed self-link to Mindmap -->
+                <a href="../whitepaper/" class="nav-link"> <!-- Relative path to subdirectory -->
+                    <i class="fas fa-book"></i> Whitepaper
+                </a>
+                <a href="../legal/" class="nav-link"> <!-- Relative path to subdirectory -->
+                    <i class="fas fa-gavel"></i> Legal
+                </a>
+                <a href="../pathway/" class="nav-link"> <!-- Relative path to subdirectory -->
+                    <i class="fas fa-road"></i> Pathway
+                </a>
+            </nav>
+        </header>
+        <!-- Mindmap Document -->
+        <main class="document-container">
+            <header class="document-header">
+                <h1 class="document-title">Project Mindmap</h1>
+                <p class="document-subtitle">Visual Overview of Token-Lebnani's Structure and Flow</p>
+                <span class="version-badge">Version 1.0 — December 2025</span>
+            </header>
+
+            <!-- Section 1: Core Model -->
+            <section class="document-section" id="core-model">
+                <h2 class="section-title">1. Core Model</h2>
+                <h3 class="section-subtitle">Platform Role</h3>
+                <ul class="section-list">
+                    <li><strong>Facilitator Only:</strong> We do not own, buy, or manage real estate assets.</li>
+                    <li><strong>Tokenization Bridge:</strong> Connect Lebanese property owners to global investors via compliant digital tokens.</li>
+                </ul>
+                <h3 class="section-subtitle">Key Principles</h3>
+                <ul class="section-list">
+                    <li>✅ Owners tokenize existing assets via new SPVs — we do not buy or own real estate</li>
+                    <li>✅ Token holders own SPV shares; we act as regulated issuance &amp; trading facilitator</li>
+                    <li>❌ No LBP or Lebanese banking involvement</li>
+                    <li>❌ No buybacks or guaranteed returns</li>
+                    <li>❌ No institutional-only focus — retail is primary</li>
+                </ul>
+                <h3 class="section-subtitle">Unique Value</h3>
+                <ul class="section-list">
+                    <li>For owners: Sell in pieces, no need to wait for single buyer</li>
+                    <li>For investors: Low entry (&lt;$1K), transparent ownership, USD/stablecoin pricing</li>
+                    <li>For regulators: Full ADGM compliance, no LBP exposure, retail-safe disclosures</li>
+                </ul>
+            </section>
+
+            <!-- Section 2: Liquidity Pathway -->
+            <section class="document-section" id="liquidity-pathway">
+                <h2 class="section-title">2. Liquidity Pathway</h2>
+                <h3 class="section-subtitle">Timeline</h3>
+                <ul class="section-list">
+                    <li>Year 1: Primary issuance only (no trading)</li>
+                    <li>By end of Year 2: Connect to existing ADGM-regulated secondary market (e.g., RealEstate.Exchange)</li>
+                    <li>Tokens trade freely among verified investors — price set by market</li>
+                </ul>
+            </section>
+
+            <!-- Section 3: Financials -->
+            <section class="document-section" id="financials">
+                <h2 class="section-title">3. Financials</h2>
+                <h3 class="section-subtitle">CapEx (One-Time)</h3>
+                <ul class="section-list">
+                    <li>▶️ <a href="https://docs.google.com/spreadsheets/d/1LcZFJZjhw1sCfGB4PHgvy8BCmLVzo623f4Aid4GcsFQ/edit?usp=sharing" class="content-link" target="_blank">Live Financial Model</a></li>
+                    <li>ADGM Regulatory Sandbox: $22,000 (application + supervision fees)</li>
+                    <li>DigiShares Launch Plan: €3,000 setup + €300/month</li>
+                    <li>Legal &amp; Compliance Setup: $30,000 (retainer + initial agreements)</li>
+                    <li>Marketing &amp; Branding: $15,000</li>
+                    <li>Contingency Buffer: $100,000</li>
+                    <li><strong>Total Year 1 CapEx:</strong> $170,000 (excluding contingency)</li>
+                </ul>
+                <h3 class="section-subtitle">Revenue Streams</h3>
+                <ol class="section-list">
+                    <li><strong>Issuance Fee:</strong> 3% of tokenized value (paid by owner/SPV)</li>
+                    <li><strong>Primary Market Fees:</strong> 2.5% buyer fee + 2.5% seller fee (applied during initial token sale)</li>
+                    <li><strong>Secondary Trading Fee:</strong> 1.5% buyer + 1.5% seller per trade (Year 2+)</li>
+                </ol>
+                <h3 class="section-subtitle">No Traditional Series A</h3>
+                <ul class="section-list">
+                    <li>Capital-light model: <strong>no asset ownership = no balance sheet risk</strong></li>
+                    <li>Growth funded by <strong>issuance + trading fees</strong>, not equity rounds</li>
+                    <li>Future funding only for regional expansion or MTF enhancement</li>
+                </ul>
+                <h3 class="section-subtitle">Revenue-Driven Scaling</h3>
+                <ul class="section-list">
+                    <li>Breakeven target: <strong>Month 14–16</strong></li>
+                    <li>Reinvest profits into:
+                        <ul>
+                            <li>Property sourcing (Lebanon, commission-based)</li>
+                            <li>Investor acquisition (digital, diaspora-focused)</li>
+                            <li>Technology upgrades (DigiShares Standard Plan)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Section 4: Team -->
+            <section class="document-section" id="team">
+                <h2 class="section-title">4. Team</h2>
+                <h3 class="section-subtitle">Core Roles</h3>
+                <ul class="section-list">
+                    <li><strong>CEO / Compliance Officer:</strong>
+                        <ul>
+                            <li>ADGM-resident (travels as needed)</li>
+                            <li>Wears 3 hats: Legal oversight, tech coordination, investor relations</li>
+                            <li>Covered under OpEx ($7K/month)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Tech Lead</strong>: Remote, part-time — manages white-label platform</li>
+                    <li><strong>Investor Relations</strong>: Part-time, focused on diaspora community engagement</li>
+                </ul>
+                <h3 class="section-subtitle">Advisors &amp; External Support</h3>
+                <ul class="section-list">
+                    <li><strong>Compliance Function:</strong> Outsourced to ADGM-licensed firm (Waystone/Maples) - $50,000/year</li>
+                    <li><strong>Legal Counsel</strong>: Token structure, investor disclaimers</li>
+                </ul>
+            </section>
+
+            <!-- Section 5: Go-to-Market & Marketing -->
+            <section class="document-section" id="go-to-market">
+                <h2 class="section-title">5. Go-to-Market &amp; Marketing</h2>
+                <h3 class="section-subtitle">Digital Channels</h3>
+                <ul class="section-list">
+                    <li><strong>Targeted Ads</strong>: Meta + LinkedIn → Lebanese diaspora (Canada, Australia, EU, GCC, West Africa)</li>
+                    <li><strong>SEO Keywords</strong>: "Fractional Beirut property", "Tokenized Lebanon real estate"</li>
+                    <li>Lead funnel:
+                        <ol>
+                            <li>Free guide →</li>
+                            <li>Email sequence →</li>
+                            <li>Whitepaper →</li>
+                            <li>1:1 investor call →</li>
+                            <li>Onboarding via DigiShares KYC + e-sign</li>
+                        </ol>
+                    </li>
+                </ul>
+                <h3 class="section-subtitle">GCC Community Events</h3>
+                <ul class="section-list">
+                    <li>Sponsor Lebanese cultural/religious gatherings in UAE, KSA, Qatar</li>
+                    <li>Cost: $500–$1,500/event (booth + banner)</li>
+                    <li>Setup: Laptop + prompter at entrance → live demo + lead capture</li>
+                    <li>Value: High concentration of <strong>retail diaspora investors</strong> already emotionally/financially connected to Lebanon</li>
+                </ul>
+                <h3 class="section-subtitle">Investor Communications</h3>
+                <ul class="section-list">
+                    <li>LinkedIn thought leadership (primary)</li>
+                    <li>Personalized email sequences</li>
+                    <li>Monthly video webinars (platform-hosted)</li>
+                    <li>GCC community events (UAE, KSA, Qatar)</li>
+                </ul>
+            </section>
+
+            <!-- Section 6: Technology Stack -->
+            <section class="document-section" id="technology">
+                <h2 class="section-title">6. Technology Stack</h2>
+                <h3 class="section-subtitle">Technology Stack</h3>
+                <ul class="section-list">
+                    <li><strong>Year 1: DigiShares Launch Plan</strong>
+                        <ul>
+                            <li>Cost: €3K setup + €300/month</li>
+                            <li>Tokens: ERC-1404 standard</li>
+                            <li>Features: Issuance, KYC, internal marketplace</li>
+                            <li>Limitations: Self-custody, no white-label</li>
+                        </ul>
+                    </li>
+                    <li><strong>Year 2: DigiShares Standard Plan</strong>
+                        <ul>
+                            <li>Cost: €25K setup + €850/month</li>
+                            <li>Tokens: Upgrade to ERC-3643</li>
+                            <li>Features: White-label UI, institutional custody API</li>
+                        </ul>
+                    </li>
+                </ul>
+                <h3 class="section-subtitle">Secondary Market Integration</h3>
+                <ul class="section-list">
+                    <li>Target: RealEstate.Exchange (ADGM-compliant secondary venue)</li>
+                    <li>Timeline: Month 18-24 (after sandbox exit and full license)</li>
+                    <li>Process: API integration via DigiShares Standard Plan</li>
+                    <li>Benefits: Institutional custody options, broader investor base</li>
+                </ul>
+                <h3 class="section-subtitle">Must-Have Features (Live from Day 1)</h3>
+                <ul class="section-list">
+                    <li>ERC-1404 token standard (compliant, transfer-restricted)</li>
+                    <li>KYC/AML via SumSub ($299/month + $2–$60/check)</li>
+                    <li>USD &amp; USDC payment rails (Stripe + Coinbase on-ramp)</li>
+                    <li>Investor dashboard (portfolio, docs, transactions)</li>
+                    <li>Self-custody + custodial wallet support</li>
+                </ul>
+            </section>
+
+            <!-- Section 7: Lebanese Side of the Operation -->
+            <section class="document-section" id="lebanon-side">
+                <h2 class="section-title">7. Lebanese Side of the Operation</h2>
+                <h3 class="section-subtitle">Asset Sourcing</h3>
+                <ul class="section-list">
+                    <li>Target: Property owners seeking liquidity (not distressed assets)</li>
+                    <li>Local agents: Commission-based (paid per successful tokenization)</li>
+                    <li>Criteria: Clear title, located in Beirut/Downtown, value $200K+</li>
+                </ul>
+                <h3 class="section-subtitle">SPV Formation Process</h3>
+                <ul class="section-list">
+                    <li>Local lawyer drafts SPV articles (purpose: hold specific property)</li>
+                    <li>Owner contributes property title to SPV in exchange for shares</li>
+                    <li>Notarized deed + land registry update</li>
+                    <li>SPV opens <strong>non-Lebanese USD bank account</strong> (e.g., UAE, Cyprus)</li>
+                </ul>
+                <h3 class="section-subtitle">Cross-Border Flow</h3>
+                <ul class="section-list">
+                    <li>Owner &#x2192; Lebanese SPV (title transfer)</li>
+                    <li>SPV &#x2192; Token-Lebnani UAE (tokenization request)</li>
+                    <li>Token-Lebnani UAE &#x2192; DigiShares &#x2192; Blockchain</li>
+                    <li>Investors &#x2192; Token-Lebnani UAE (KYC + purchase)</li>
+                    <li>Tokens &#x2192; Investor Wallets</li>
+                </ul>
+                <h3 class="section-subtitle">No Central Bank of Lebanon Approval Required</h3>
+                <ul class="section-list">
+                    <li>No Central Bank of Lebanon approval required (no LBP, no local banking)</li>
+                </ul>
+                <h3 class="section-subtitle">Risk Mitigation</h3>
+                <ul class="section-list">
+                    <li>Pre-tokenization legal opinion per asset (title + transfer validity)</li>
+                    <li>No operational presence in Lebanon — all coordination remote</li>
+                    <li>Disclaimers: "Platform does not guarantee title or value"</li>
+                    <li>Optional title verification report</li>
+                </ul>
+            </section>
+
+            <!-- Section 8: UAE Side of the Operation (ADGM) -->
+            <section class="document-section" id="uae-side">
+                <h2 class="section-title">8. UAE Side of the Operation (ADGM)</h2>
+                <h3 class="section-subtitle">Core Functions</h3>
+                <ul class="section-list">
+                    <li>Token issuance via <strong>DigiShares Launch Plan</strong></li>
+                    <li>Investor onboarding: KYC (SumSub), risk disclosures, e-signing</li>
+                    <li>Connect to <strong>RealEstate.Exchange</strong> (ADGM-compliant secondary venue)</li>
+                    <li>Custody: Self-custody + optional institutional custody (Year 2+)</li>
+                    <li>Compliance: MLRO function outsourced to ADGM firm</li>
+                </ul>
+                <h3 class="section-subtitle">ADGM Legal Alignment</h3>
+                <ul class="section-list">
+                    <li>Tokens = <strong>Digital Securities</strong> under ADGM Financial Services and Markets Regulations (FSMR)</li>
+                    <li>Retail offering permitted <strong>within Sandbox parameters</strong></li>
+                    <li>Investor onboarding: Must meet ADGM suitability and appropriateness tests</li>
+                    <li>Maximum 100 investors per tokenized asset (Sandbox limit)</li>
+                    <li>Maximum $5M AUM per tokenized asset (Sandbox limit)</li>
+                </ul>
+                <h3 class="section-subtitle">Sandbox Exit Strategy</h3>
+                <ul class="section-list">
+                    <li>Target: Category 3D VASP License (after 12-18 months in sandbox)</li>
+                    <li>Capital requirement: $500,000 (deposited only upon exit confirmation)</li>
+                    <li>Criteria: Clean compliance record, demonstrated volume, FSRA readiness assessment</li>
+                    <li>Timeline: Application Month 16-18, License Month 20-24</li>
+                </ul>
+            </section>
+
+            <!-- Section 9: Risks & Mitigation -->
+            <section class="document-section" id="risks-mitigation">
+                <h2 class="section-title">9. Risks & Mitigation</h2>
+                <h3 class="section-subtitle">ADGM Regulatory Risk</h3>
+                <ul class="section-list">
+                    <li>Sandbox rejection or exit failure &#x2192; Mitigation: Pre-submission engagement with FSRA; use regulatory consultant</li>
+                </ul>
+                <h3 class="section-subtitle">Title Risk (Lebanon)</h3>
+                <ul class="section-list">
+                    <li>Disputed ownership or encumbrances &#x2192; Mitigation: Mandatory pre-tokenization legal opinion per asset + owner indemnity clause</li>
+                </ul>
+                <h3 class="section-subtitle">Liquidity Risk</h3>
+                <ul class="section-list">
+                    <li>Low secondary trading volume in Year 2 &#x2192; Mitigation: Exclusive listing on RealEstate.Exchange; investor education on exit timeline</li>
+                </ul>
+                <h3 class="section-subtitle">Tech Risk</h3>
+                <ul class="section-list">
+                    <li>DigiShares downtime or gas fee spikes &#x2192; Mitigation: Use Polygon (low gas); SLA-backed support; backup communication via WhatsApp/email</li>
+                </ul>
+                <h3 class="section-subtitle">Reputational Risk</h3>
+                <ul class="section-list">
+                    <li>Investors confuse platform with asset owner &#x2192; Mitigation: Clear disclaimers in all materials: "We do not own or manage assets — tokens represent SPV shares only"</li>
+                </ul>
+                <h3 class="section-subtitle">FX &amp; Banking Risk</h3>
+                <ul class="section-list">
+                    <li>Lebanese banking instability &#x2192; Mitigation: <strong>Zero LBP, zero Lebanese banking</strong> — all flows via non-Lebanese USD accounts</li>
+                </ul>
+            </section>
+
+            <!-- Section 10: Regulatory Landscape -->
+            <section class="document-section" id="regulatory-landscape">
+                <h2 class="section-title">10. Regulatory Landscape</h2>
+                <h3 class="section-subtitle">ADGM</h3>
+                <ul class="section-list">
+                    <li>Sandbox allowances under sandbox</li>
+                    <li>Track approved secondary trading venues (e.g., RealEstate.Exchange listing eligibility)</li>
+                </ul>
+                <h3 class="section-subtitle">UAE Central Bank</h3>
+                <ul class="section-list">
+                    <li>Stablecoin regulations (impact on USDC on-ramp via Coinbase)</li>
+                    <li>VASP licensing guidance updates</li>
+                </ul>
+                <h3 class="section-subtitle">Lebanon</h3>
+                <ul class="section-list">
+                    <li>Central Bank or Ministry of Justice changes to foreign ownership or SPV formation</li>
+                    <li>Land registry digitization efforts (could speed up title transfer)</li>
+                </ul>
+                <h3 class="section-subtitle">Global Developments</h3>
+                <ul class="section-list">
+                    <li>MiCA Phase 2 (EU): Affects EU investor access — may require passported entity</li>
+                    <li>SEC guidance on digital asset custody (affects potential US pathways)</li>
+                    <li>Global tax reporting (FATCA/CRS) alignment</li>
+                </ul>
+            </section>
+
+            <footer class="document-footer">
+                <p>Prepared by: Nidal Gharzeddine</p>
+                <p>Date: December 2025</p>
+                <p>Version: 1.0</p>
+            </footer>
+        </main>
+        <!-- Site Footer -->
+        <footer class="site-footer">
+            <p>Design based on <a href="https://html5up.net/aerial" target="_blank">Aerial</a> by HTML5 UP |
+            Licensed under <a href="https://html5up.net/license" target="_blank">CCA 3.0</a> |
+            Modified for Token Lebnani</p>
+        </footer>
+    </div>
+    <script>
+        // Smooth hover effects
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('mouseenter', function(e) {
+                this.style.transform = 'translateY(-2px)';
+            });
+            link.addEventListener('mouseleave', function(e) {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        // Scroll animation for sections
+        const sections = document.querySelectorAll('.document-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
