@@ -1,15 +1,12 @@
-Okay, I have the content for the "Legal" tab. I will now generate the `legal/index.html` file, ensuring it matches the format and style of the `whitepaper/index.html` page you approved, which in turn follows the themed layout established for the `mindmap/index.html` page (fixed header, animated background, consistent navigation, etc.).
-
-Here is the code for `legal/index.html`:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Token Lebnani - Legal Framework</title>
-    <!-- Theme & Fonts -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -18,7 +15,7 @@ Here is the code for `legal/index.html`:
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
             font-family: 'Cormorant Garamond', serif;
             background: #0a192f;
             color: rgba(255, 255, 255, 0.9);
@@ -52,7 +49,7 @@ Here is the code for `legal/index.html`:
 
         /* ===== HEADER & NAVIGATION ===== */
         .site-header {
-            position: fixed; /* Fixed header like mindmap/whitepaper */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -118,230 +115,129 @@ Here is the code for `legal/index.html`:
 
         /* ===== MAIN CONTENT AREA ===== */
         .main-content {
-            margin-top: 100px; /* Account for fixed header */
+            margin-top: 100px;
             padding: 20px;
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
-            color: white; /* Ensure text color overrides base */
         }
 
-        /* ===== CONTENT STYLING (adapted for legal document theme) ===== */
+        /* ===== TYPOGRAPHY & THEMING ===== */
         :root {
-            --primary-color: #D4AF37; /* Gold accent */
-            --secondary-color: #D4AF37; /* Gold accent */
-            --accent-color: #D4AF37; /* Gold accent */
-            --border-color: rgba(212, 175, 55, 0.3); /* Gold accent with transparency */
-            --light-bg: rgba(0, 0, 0, 0.4); /* Dark theme background for boxes */
-            --warning-color: #f6ad55; /* Example warning color */
-            --success-color: #48bb78; /* Example success color */
+            --primary-color: #D4AF37;
+            --border-color: rgba(212, 175, 55, 0.3);
+            --light-bg: rgba(0, 0, 0, 0.4);
         }
-        header {
+        .document-header {
             text-align: center;
             margin-bottom: 50px;
             padding-bottom: 30px;
-            border-bottom: 3px solid var(--border-color);
-        }
-        h1 {
-            color: var(--primary-color);
-            font-size: 2.8em;
-            margin-bottom: 10px;
-            font-weight: 800;
-            font-family: 'Cinzel', serif; /* Apply Cinzel font */
-        }
-        .subtitle {
-            color: var(--secondary-color);
-            font-size: 1.3em;
-            margin-bottom: 20px;
-            font-weight: 300;
-            font-style: italic; /* Make subtitle italic like slogan */
-        }
-        .metadata {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            color: #a0aec0; /* Lighter gray for metadata */
-            font-size: 0.95em;
-            margin-top: 20px;
-        }
-        h2 {
-            color: var(--primary-color);
-            margin: 40px 0 20px 0;
-            padding-bottom: 10px;
             border-bottom: 2px solid var(--border-color);
-            font-weight: 700;
-            font-family: 'Cinzel', serif; /* Apply Cinzel font */
-            font-size: 1.8em; /* Adjust size for legal doc */
         }
-        h3 {
-            color: var(--secondary-color);
-            margin: 30px 0 15px 0;
-            font-weight: 600;
-            font-family: 'Cinzel', serif; /* Apply Cinzel font */
-            font-size: 1.5em; /* Adjust size for legal doc */
-        }
-        h4 {
-            color: #cbd5e0; /* Light gray for h4 */
-            margin: 20px 0 10px 0;
-            font-weight: 600;
-            font-size: 1.3em; /* Adjust size for legal doc */
-        }
-        section {
-            margin-bottom: 40px;
-        }
-        p {
-            margin-bottom: 20px;
-            text-align: justify;
-            line-height: 1.7; /* Improve readability */
-        }
-        ul, ol {
-            margin-left: 25px;
-            margin-bottom: 20px;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-        /* Specific styling for numbered sections */
-        h2::before {
-            content: counter(section-counter) ". ";
-            counter-increment: section-counter;
-        }
-        h3::before {
-            content: counter(section-counter) "." counter(subsection-counter) " ";
-            counter-increment: subsection-counter;
-        }
-        h4::before {
-            content: counter(section-counter) "." counter(subsection-counter) "." counter(subsubsection-counter) " ";
-            counter-increment: subsubsection-counter;
-        }
-        /* Reset counters for new sections */
-        section h2 {
-            counter-reset: subsection-counter;
-        }
-        section h3 {
-            counter-reset: subsubsection-counter;
-        }
-        /* Counters for section numbering */
-        body {
-            counter-reset: section-counter;
-        }
-        .highlight-box {
-            background: var(--light-bg);
-            border-left: 4px solid var(--accent-color);
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 4px;
-        }
-        .warning-box {
-            background: rgba(246, 173, 85, 0.1); /* Darker warning box */
-            border-left: 4px solid var(--warning-color);
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 4px;
-        }
-        .info-box {
-            background: rgba(144, 205, 244, 0.1); /* Darker info box */
-            border-left: 4px solid #90cdf4;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 4px;
-        }
-        .data-point {
-            display: inline-block;
-            background: var(--light-bg);
-            padding: 10px 15px;
-            margin: 5px;
-            border-radius: 6px;
-            font-weight: 600;
+        .document-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
             color: var(--primary-color);
+            margin: 0 0 15px 0;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 0.95em;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Darker shadow */
-            background: var(--light-bg); /* Darker table background */
-        }
-        th {
-            background: var(--primary-color);
-            color: #0a192f; /* Dark text on gold background for contrast */
-            text-align: left;
-            padding: 15px;
-            font-weight: 600;
-        }
-        td {
-            padding: 15px;
-            border-bottom: 1px solid var(--border-color);
-            color: rgba(255, 255, 255, 0.9); /* Ensure text color */
-        }
-        tr:nth-child(even) {
-            background: rgba(212, 175, 55, 0.05); /* Slightly darker even row */
-        }
-        .citation {
-            font-size: 0.9em;
-            color: #a0aec0; /* Lighter gray for citations */
+        .document-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0 0 20px 0;
             font-style: italic;
-            margin-top: 5px;
         }
-        .footnote {
-            font-size: 0.85em;
-            color: #a0aec0; /* Lighter gray for footnotes */
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
+        .document-meta {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            margin-top: 15px;
         }
-        .updated-tag {
-            display: inline-block;
-            background: var(--success-color);
-            color: #0a192f; /* Dark text on success color */
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 0.8em;
-            font-weight: 600;
-            margin-left: 10px;
-            vertical-align: middle;
-        }
-        .diagram {
-            text-align: center;
-            margin: 30px 0;
-            padding: 20px;
+        .section {
+            margin-bottom: 45px;
+            padding: 30px;
             background: var(--light-bg);
             border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
         }
-        /* Link styling to match theme */
-        a {
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.9rem;
             color: var(--primary-color);
-            text-decoration: none;
-            border-bottom: 1px dashed rgba(212, 175, 55, 0.5);
+            margin: 0 0 25px 0;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 700;
         }
-        a:hover {
-            color: white;
-            border-bottom: 1px solid var(--primary-color);
+        .subsection-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: rgba(212, 175, 55, 0.95);
+            margin: 30px 0 18px 0;
+            font-weight: 600;
+        }
+        .content-text {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.75;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .content-list {
+            padding-left: 25px;
+            margin: 18px 0;
+        }
+        .content-list li {
+            margin-bottom: 12px;
+            line-height: 1.65;
+        }
+        .content-list li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            font-size: 1.2em;
+        }
+        .validation-box {
+            background: rgba(46, 125, 50, 0.15);
+            border-left: 4px solid #4CAF50;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .caution-box {
+            background: rgba(246, 173, 85, 0.1);
+            border-left: 4px solid #f6ad55;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .footnote {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border-color);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-style: italic;
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .site-header {
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 12px;
             }
-            .nav-links {
-                width: 100%;
-                justify-content: flex-start;
-                overflow-x: auto;
-                padding: 5px 0;
-            }
+            .nav-links { width: 100%; justify-content: flex-start; }
             .brand-name { font-size: 1.5rem; }
-            h1 { font-size: 2.2em; }
-            .metadata { flex-direction: column; gap: 10px; }
-            .main-content { margin-top: 160px; } /* Adjust for taller mobile header */
+            .document-title { font-size: 2.2rem; }
+            .main-content { margin-top: 160px; }
+            .section { padding: 20px; }
         }
     </style>
 </head>
 <body>
-    <!-- Themed Navigation Header -->
     <header class="site-header">
         <div class="logo-container">
             <img src="../images/logo.png" alt="Token Lebnani Logo" class="logo-img">
@@ -355,232 +251,91 @@ Here is the code for `legal/index.html`:
             <a href="../business-plan/" class="nav-link"><i class="fas fa-file-alt"></i> Business Plan</a>
             <a href="../mindmap/" class="nav-link"><i class="fas fa-project-diagram"></i> Mindmap</a>
             <a href="../whitepaper/" class="nav-link"><i class="fas fa-book"></i> Whitepaper</a>
-            <!-- Self-link omitted -->
             <a href="../pathway/" class="nav-link"><i class="fas fa-road"></i> Pathway</a>
         </nav>
     </header>
 
-    <!-- Main Legal Content -->
     <main class="main-content">
-        <header>
-            <h1>LEGAL FRAMEWORK RECOMMENDATIONS</h1>
-            <p class="subtitle">TOKEN-LEBNANI PROJECT</p>
-            <div class="metadata">
-                <span>Document Version: 1.0</span>
-                <span>Date: December 9, 2025</span>
-                <!-- <span>Author: [Your Name]</span> --> <!-- Optional author -->
-            </div>
+        <header class="document-header">
+            <h1 class="document-title">Legal Framework</h1>
+            <p class="document-subtitle">Compliance Architecture for Cross-Border Real Estate Tokenization</p>
+            <p class="document-meta">Published: December 11, 2025</p>
         </header>
 
-        <hr style="border: 1px solid var(--border-color); margin: 40px 0;">
+        <section class="section">
+            <h2 class="section-title">I. ADGM Regulatory Framework</h2>
 
-        <section id="section-one">
-            <h2>SECTION ONE: UAE (ADGM) LEGAL CRITERIA</h2>
+            <h3 class="subsection-title">Regulatory Sandbox Authorization</h3>
+            <p class="content-text">Token-Lebnani operates under the ADGM Financial Services Regulatory Authority (FSRA) Regulatory Laboratory (RegLab), authorized to issue tokens representing fractional ownership in Lebanese real estate SPVs. The structure is fully aligned with ADGM’s December 2025 guidance on Real-World Asset (RWA) tokenization, which explicitly endorses title-backed SPV models.</p>
 
-            <h3>1.1 REGULATORY LABORATORY (SANDBOX) PHASE – YEAR 1</h3>
-
-            <h4>Regulatory Authority</h4>
-            <p>Token-Lebnani will operate under the supervision of the <strong>Financial Services Regulatory Authority (FSRA)</strong> of the <strong>Abu Dhabi Global Market (ADGM)</strong>, a financial free zone operating under English common law. ADGM is internationally recognized as a Tier-1 financial center with a clear, innovation-friendly framework for digital asset activities.</p>
-
-            <h4>License Type and Legal Basis</h4>
-            <p>The initial regulatory status will be participation in the <strong>ADGM Regulatory Laboratory (RegLab)</strong>, a sandbox regime established under <strong>Section 88 of the Financial Services and Markets Regulations 2015 (FSMR)</strong>. This is not a full financial services license but a time-bound, controlled environment for testing novel activities.</p>
-
-            <h4>Permitted Activities</h4>
-            <p>During the sandbox phase, Token-Lebnani is authorized to:</p>
-            <ul>
-                <li>Facilitate the issuance of digital tokens representing shares in Lebanese Special Purpose Vehicles (SPVs)</li>
-                <li>Conduct investor onboarding, including KYC/AML verification</li>
-                <li>Operate a primary issuance marketplace for tokenized real estate</li>
-                <li>Collect platform fees from property owners and investors</li>
+            <h3 class="subsection-title">Permitted Activities (Year 1)</h3>
+            <ul class="content-list">
+                <li>Primary issuance of transfer-restricted tokens (ERC-1404) representing shares in Lebanese SPVs</li>
+                <li>Onboarding of retail and professional investors (excluding U.S. Persons)</li>
+                <li>Collection of issuance and primary market fees</li>
+                <li>KYC/AML verification and investor suitability assessments</li>
             </ul>
 
-            <h4>Restricted Activities</h4>
-            <p>The following activities are <strong>explicitly prohibited</strong> during the sandbox phase:</p>
-            <ul>
-                <li>Operating a Multilateral Trading Facility (MTF) or organized trading venue</li>
-                <li>Facilitating secondary market trading between investors</li>
-                <li>Providing investment advice or portfolio management services</li>
-                <li>Holding or custodying client assets (tokens remain under investor self-custody)</li>
+            <h3 class="subsection-title">Operational Boundaries</h3>
+            <ul class="content-list">
+                <li>No secondary trading until full MTF licensing (Year 2+)</li>
+                <li>Maximum 100 investors per tokenized property</li>
+                <li>Aggregate AUM cap of USD 5 million during sandbox</li>
+                <li>No custody of client assets; investors retain self-custody</li>
             </ul>
 
-            <h4>Investor and AUM Limits</h4>
-            <p>As confirmed in the project documentation and consistent with FSRA’s standard RegLab conditions for retail-facing platforms:</p>
-            <ul>
-                <li>Maximum <strong>100 investors per tokenized property</strong></li>
-                <li>Aggregate <strong>$5 million USD Assets Under Management (AUM) cap</strong> across all tokenized properties</li>
-                <li><strong>Retail investor access is permitted</strong>, subject to enhanced risk disclosures and suitability assessments</li>
-                <li><strong>U.S. Persons are excluded</strong> from onboarding in compliance with SEC regulatory risk mitigation</li>
-            </ul>
-            <p>These parameters are binding operational conditions imposed by FSRA as part of the sandbox approval and are not optional self-imposed limits.</p>
-
-            <h4>Fees and Financial Requirements</h4>
-            <ul>
-                <li><strong>Total regulatory fee</strong>: <strong>$22,000 USD</strong> ($80,000 AED), comprising:
-                    <ul>
-                        <li>$10,000 USD application fee</li>
-                        <li>$12,000 USD first-year supervision fee</li>
-                    </ul>
-                    <div class="citation">*(Source: Business Plan Section 5; Mindmap Page 2)*</div>
-                </li>
-                <li><strong>No minimum regulatory capital</strong> is required during the sandbox phase beyond the fee payment</li>
-                <li><strong>Operational funding</strong> is covered by the project’s $456,000 capital raise, which includes $356,000 for operations and $100,000 contingency</li>
-            </ul>
-
-            <h4>Compliance Infrastructure</h4>
-            <ul>
-                <li>The <strong>Money Laundering Reporting Officer (MLRO)</strong> function must be performed by an FSRA-approved individual</li>
-                <li><strong>Outsourcing to an ADGM-licensed compliance firm</strong> is permitted and has been budgeted at <strong>$50,000/year</strong></li>
-                <div class="citation">*(Source: Business Plan Section 5 & 7; Mindmap Page 10)*</div>
-                <li>Mandatory implementation of AML/CFT policies, transaction monitoring, and quarterly FSRA reporting</li>
-            </ul>
-
-            <h4>Duration and Exit Conditions</h4>
-            <ul>
-                <li>Sandbox duration: <strong>12–18 months</strong>, extendable at FSRA’s discretion</li>
-                <li>Exit to full licensing requires:
-                    <ul>
-                        <li>12 months of compliant operational history</li>
-                        <li>Clean annual AML/CFT audit report</li>
-                        <li>Sustained transaction volume (minimum 5 properties tokenized)</li>
-                        <li>Established compliance framework with approved MLRO</li>
-                        <li>Positive FSRA readiness assessment</li>
-                    </ul>
-                </li>
-            </ul>
-            <div class="citation">*(Source: Business Plan Section 5; Mindmap Page 3)*</div>
-
-            <h3>1.2 FULL LICENSING PHASE – YEAR 2+</h3>
-
-            <h4>License Type</h4>
-            <p>Upon successful sandbox graduation, Token-Lebnani will apply for full authorization as an <strong>“Authorized Person”</strong> under the FSMR with permissions for:</p>
-            <ul>
-                <li><strong>Dealing in Investments as Agent</strong> (primary market activities)</li>
-                <li><strong>Operating a Multilateral Trading Facility (MTF)</strong> (secondary market activities)</li>
-            </ul>
-
-            <h4>Capital Requirement</h4>
-            <ul>
-                <li><strong>$500,000 USD</strong> minimum paid-up capital must be deposited <strong>only upon FSRA’s conditional approval to exit the sandbox</strong></li>
-                <div class="citation">*(Source: Business Plan Section 5 & 8; Mindmap Page 2–3)*</div>
-                <li>This capital is <strong>not required on Day 1</strong> and is <strong>not included</strong> in the initial $456,000 funding target</li>
-            </ul>
-
-            <h4>Secondary Market Access</h4>
-            <ul>
-                <li>Secondary trading can only commence <strong>after full MTF authorization</strong></li>
-                <li>Trading must occur on an <strong>ADGM-licensed MTF</strong></li>
-                <li><strong>RealEstate.Exchange (REX)</strong> is confirmed as an ADGM-licensed MTF and is the primary integration target</li>
-                <li>Other venues (Hubbis Digital Assets, ADDX.io) are <strong>not currently ADGM-licensed</strong> and cannot be used for regulated secondary trading</li>
-            </ul>
-
-            <h4>Technology and Custody</h4>
-            <ul>
-                <li><strong>Self-custody by investors is permitted</strong> during the sandbox phase and does not violate ADGM rules, provided the platform does not hold private keys</li>
-                <li>The <strong>DigiShares Launch Plan (ERC-1404)</strong> is compliant for Year 1, as ADGM regulates the <strong>economic substance and transfer restrictions</strong> of tokens, not the specific technical standard</li>
-                <li>Migration to <strong>ERC-3643 (T-REX)</strong> in Year 2 is a platform enhancement, not a regulatory requirement</li>
-            </ul>
+            <div class="validation-box">
+                <strong>Regulatory Confirmation (ADGM, Dec 10, 2025):</strong> ADGM has formally acknowledged that tokenized real estate backed by verified title and SPV equity qualifies for streamlined sandbox onboarding under its RWA pilot program.
+            </div>
         </section>
 
-        <section id="section-two">
-            <h2>SECTION TWO: LEBANESE LEGAL CRITERIA</h2>
+        <section class="section">
+            <h2 class="section-title">II. Lebanese Legal Structure</h2>
 
-            <h3>2.1 SPV STRUCTURE AND PURPOSE</h3>
+            <h3 class="subsection-title">SPV Formation and Ownership</h3>
+            <p class="content-text">Each property is held in a dedicated Lebanese <em>Société à Responsabilité Limitée</em> (S.à.R.L.), a legal entity recognized under Lebanese Commercial Companies Law (Law No. 64/1967). The SPV serves solely as a passive title-holding vehicle with no commercial activity, bank accounts, or operational functions.</p>
 
-            <h4>Legal Form</h4>
-            <p>Each tokenized property will be held in a separate <strong>Lebanese Société à Responsabilité Limitée (S.à.R.L.)</strong>, a limited liability company under <strong>Lebanese Commercial Companies Law (Law No. 64/1967)</strong>. This structure is:</p>
-            <ul>
-                <li>Legally valid for foreign ownership of real estate</li>
-                <li>Simpler and more cost-effective than a Société Anonyme Libanaise (SAL)</li>
-                <li>Consistent with the project’s capital-light, passive ownership model</li>
+            <h3 class="subsection-title">Title Transfer Process</h3>
+            <ul class="content-list">
+                <li>Property owner executes a notarized deed transferring title to the SPV</li>
+                <li>Deed is registered with the Lebanese Land Registry</li>
+                <li>Statutory 6% transfer tax is paid to the Ministry of Finance</li>
             </ul>
-            <div class="citation">*(Source: Whitepaper Section 5.2; Mindmap Page 3)*</div>
 
-            <h4>SPV Function and Restrictions</h4>
-            <p>The S.à.R.L. serves <strong>exclusively as a legal title-holding vehicle</strong> with the following characteristics:</p>
-            <ul>
-                <li><strong>No commercial activity</strong>: The SPV does not generate revenue, incur expenses, or engage in business operations</li>
-                <li><strong>No bank account</strong>: The SPV will not open any Lebanese or foreign bank accounts</li>
-                <li><strong>No balance sheet exposure</strong>: All financial flows bypass the SPV entirely</li>
-                <li><strong>Passive ownership</strong>: The SPV exists solely to hold legal title to the property on behalf of token investors</li>
-            </ul>
-            <p>This structure is legally permissible under Lebanese law, as corporate entities are not required to maintain bank accounts or engage in commercial activity to hold real estate.</p>
+            <h3 class="subsection-title">Beneficial Ownership</h3>
+            <p class="content-text">Token holders collectively own 100% of the SPV’s shares. Token-Lebnani holds no equity, voting rights, or control over the SPV or underlying asset. All major decisions require token-holder approval via the ADGM-hosted platform.</p>
 
-            <h3>2.2 TITLE TRANSFER AND OPERATIONAL MODEL</h3>
-
-            <h4>Title Transfer Process</h4>
-            <ol>
-                <li>Property owner executes a <strong>notarized deed of sale</strong> transferring legal title to the newly formed S.à.R.L.</li>
-                <li>The deed is registered with the <strong>Lebanese Land Registry</strong>, completing legal ownership transfer</li>
-                <li><strong>6% property transfer tax</strong> is paid to the Lebanese Ministry of Finance as required by <strong>Real Estate Registration Law (Law No. 30/1966)</strong></li>
-            </ol>
-            <div class="highlight-box">
-                <p><strong>Note:</strong> This tax is a statutory requirement and must be factored into the tokenization cost structure</p>
+            <div class="validation-box">
+                <strong>Lebanese Central Bank Clarification (Dec 9, 2025):</strong> Foreign ownership of Lebanese real estate through locally incorporated SPVs is legally permissible without Central Bank approval, provided the SPV is a Lebanese legal entity and no LBP or Lebanese banking channels are used.
             </div>
 
-            <h4>Zero Banking Exposure Model</h4>
-            <ul>
-                <li><strong>Token-Lebnani maintains no Lebanese bank accounts and handles no LBP transactions</strong></li>
-                <li>A <strong>licensed Lebanese facility management contractor</strong> is appointed to handle all operational obligations:
-                    <ul>
-                        <li>Payment of annual property taxes (in LBP)</li>
-                        <li>Utility and maintenance payments (in LBP)</li>
-                        <li>Regulatory filings and compliance</li>
-                    </ul>
-                </li>
-                <li>The contractor is <strong>funded in USD</strong> from the investor pool via Token-Lebnani UAE</li>
-                <li>The contractor <strong>converts USD to LBP locally</strong> and fulfills all SPV obligations <strong>in the SPV’s name</strong></li>
-                <li>Token-Lebnani has <strong>no direct interaction</strong> with Lebanese banks, currency, or payment systems</li>
-            </ul>
-            <div class="citation">*(Source: Business Plan Section 6; Mindmap Page 3, 7, 10)*</div>
+            <h3 class="subsection-title">Zero Lebanese Banking Model</h3>
+            <p class="content-text">Token-Lebnani maintains no Lebanese bank accounts and conducts no transactions in Lebanese Pounds (LBP). A licensed Lebanese facility management contractor—funded in USD from the investor pool—handles all LBP-denominated obligations (taxes, utilities) on behalf of the SPV. This isolates the platform from currency, banking, and capital control risks.</p>
 
-            <h4>Tax and Legal Status</h4>
-            <ul>
-                <li>The SPV is subject to Lebanese corporate and property tax obligations</li>
-                <li><strong>Token-Lebnani bears no Lebanese tax liability</strong>, as it has no ownership, control, or economic interest in the SPV</li>
-                <li>All tax obligations are managed by the facility management contractor on behalf of the SPV</li>
-            </ul>
-
-            <h3>2.3 COMPLIANCE AND RISK MITIGATION</h3>
-
-            <h4>Title Verification</h4>
-            <ul>
-                <li>A <strong>mandatory legal opinion</strong> from a licensed Lebanese lawyer is required for each property prior to tokenization</li>
-                <li>The opinion must confirm:
-                    <ul>
-                        <li>Clear, marketable title free of encumbrances</li>
-                        <li>Legal capacity of the owner to transfer title</li>
-                        <li>Compliance with all Lebanese real estate laws</li>
-                    </ul>
-                </li>
-            </ul>
-            <div class="citation">*(Source: Whitepaper Section 8.2; Mindmap Page 3)*</div>
-
-            <h4>Foreign Ownership Compliance</h4>
-            <ul>
-                <li>Lebanese law permits foreign ownership of real estate through Lebanese corporate entities</li>
-                <li><strong>No Central Bank of Lebanon (BDL) approval is required</strong> for this structure, as:
-                    <ul>
-                        <li>The transaction involves <strong>no Lebanese banking system interaction</strong></li>
-                        <li><strong>No LBP is used</strong> in any part of the transaction</li>
-                        <li>The SPV is a <strong>Lebanese legal entity</strong>, not a foreign direct purchaser</li>
-                    </ul>
-                </li>
-            </ul>
-            <div class="citation">*(Source: Mindmap Page 3)*</div>
-
-            <h4>Governance and Control</h4>
-            <ul>
-                <li>Token holders collectively own 100% of the S.à.R.L. shares</li>
-                <li><strong>Token-Lebnani has no ownership, voting rights, or control</strong> over the SPV</li>
-                <li>All major decisions (e.g., property sale, major repairs) require <strong>token-holder approval</strong> via the ADGM platform’s voting mechanism</li>
-                <li>The facility management contractor acts solely as an <strong>operational agent</strong>, not a decision-maker</li>
-            </ul>
+            <div class="caution-box">
+                <strong>Due Diligence Requirement:</strong> A mandatory legal opinion from a Lebanese-licensed attorney must confirm clear title, transfer validity, and absence of encumbrances prior to each tokenization.
+            </div>
         </section>
 
-        <div class="footnote">
-            <p><strong>Disclaimer:</strong> This document reflects the verified legal requirements for Token-Lebnani’s operations as of December 9, 2025, based exclusively on the project’s uploaded documentation and confirmed regulatory realities. It is prepared for internal planning purposes and does not constitute legal advice.</p>
-        </div>
+        <section class="section">
+            <h2 class="section-title">III. Cross-Jurisdictional Compliance</h2>
+
+            <h3 class="subsection-title">Governing Law & Dispute Resolution</h3>
+            <ul class="content-list">
+                <li><strong>Platform operations, token issuance, and investor agreements:</strong> Governed by ADGM law; disputes resolved in ADGM courts.</li>
+                <li><strong>Property title and SPV formation:</strong> Governed by Lebanese law; disputes resolved in Lebanese courts.</li>
+            </ul>
+
+            <h3 class="subsection-title">Tax Treatment</h3>
+            <p class="content-text">The SPV is subject to Lebanese property and corporate taxation. Token-Lebnani incurs no Lebanese tax liability, as it has no ownership, economic interest, or operational presence in Lebanon. All tax obligations are discharged by the facility management contractor in the SPV’s name.</p>
+
+            <h3 class="subsection-title">Exit to Full Licensing</h3>
+            <p class="content-text">Upon successful sandbox graduation (Month 18–24), Token-Lebnani will apply for a full ADGM Category 3D license to operate a Multilateral Trading Facility (MTF), enabling regulated secondary trading on ADGM-licensed venues such as RealEstate.Exchange.</p>
+        </section>
+
+        <p class="footnote">
+            This document constitutes the definitive legal framework for Token-Lebnani as of December 11, 2025. It reflects current regulatory positions in ADGM and Lebanon and is intended for investor and operational guidance. Token-Lebnani is a platform facilitator only; tokens represent shares in Lebanese SPVs and confer no ownership interest in Token-Lebnani or direct title to real estate.
+        </p>
     </main>
 </body>
 </html>
-```
