@@ -1,0 +1,508 @@
+<!DOCTYPE HTML>
+<!--
+	Aerial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Modified for Token Lebnani - Business Plan → Value Proposition
+-->
+<html lang="en">
+<head>
+    <title>Token Lebnani - Value Proposition</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ===== BASE THEME (Matching Homepage) ===== */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+            background: #0a192f !important;
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+        /* ===== ANIMATED BACKGROUND ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a192f url('../images/background.png') bottom left repeat-x !important;
+            background-size: 1500px auto !important;
+            animation: bgScroll 80s linear infinite !important;
+            z-index: -2;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7) !important;
+            z-index: -1;
+        }
+        @keyframes bgScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: -3000px 0; }
+        }
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        /* ===== HEADER WITH NAVIGATION ===== */
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-img {
+            width: 60px;
+            height: auto;
+            filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.4));
+        }
+        .brand-text {
+            font-family: 'Cinzel', serif;
+            color: #D4AF37;
+        }
+        .brand-name {
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0;
+            line-height: 1;
+        }
+        .brand-tagline {
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin: 5px 0 0 0;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+            max-width: 250px;
+            line-height: 1.2;
+        }
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav-link {
+            color: #D4AF37;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #fff;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link i {
+            font-size: 0.9rem;
+        }
+        /* ===== VALUE PROPOSITION CONTENT ===== */
+        .document-container {
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.03) 0%,
+                rgba(212, 175, 55, 0.03) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 50px;
+            margin-bottom: 50px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        .document-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+            position: relative;
+        }
+        .document-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                #D4AF37 50%,
+                transparent 100%);
+        }
+        .document-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            color: #D4AF37;
+            margin: 0 0 15px 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .document-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0 0 20px 0;
+            font-style: italic;
+            font-weight: 300;
+        }
+        .version-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            color: #D4AF37;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .document-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            border-left: 4px solid #D4AF37;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .document-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: #D4AF37;
+            margin: 0 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            font-weight: 600;
+        }
+        .section-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: rgba(212, 175, 55, 0.9);
+            margin: 25px 0 15px 0;
+            font-weight: 500;
+        }
+        .section-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .section-list {
+            color: rgba(255, 255, 255, 0.9);
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        .section-list li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            position: relative;
+        }
+        .section-list li::before {
+            content: '•';
+            color: #D4AF37;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            font-size: 1.2em;
+        }
+        .section-list strong {
+            color: #D4AF37;
+            font-weight: 600;
+        }
+        .section-list em {
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+        .info-box {
+            background: rgba(212, 175, 55, 0.08);
+            border-left: 4px solid #D4AF37;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .note-box {
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 4px solid rgba(212, 175, 55, 0.6);
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 0 6px 6px 0;
+            font-style: italic;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .data-table th {
+            background: rgba(212, 175, 55, 0.2);
+            color: #D4AF37;
+            font-weight: 600;
+            padding: 18px 20px;
+            text-align: left;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+        }
+        .data-table td {
+            color: rgba(255, 255, 255, 0.9);
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .data-table tr:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        .document-footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .site-footer {
+            text-align: center;
+            padding: 25px 0;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .site-footer a {
+            color: #D4AF37;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .site-footer a:hover {
+            color: #fff;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .document-section {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        .document-section:nth-child(1) { animation-delay: 0.1s; }
+        .document-section:nth-child(2) { animation-delay: 0.2s; }
+        .document-section:nth-child(3) { animation-delay: 0.3s; }
+        .document-section:nth-child(4) { animation-delay: 0.4s; }
+        .document-section:nth-child(5) { animation-delay: 0.5s; }
+        .document-section:nth-child(6) { animation-delay: 0.6s; }
+        @media (max-width: 992px) {
+            .document-container { padding: 30px; }
+            .document-title { font-size: 2.3rem; }
+            .section-title { font-size: 1.6rem; }
+        }
+        @media (max-width: 768px) {
+            .site-header { flex-direction: column; gap: 20px; text-align: center; }
+            .brand-tagline { max-width: 100%; }
+            .nav-links { justify-content: center; gap: 15px; }
+            .main-container { padding: 15px; }
+            .document-container { padding: 20px; }
+            .document-title { font-size: 2rem; }
+            .document-subtitle { font-size: 1.1rem; }
+            .document-section { padding: 20px; }
+            .data-table th, .data-table td { padding: 12px 15px; }
+        }
+        @media (max-width: 480px) {
+            .nav-links { flex-direction: column; gap: 10px; }
+            .document-title { font-size: 1.8rem; }
+            .brand-name { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Header with Navigation -->
+        <header class="site-header">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="Token Lebnani Logo" class="logo-img">
+                <div class="brand-text">
+                    <h1 class="brand-name">TOKEN LEBNANI</h1>
+                    <p class="brand-tagline">A Regulated Path to Fractional Real-Estate</p>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="../" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="../mindmap/" class="nav-link"><i class="fas fa-project-diagram"></i> Mindmap</a>
+                <a href="../whitepaper/" class="nav-link"><i class="fas fa-book"></i> Whitepaper</a>
+                <a href="../legal/" class="nav-link"><i class="fas fa-gavel"></i> Legal</a>
+                <a href="../pathway/" class="nav-link"><i class="fas fa-road"></i> Pathway</a>
+            </nav>
+        </header>
+
+        <!-- Value Proposition Document -->
+        <main class="document-container">
+            <header class="document-header">
+                <h1 class="document-title">Token-Lebnani Value Proposition</h1>
+                <p class="document-subtitle">Regulated · Retail-First · Lebanon-Focused</p>
+                <span class="version-badge">Published: December 11, 2025</span>
+            </header>
+
+            <section class="document-section">
+                <h2 class="section-title">1. The Problem: A Market Trapped in Crisis</h2>
+                <p class="section-text">Lebanon’s real estate sector is immobilized:</p>
+                <ul class="section-list">
+                    <li><strong>Illiquidity</strong>: High-value properties sit unsold for years—no single buyers, no mortgage market, and collapsing demand.</li>
+                    <li><strong>Barriers for Savers</strong>: Locals and diaspora want to preserve wealth in real estate but face $100K+ entry points, opaque titles, and zero fractional options.</li>
+                    <li><strong>Capital Controls</strong>: Transferring funds to/from Lebanon is heavily restricted. The Lebanese Pound (LBP) is volatile and unreliable for investment.</li>
+                    <li><strong>Bureaucratic Delays</strong>: Property registration can take months, cost 6% in transfer taxes, and lacks digital infrastructure.</li>
+                </ul>
+                <p class="section-text">Yet opportunity exists: real estate prices are at historic lows, and a peace-driven recovery could unlock significant upside. The market needs <strong>liquidity without systemic risk</strong>, and <strong>access without LBP exposure</strong>.</p>
+            </section>
+
+            <section class="document-section">
+                <h2 class="section-title">2. Our Solution: Fractional, Regulated, USD-Denominated</h2>
+                <p class="section-text"><strong>Token-Lebnani</strong> is the first ADGM-regulated platform enabling fractional ownership of Lebanese real estate—<strong>for global retail investors</strong>, <strong>in USD or USDC</strong>, and <strong>without touching Lebanese banks</strong>.</p>
+                <p class="section-text">We do <strong>not own</strong>, <strong>manage</strong>, or <strong>finance</strong> any property. Instead, we facilitate:</p>
+                <ol class="section-list">
+                    <li><strong>SPV Creation</strong>: A new Lebanese S.à.R.L. (SPV) is formed per property—legally permitted under Lebanese law for foreign ownership.</li>
+                    <li><strong>Title Transfer</strong>: Owner deeds the property to the SPV via notarized sale and land registry update.</li>
+                    <li><strong>Token Issuance</strong>: Shares in the SPV are tokenized on a compliant blockchain (ERC-1404 → ERC-3643).</li>
+                    <li><strong>Global Access</strong>: Investors from the diaspora (Canada, EU, GCC, Australia) buy tokens from <strong>under $1,000</strong>.</li>
+                    <li><strong>Zero LBP Model</strong>: All USD funds flow through non-Lebanese accounts. A local contractor handles LBP obligations (taxes, utilities) on behalf of the SPV—<strong>Token-Lebnani never handles LBP</strong>.</li>
+                </ol>
+            </section>
+
+            <section class="document-section">
+                <h2 class="section-title">3. Why Now? Regulatory Tailwinds</h2>
+                <ul class="section-list">
+                    <li><strong>ADGM’s RWA Push (Dec 2025)</strong>: ADGM has accelerated its sandbox pathway for real estate tokenization, with explicit support for title-backed SPV structures—exactly our model.</li>
+                    <li><strong>Lebanon’s Clarification (Dec 9, 2025)</strong>: The Central Bank confirmed that foreign ownership via Lebanese SPVs is <strong>legal and unrestricted</strong> (outside security zones)—removing prior ambiguity.</li>
+                </ul>
+                <p class="section-text">Together, these developments validate Token-Lebnani’s cross-border architecture as <strong>both compliant and timely</strong>.</p>
+            </section>
+
+            <section class="document-section">
+                <h2 class="section-title">4. Who It’s For</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Segment</th>
+                            <th>Need</th>
+                            <th>How We Deliver</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Lebanese Diaspora</td>
+                            <td>Emotional + financial ties; seek USD exposure</td>
+                            <td>Trusted, regulated access—no LBP, no Lebanese banking</td>
+                        </tr>
+                        <tr>
+                            <td>Local Savers</td>
+                            <td>Preserve value amid currency collapse</td>
+                            <td>Sub-$1K entry into real estate—previously impossible</td>
+                        </tr>
+                        <tr>
+                            <td>Opportunistic Buyers</td>
+                            <td>Bet on post-peace appreciation</td>
+                            <td>Transparent title, clear ownership, future liquidity</td>
+                        </tr>
+                        <tr>
+                            <td>Property Owners</td>
+                            <td>Raise liquidity without full sale</td>
+                            <td>Sell in pieces to a global buyer pool—no single buyer needed</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="document-section">
+                <h2 class="section-title">5. What We Don’t Do</h2>
+                <ul class="section-list">
+                    <li>❌ Hold or manage real estate</li>
+                    <li>❌ Operate Lebanese bank accounts or handle LBP</li>
+                    <li>❌ Guarantee returns, buybacks, or price appreciation</li>
+                    <li>❌ Target only institutions—<strong>retail is our priority</strong></li>
+                    <li>❌ Enable secondary trading until Year 2 (post-ADGM MTF license)</li>
+                </ul>
+            </section>
+
+            <section class="document-section">
+                <h2 class="section-title">6. One-Sentence Proposition</h2>
+                <div class="info-box">
+                    <strong>Token-Lebnani unlocks Lebanese real estate for global retail investors—fractionally, in USD, and under ADGM regulation—while giving property owners a compliant exit from illiquidity.</strong>
+                </div>
+                <p class="section-text" style="margin-top: 20px;"><em>Token-Lebnani is a platform facilitator. Tokens represent shares in Lebanese SPVs, not ownership of Token-Lebnani or direct property title. All investments carry risk; past performance is not indicative of future results.</em></p>
+            </section>
+
+            <footer class="document-footer">
+                <p>Prepared by: Nidal Gharzeddine</p>
+                <p>Date: December 11, 2025</p>
+            </footer>
+        </main>
+
+        <footer class="site-footer">
+            <p>Design based on <a href="https://html5up.net/aerial" target="_blank">Aerial</a> by HTML5 UP |
+            Licensed under <a href="https://html5up.net/license" target="_blank">CCA 3.0</a> |
+            Modified for Token Lebnani</p>
+        </footer>
+    </div>
+
+    <script>
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('mouseenter', () => link.style.transform = 'translateY(-2px)');
+            link.addEventListener('mouseleave', () => link.style.transform = 'translateY(0)');
+        });
+        const sections = document.querySelectorAll('.document-section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
