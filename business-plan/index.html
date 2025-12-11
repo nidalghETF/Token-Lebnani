@@ -1,0 +1,694 @@
+<!DOCTYPE HTML>
+<!--
+	Aerial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Modified for Token Lebnani - Business Plan with Toggle View
+-->
+<html lang="en">
+<head>
+    <title>Token Lebnani - Business Plan</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ===== BASE THEME (Matching Homepage) ===== */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+            background: #0a192f !important;
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a192f url('../images/background.png') bottom left repeat-x !important;
+            background-size: 1500px auto !important;
+            animation: bgScroll 80s linear infinite !important;
+            z-index: -2;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7) !important;
+            z-index: -1;
+        }
+        @keyframes bgScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: -3000px 0; }
+        }
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        /* ===== HEADER WITH NAVIGATION ===== */
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-img {
+            width: 60px;
+            height: auto;
+            filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.4));
+        }
+        .brand-text {
+            font-family: 'Cinzel', serif;
+            color: #D4AF37;
+        }
+        .brand-name {
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0;
+            line-height: 1;
+        }
+        .brand-tagline {
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin: 5px 0 0 0;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+            max-width: 250px;
+            line-height: 1.2;
+        }
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav-link {
+            color: #D4AF37;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #fff;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link i {
+            font-size: 0.9rem;
+        }
+
+        /* ===== TOGGLE HEADERS ===== */
+        .toggle-header {
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .toggle-btn {
+            background: rgba(212, 175, 55, 0.15);
+            color: #D4AF37;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 10px 20px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 220px;
+        }
+        .toggle-btn:hover, .toggle-btn.active {
+            background: rgba(212, 175, 55, 0.3);
+            color: white;
+        }
+
+        /* ===== DOCUMENT CONTAINER ===== */
+        .document-container {
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.03) 0%,
+                rgba(212, 175, 55, 0.03) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 50px;
+            margin-bottom: 50px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== STYLES FOR BOTH DOCUMENTS (reused from original) ===== */
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: #D4AF37;
+            margin: 0 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            font-weight: 600;
+        }
+        .section-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: rgba(212, 175, 55, 0.9);
+            margin: 25px 0 15px 0;
+            font-weight: 500;
+        }
+        .section-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .section-list {
+            color: rgba(255, 255, 255, 0.9);
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        .section-list li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            position: relative;
+        }
+        .section-list li::before {
+            content: '•';
+            color: #D4AF37;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            font-size: 1.2em;
+        }
+        .section-list strong {
+            color: #D4AF37;
+            font-weight: 600;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .data-table th {
+            background: rgba(212, 175, 55, 0.2);
+            color: #D4AF37;
+            font-weight: 600;
+            padding: 18px 20px;
+            text-align: left;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+        }
+        .data-table td {
+            color: rgba(255, 255, 255, 0.9);
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .data-table tr:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+        .info-box {
+            background: rgba(212, 175, 55, 0.08);
+            border-left: 4px solid #D4AF37;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .note-box {
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 4px solid rgba(212, 175, 55, 0.6);
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 0 6px 6px 0;
+            font-style: italic;
+        }
+        .document-footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .site-footer {
+            text-align: center;
+            padding: 25px 0;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .site-footer a {
+            color: #D4AF37;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .site-footer a:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .toggle-header { gap: 15px; }
+            .toggle-btn { font-size: 1rem; padding: 8px 16px; min-width: 160px; }
+            .document-container { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Header with Navigation -->
+        <header class="site-header">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="Token Lebnani Logo" class="logo-img">
+                <div class="brand-text">
+                    <h1 class="brand-name">TOKEN LEBNANI</h1>
+                    <p class="brand-tagline">A Regulated Path to Fractional Real-Estate</p>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="../" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="../mindmap/" class="nav-link"><i class="fas fa-project-diagram"></i> Mindmap</a>
+                <a href="../whitepaper/" class="nav-link"><i class="fas fa-book"></i> Whitepaper</a>
+                <a href="../legal/" class="nav-link"><i class="fas fa-gavel"></i> Legal</a>
+                <a href="../pathway/" class="nav-link"><i class="fas fa-road"></i> Pathway</a>
+            </nav>
+        </header>
+
+        <!-- Toggle Headers -->
+        <div class="toggle-header">
+            <button class="toggle-btn active" data-target="value-prop">Value Proposition (Dec 11, 2025)</button>
+            <button class="toggle-btn" data-target="business-plan">Business Plan v1.2 (Full)</button>
+        </div>
+
+        <!-- Document Container -->
+        <main class="document-container">
+            <!-- VALUE PROPOSITION SECTION -->
+            <div id="value-prop" class="content-section active">
+                <header class="document-header" style="text-align: center; margin-bottom: 40px;">
+                    <h1 class="section-title" style="font-size: 2.4rem;">Token-Lebnani Value Proposition</h1>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem; font-style: italic;">Regulated · Retail-First · Lebanon-Focused</p>
+                    <p style="margin-top: 10px; color: #D4AF37; font-size: 0.9rem;">Published: December 11, 2025</p>
+                </header>
+
+                <section class="document-section">
+                    <h2 class="section-title">1. The Problem: A Market Trapped in Crisis</h2>
+                    <p class="section-text">Lebanon’s real estate sector is immobilized:</p>
+                    <ul class="section-list">
+                        <li><strong>Illiquidity</strong>: High-value properties sit unsold for years—no single buyers, no mortgage market, and collapsing demand.</li>
+                        <li><strong>Barriers for Savers</strong>: Locals and diaspora want to preserve wealth in real estate but face $100K+ entry points, opaque titles, and zero fractional options.</li>
+                        <li><strong>Capital Controls</strong>: Transferring funds to/from Lebanon is heavily restricted. The Lebanese Pound (LBP) is volatile and unreliable for investment.</li>
+                        <li><strong>Bureaucratic Delays</strong>: Property registration can take months, cost 6% in transfer taxes, and lacks digital infrastructure.</li>
+                    </ul>
+                    <p class="section-text">Yet opportunity exists: real estate prices are at historic lows, and a peace-driven recovery could unlock significant upside. The market needs <strong>liquidity without systemic risk</strong>, and <strong>access without LBP exposure</strong>.</p>
+                </section>
+
+                <section class="document-section">
+                    <h2 class="section-title">2. Our Solution: Fractional, Regulated, USD-Denominated</h2>
+                    <p class="section-text"><strong>Token-Lebnani</strong> is the first ADGM-regulated platform enabling fractional ownership of Lebanese real estate—<strong>for global retail investors</strong>, <strong>in USD or USDC</strong>, and <strong>without touching Lebanese banks</strong>.</p>
+                    <p class="section-text">We do <strong>not own</strong>, <strong>manage</strong>, or <strong>finance</strong> any property. Instead, we facilitate:</p>
+                    <ol class="section-list">
+                        <li><strong>SPV Creation</strong>: A new Lebanese S.à.R.L. (SPV) is formed per property—legally permitted under Lebanese law for foreign ownership.</li>
+                        <li><strong>Title Transfer</strong>: Owner deeds the property to the SPV via notarized sale and land registry update.</li>
+                        <li><strong>Token Issuance</strong>: Shares in the SPV are tokenized on a compliant blockchain (ERC-1404 → ERC-3643).</li>
+                        <li><strong>Global Access</strong>: Investors from the diaspora (Canada, EU, GCC, Australia) buy tokens from <strong>under $1,000</strong>.</li>
+                        <li><strong>Zero LBP Model</strong>: All USD funds flow through non-Lebanese accounts. A local contractor handles LBP obligations (taxes, utilities) on behalf of the SPV—<strong>Token-Lebnani never handles LBP</strong>.</li>
+                    </ol>
+                </section>
+
+                <section class="document-section">
+                    <h2 class="section-title">3. Why Now? Regulatory Tailwinds</h2>
+                    <ul class="section-list">
+                        <li><strong>ADGM’s RWA Push (Dec 2025)</strong>: ADGM has accelerated its sandbox pathway for real estate tokenization, with explicit support for title-backed SPV structures—exactly our model.</li>
+                        <li><strong>Lebanon’s Clarification (Dec 9, 2025)</strong>: The Central Bank confirmed that foreign ownership via Lebanese SPVs is <strong>legal and unrestricted</strong> (outside security zones)—removing prior ambiguity.</li>
+                    </ul>
+                    <p class="section-text">Together, these developments validate Token-Lebnani’s cross-border architecture as <strong>both compliant and timely</strong>.</p>
+                </section>
+
+                <section class="document-section">
+                    <h2 class="section-title">4. Who It’s For</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Segment</th>
+                                <th>Need</th>
+                                <th>How We Deliver</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Lebanese Diaspora</td><td>Emotional + financial ties; seek USD exposure</td><td>Trusted, regulated access—no LBP, no Lebanese banking</td></tr>
+                            <tr><td>Local Savers</td><td>Preserve value amid currency collapse</td><td>Sub-$1K entry into real estate—previously impossible</td></tr>
+                            <tr><td>Opportunistic Buyers</td><td>Bet on post-peace appreciation</td><td>Transparent title, clear ownership, future liquidity</td></tr>
+                            <tr><td>Property Owners</td><td>Raise liquidity without full sale</td><td>Sell in pieces to a global buyer pool—no single buyer needed</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="document-section">
+                    <h2 class="section-title">5. What We Don’t Do</h2>
+                    <ul class="section-list">
+                        <li>❌ Hold or manage real estate</li>
+                        <li>❌ Operate Lebanese bank accounts or handle LBP</li>
+                        <li>❌ Guarantee returns, buybacks, or price appreciation</li>
+                        <li>❌ Target only institutions—<strong>retail is our priority</strong></li>
+                        <li>❌ Enable secondary trading until Year 2 (post-ADGM MTF license)</li>
+                    </ul>
+                </section>
+
+                <section class="document-section">
+                    <h2 class="section-title">6. One-Sentence Proposition</h2>
+                    <div class="info-box">
+                        <strong>Token-Lebnani unlocks Lebanese real estate for global retail investors—fractionally, in USD, and under ADGM regulation—while giving property owners a compliant exit from illiquidity.</strong>
+                    </div>
+                    <p class="section-text" style="margin-top: 20px;"><em>Token-Lebnani is a platform facilitator. Tokens represent shares in Lebanese SPVs, not ownership of Token-Lebnani or direct property title. All investments carry risk; past performance is not indicative of future results.</em></p>
+                </section>
+
+                <footer class="document-footer">
+                    <p>Prepared by: Nidal Gharzeddine</p>
+                    <p>Date: December 11, 2025</p>
+                </footer>
+            </div>
+
+            <!-- BUSINESS PLAN SECTION (v1.2) -->
+            <div id="business-plan" class="content-section">
+                <!-- Paste full original Business Plan content here as sections -->
+                <header class="document-header" style="text-align: center; margin-bottom: 40px;">
+                    <h1 class="section-title" style="font-size: 2.4rem;">Business Plan</h1>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem; font-style: italic;">Fractional Real Estate for the Lebanese Diaspora — Compliant, Capital-Light, Retail-First</p>
+                    <p style="margin-top: 10px; color: #D4AF37; font-size: 0.9rem;">Version 1.2 — December 2025</p>
+                </header>
+
+                <section class="document-section">
+                    <h2 class="section-title">1. Executive Summary</h2>
+                    <p class="section-text">Token-Lebnani is a regulated digital platform enabling Lebanese property owners to fractionalize and tokenize their real estate assets for sale to global retail investors. We do not own, manage, or acquire any property. Instead, we act as a compliant bridge: facilitating SPV formation, token issuance, investor onboarding, and secondary trading — all while operating outside Lebanese banking and without balance sheet risk.</p>
+                    <ul class="section-list">
+                        <li><strong>Target:</strong> Lebanese diaspora and international retail investors seeking USD-denominated exposure to Beirut real estate. <em>Target diaspora markets: Canada, Australia, EU (non-US Persons), GCC, West Africa. Geographic restrictions apply per ADGM and SEC regulations.</em></li>
+                        <li><strong>Jurisdiction:</strong> ADGM-licensed VASP (via sandbox); Lebanese SPVs per asset.</li>
+                        <li><strong>Tech Stack:</strong> DigiShares Launch Plan (Year 1) → Standard Plan (Year 2+).</li>
+                        <li><strong>Funding:</strong> $456,000 total ($356,000 operational + $100,000 contingency).</li>
+                        <li><strong>Go-to-Market:</strong> Digital + GCC community events.</li>
+                        <li><strong>Liquidity:</strong> Connected to ADGM-licensed MTF (RealEstate.Exchange, Hubbis Digital Assets, or ADDX.io) by Year 2.</li>
+                    </ul>
+                </section>
+
+                <section class="document-section">
+                    <h2 class="section-title">2. Problem & Solution</h2>
+                    <h3 class="section-subtitle">Problem</h3>
+                    <ul class="section-list">
+                        <li>Lebanese property owners lack liquidity — forced to wait for single buyers in a collapsed market.</li>
+                        <li>Diaspora investors want exposure to Lebanese real estate but face high entry barriers, title opacity, and no fractional options.</li>
+                        <li>Existing solutions are either unregulated (informal fractional sales) or institutional-only (private placements).</li>
+                    </ul>
+                    <h3 class="section-subtitle">Solution</h3>
+                    <p class="section-text">Token-Lebnani offers:</p>
+                    <ul class="section-list">
+                        <li>✅ For Owners: Sell in pieces, no single-buyer dependency.</li>
+                        <li>✅ For Investors: Low entry (&lt;$1,000), transparent ownership, USD/stablecoin pricing.</li>
+                        <li>✅ For Regulators: Full ADGM compliance, no LBP exposure, retail-safe disclosures.</li>
+                    </ul>
+                </section>
+
+                <section class="document-section">
+                    <h2 class="section-title">3. Business Model <span style="color:#4CAF50;font-size:0.75em;font-weight:bold;margin-left:5px;">Updated</span></h2>
+                    <h3 class="section-subtitle">Role</h3>
+                    <ul class="section-list">
+                        <li>Platform facilitator only — we never take asset ownership.</li>
+                        <li>Property owner → transfers title to new Lebanese SPV → SPV shares tokenized → tokens sold to investors.</li>
+                    </ul>
+                    <h3 class="section-subtitle">Revenue Streams</h3>
+                    <ol class="section-list">
+                        <li><strong>Issuance Fee:</strong> 3% of tokenized value (paid by owner/SPV).</li>
+                        <li><strong>Primary Market Fees:</strong> 2.5% buyer fee + 2.5% seller fee (applied during initial token sale). <span style="color:#4CAF50;font-size:0.75em;font-weight:bold;">Added</span></li>
+                        <li><strong>Secondary Trading Fee:</strong> 1.5% buyer + 1.5% seller per trade (once live on ADGM-licensed MTF).</li>
+                    </ol>
+                    <div class="note-box">
+                        <strong>Secondary Market Activation:</strong> Trading will commence only upon sandbox exit (Year 2) via partnership with an ADGM-licensed MTF. Options under evaluation: Real Estate Exchange (REX), Hubbis Digital Assets, or ADDX.io.
+                    </div>
+                    <h3 class="section-subtitle">Cost Structure</h3>
+                    <ul class="section-list">
+                        <li>CapEx: $254,000 (Year 1) — ADGM setup, DigiShares, legal, marketing.</li>
+                        <li>OpEx: $117,000 (Year 2) — compliance officer, platform, custody, support.</li>
+                        <li>Contingency: $100,000 for delays or pipeline gaps.</li>
+                        <li>All financials: <a href="https://docs.google.com/spreadsheets/d/1LcZFJZjhw1sCfGB4PHgvy8BCmLVzo623f4Aid4GcsFQ/edit?usp=sharing" class="content-link" target="_blank" style="color:#D4AF37;">Live financial model</a></li>
+                    </ul>
+                </section>
+
+                <section class="document-section">
+                    <h2 class="section-title">4. Technology Stack: Phased Approach</h2>
+                    <h3 class="section-subtitle">Year 1 – DigiShares Launch Plan (€3,000 one-time + €300/month)</h3>
+                    <ul class="section-list">
+                        <li>ERC-1404 token standard (transfer-restricted, compliant)</li>
+                        <li>Self-custody + optional Coinbase wallet integration</li>
+                        <li>SumSub KYC/AML ($299/month + per-check fees)</li>
+                        <li>Features: Token management, internal marketplace, e-signing, cap table</li>
+                        <li><strong>Limitations:</strong> No institutional custody, no white-label UI</li>
+                    </ul>
+                    <h3 class="section-subtitle">Year 2 – DigiShares Standard Plan (€25,000 one-time + €850/month)</h3>
+                    <ul class="section-list">
+                        <li>Upgrade to ERC-3643 (T-REX protocol with built-in compliance)</li>
+                        <li>API integration with MTF partners for secondary trading</li>
+                        <li>White-label UI and admin dashboard</li>
+                        <li>Stripe fiat processing + DocuSign</li>
+                    </ul>
+                    <div class="note-box">
+                        <strong>Rationale:</strong> DigiShares provides 80% of required functionality at 5% of custom development cost ($4K/year vs $500K+), enabling capital-efficient sandbox validation. <span style="color:#4CAF50;font-size:0.75em;font-weight:bold;">Added</span>
+                    </div>
+                </section>
+
+                <section class="document-section">
+                    <h2 class="section-title">5. Regulatory Strategy</h2>
+                    <h3 class="section-subtitle">ADGM Regulatory Sandbox (Year 1)</h3>
+                    <ul class="section-list">
+                        <li><strong>License Type:</strong> Regulatory Sandbox (temporary, non-licensed)</li>
+                        <li><strong>Activities Permitted:</strong> Primary token issuance, investor onboarding, KYC/AML</li>
+                        <li><strong>Activities Restricted:</strong> No secondary trading, max 100 investors per property, $5M AUM cap</li>
+                        <li><strong>Capital Required:</strong> $22,000 ($80,000 AED) - covers application ($10,000) + supervision ($12,000)</li>
+                        <li><strong>Retail Access:</strong> Permitted with enhanced risk disclosures and suitability assessments</li>
+                        <li><strong>Duration:</strong> 12-18 months, extendable based on FSRA assessment</li>
+                    </ul>
+                    <h3 class="section-subtitle">Sandbox Exit → Category 3D Full License</h3>
+                    <ul class="section-list">
+                        <li><strong>Minimum Capital:</strong> $500,000 (deposited only upon exit confirmation)</li>
+                        <li><strong>Exit Criteria:</strong>
+                            <ul>
+                                <li>12 months compliant operational history</li>
+                                <li>Clean annual AML/CFT audit</li>
+                                <li>Sustained transaction volume (minimum 5 properties tokenized)</li>
+                                <li>Established compliance framework with MLRO</li>
+                                <li>FSRA readiness assessment approval</li>
+                            </ul>
+                        </li>
+                        <li><strong>Timeline:</strong> Exit application submitted Month 16-18, license granted Month 20-24</li>
+                    </ul>
+                    <h3 class="section-subtitle">Compliance Officer</h3>
+                    <ul class="section-list">
+                        <li>Function outsourced to ADGM-licensed compliance firm (e.g., Waystone, Maples Group)</li>
+                        <li><strong>Cost:</strong> $50,000/year (all-in: MLRO, reporting, monitoring)</li>
+                        <li><strong>Advantage:</strong> Cheaper than in-house, faster FSRA acceptance</li>
+                    </ul>
+                </section>
+
+                <section class="document-section">
+                    <h2 class="section-title">6. Go-to-Market</h2>
+                    <h3 class="section-subtitle">Digital Channels</h3>
+                    <ul class="section-list">
+                        <li>Targeted Meta/LinkedIn ads → Lebanese diaspora (Canada, Australia, EU, GCC, West Africa)</li>
+                        <li>SEO: "Fractional Beirut property", "Tokenized Lebanon real estate"</li>
+                        <li>Lead funnel:
+                            <ol>
+                                <li>Free guide →</li>
+                                <li>Email sequence →</li>
+                                <li>Whitepaper →</li>
+                                <li>1:1 investor call →</li>
+                                <li>Onboarding via DigiShares KYC + e-sign</li>
+                            </ol>
+                        </li>
+                    </ul>
+                    <h3 class="section-subtitle">Offline Activation</h3>
+                    <ul class="section-list">
+                        <li>Sponsor Lebanese community events in GCC (UAE, KSA, Qatar)</li>
+                        <li>Cost: $500–$1,500/event</li>
+                        <li>Setup: Booth with laptop + prompter at entrance → live demo + lead capture</li>
+                        <li>High concentration of retail investors with emotional/family ties to Lebanon</li>
+                    </ul>
+                    <h3 class="section-subtitle">Lebanese Facility Management Contractor</h3>
+                    <ul class="section-list">
+                        <li><strong>Purpose:</strong> Handle all LBP-denominated expenses without Token-Lebnani banking exposure</li>
+                        <li><strong>Process:</strong> Token-Lebnani UAE sends USD to contractor → contractor converts to LBP locally → pays taxes, utilities, maintenance</li>
+                        <li><strong>Cost:</strong> 2-3% of property opex (borne by SPV, not platform)</li>
+                        <li><strong>Tax Liability:</strong> Zero for Token-Lebnani. Property taxes handled at SPV level by contractor.</li>
+                    </ul>
+                </section>
+
+                <section class="document-section">
+                    <h2 class="section-title">7. Team</h2>
+                    <ul class="section-list">
+                        <li><strong>CEO / Compliance Officer:</strong>
+                            <ul>
+                                <li>ADGM-resident (travels as needed)</li>
+                                <li>Wears 3 hats: Tech oversight, investor relations, legal coordination</li>
+                                <li>Salary included in OpEx ($7K/month)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Compliance Function:</strong> Outsourced to ADGM-licensed firm (Waystone/Maples) - $50,000/year</li>
+                        <li><strong>Legal Counsel:</strong> Lebanese law firm (retainer $30,000/year for SPV formation support)</li>
+                        <li><strong>Property Sourcing:</strong> Commission-based agents in Lebanon (paid per closed tokenization)</li>
+                        <li><strong>Advisors:</strong>
+                            <ul>
+                                <li>ADGM regulatory consultant</li>
+                                <li>International tax advisor</li>
+                                <li>Blockchain legal counsel</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="document-section">
+                    <h2 class="section-title">8. Financials</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Year 1 CapEx</td><td>$254,000</td></tr>
+                            <tr><td>Year 1 Compliance (sandbox)</td><td>$22,000</td></tr>
+                            <tr><td>Year 1 MLRO Outsourcing</td><td>$50,000</td></tr>
+                            <tr><td>Year 1 Facility Mgmt Setup</td><td>$30,000</td></tr>
+                            <tr style="background-color: rgba(212, 175, 55, 0.1); font-weight: bold;"><td>Total Funding Target</td><td>$456,000</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="note-box">
+                        <strong>Note:</strong> $500,000 capital for full license is NOT included — required only upon sandbox exit (Month 18+).
+                    </div>
+                    <p class="section-text"><strong>Key Assumptions:</strong></p>
+                    <ul class="section-list">
+                        <li>3–5 properties tokenized in Year 1</li>
+                        <li>Breakeven by Month 14–16</li>
+                        <li>All transactions in USD or USDC — no LBP exposure</li>
+                        <li>Issuance fee covers per-SPV legal, KYC, and platform costs</li>
+                    </ul>
+                    <p class="section-text">Full financial model: <a href="https://docs.google.com/spreadsheets/d/1LcZFJZjhw1sCfGB4PHgvy8BCmLVzo623f4Aid4GcsFQ/edit?usp=sharing" class="content-link" target="_blank" style="color:#D4AF37;">Google Sheets — Token-Lebnani Financials</a></p>
+                </section>
+
+                <section class="document-section">
+                    <h2 class="section-title">9. Risks & Mitigation</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Risk</th>
+                                <th>Mitigation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ADGM sandbox rejection</td><td>Pre-submission engagement with FSRA; use regulatory consultant</td></tr>
+                            <tr><td>Sandbox exit failure</td><td>Pre-engage FSRA from Month 12; maintain clean AML record; demonstrate sustained volume</td></tr>
+                            <tr><td>Title disputes in Lebanon</td><td>Mandatory legal opinion per asset + owner indemnity clause</td></tr>
+                            <tr><td>Low secondary liquidity</td><td>Exclusive listing on ADGM-licensed MTF; investor education on exit timeline</td></tr>
+                            <tr><td>Tech/platform downtime</td><td>Use Polygon (low gas); DigiShares SLA; backup communication via email</td></tr>
+                            <tr><td>Investor confusion</td><td>Clear disclaimers everywhere: "We do not own assets — tokens = SPV shares only"</td></tr>
+                            <tr><td>FX/banking risk</td><td>Zero Lebanese banking — all flows via non-Lebanese USD accounts</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="document-section">
+                    <h2 class="section-title">10. Vision</h2>
+                    <p class="section-text">Token-Lebnani will become the trusted gateway for diaspora capital into Lebanese real estate — compliant, transparent, and accessible. By Year 3, we aim to tokenize 15+ properties and serve 1,000+ retail investors, proving that even in fragile markets, blockchain can restore trust, liquidity, and opportunity.</p>
+                </section>
+
+                <footer class="document-footer">
+                    <p>Prepared by: Nidal Gharzeddine</p>
+                    <p>Date: December 2025</p>
+                    <p>Version: 1.2 — Updated with corrected revenue model and technology rationale</p>
+                </footer>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <p>Design based on <a href="https://html5up.net/aerial" target="_blank">Aerial</a> by HTML5 UP |
+            Licensed under <a href="https://html5up.net/license" target="_blank">CCA 3.0</a> |
+            Modified for Token Lebnani</p>
+        </footer>
+    </div>
+
+    <script>
+        // Toggle logic
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                
+                // Update buttons
+                document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show selected content, hide others
+                document.querySelectorAll('.content-section').forEach(sec => {
+                    sec.classList.remove('active');
+                });
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+
+        // Smooth nav hover
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('mouseenter', () => link.style.transform = 'translateY(-2px)');
+            link.addEventListener('mouseleave', () => link.style.transform = 'translateY(0)');
+        });
+    </script>
+</body>
+</html>
