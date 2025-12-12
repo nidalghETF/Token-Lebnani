@@ -1,301 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Token-Lebnani Whitepaper: A stable digital currency for the Lebanese community." />
-  <title>Token-Lebnani Whitepaper</title>
-  <style>
-    /* Minimal, clean, readable theme — consistent with typical GitHub Pages docs */
-    :root {
-      --bg: #ffffff;
-      --fg: #24292e;
-      --link: #0969da;
-      --border: #d0d7de;
-      --code-bg: #f6f8fa;
-      --header-height: 60px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica', 'Arial', sans-serif;
-      line-height: 1.6;
-      color: var(--fg);
-      background-color: var(--bg);
-      padding-top: var(--header-height);
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      padding: 0 1.5rem;
-      height: var(--header-height);
-      display: flex;
-      align-items: center;
-      z-index: 100;
-    }
-
-    header h1 {
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-
-    header a {
-      color: var(--link);
-      text-decoration: none;
-    }
-
-    main {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-    }
-
-    h1, h2, h3 {
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-      line-height: 1.25;
-    }
-
-    h1 {
-      font-size: 2rem;
-      text-align: center;
-      margin-top: 0;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-    }
-
-    h3 {
-      font-size: 1.25rem;
-    }
-
-    p {
-      margin-bottom: 1rem;
-    }
-
-    ul, ol {
-      margin-left: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    li {
-      margin-bottom: 0.5rem;
-    }
-
-    code {
-      background: var(--code-bg);
-      padding: 0.2em 0.4em;
-      border-radius: 6px;
-      font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
-      font-size: 0.9em;
-    }
-
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    hr {
-      margin: 2rem 0;
-      border: 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .toc {
-      background: var(--code-bg);
-      padding: 1.5rem;
-      border-radius: 8px;
-      margin: 2rem 0;
-    }
-
-    .toc ul {
-      list-style: none;
-      margin-left: 0;
-    }
-
-    .toc li {
-      margin-bottom: 0.6rem;
-    }
-
-    .disclaimer {
-      background: #fff8e1;
-      border-left: 4px solid #f0ad4e;
-      padding: 1rem 1.5rem;
-      margin-top: 2rem;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.75rem;
-      }
-      h2 {
-        font-size: 1.35rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Lebnani - Whitepaper</title>
+    <!-- Theme & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ===== BASE & ANIMATED BACKGROUND ===== */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+            font-family: 'Cormorant Garamond', serif;
+            background: #0a192f;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a192f url('../images/background.png') bottom left repeat-x;
+            background-size: 1500px auto;
+            animation: bgScroll 80s linear infinite;
+            z-index: -2;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+        @keyframes bgScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: -3000px 0; }
+        }
+        /* ===== HEADER & NAVIGATION ===== */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-img {
+            width: 50px;
+            height: auto;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+        }
+        .brand-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #D4AF37;
+            margin: 0;
+            letter-spacing: 1.2px;
+        }
+        .brand-tagline {
+            font-size: 0.8rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 4px;
+            letter-spacing: 0.8px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav-link {
+            color: #D4AF37;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: white;
+            background: rgba(212, 175, 55, 0.15);
+        }
+        .nav-link i { font-size: 0.95rem; }
+        /* ===== MAIN CONTENT AREA ===== */
+        .main-content {
+            margin-top: 100px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+        }
+        :root {
+            --primary-color: #D4AF37;
+            --secondary-color: #D4AF37;
+            --accent-color: #D4AF37;
+            --border-color: rgba(212, 175, 55, 0.3);
+            --light-bg: rgba(0, 0, 0, 0.4);
+            --warning-color: #f6ad55;
+            --success-color: #48bb78;
+        }
+        .whitepaper-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--border-color);
+        }
+        .whitepaper-header h1 {
+            color: var(--primary-color);
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 800;
+            font-family: 'Cinzel', serif;
+        }
+        .subtitle {
+            color: var(--secondary-color);
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            font-weight: 300;
+            font-style: italic;
+        }
+        .metadata {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            color: #a0aec0;
+            font-size: 0.95em;
+            margin-top: 20px;
+        }
+        h2 {
+            color: var(--primary-color);
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+        }
+        h3 {
+            color: var(--secondary-color);
+            margin: 30px 0 15px 0;
+            font-weight: 600;
+            font-family: 'Cinzel', serif;
+        }
+        h4 {
+            color: #cbd5e0;
+            margin: 20px 0 10px 0;
+            font-weight: 600;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .highlight-box {
+            background: var(--light-bg);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(212, 175, 55, 0.5);
+        }
+        a:hover {
+            color: white;
+            border-bottom: 1px solid var(--primary-color);
+        }
+        .footnote {
+            font-size: 0.85em;
+            color: #a0aec0;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        @media (max-width: 768px) {
+            .site-header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 12px;
+            }
+            .nav-links {
+                width: 100%;
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding: 5px 0;
+            }
+            .brand-name { font-size: 1.5rem; }
+            .whitepaper-header h1 { font-size: 2.2em; }
+            .metadata { flex-direction: column; gap: 10px; }
+            .main-content { margin-top: 160px; }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1><a href="/">Token-Lebnani</a> — Whitepaper</h1>
-  </header>
+    <!-- Themed Navigation Header -->
+    <header class="site-header">
+        <div class="logo-container">
+            <img src="../images/logo.png" alt="Token Lebnani Logo" class="logo-img">
+            <div>
+                <h1 class="brand-name">TOKEN LEBNANI</h1>
+                <p class="brand-tagline">A Stable Digital Currency for the Lebanese Community</p>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <a href="../" class="nav-link"><i class="fas fa-home"></i> Home</a>
+            <a href="../business-plan/" class="nav-link"><i class="fas fa-file-alt"></i> Business Plan</a>
+            <a href="../mindmap/" class="nav-link"><i class="fas fa-project-diagram"></i> Mindmap</a>
+            <!-- Self-link omitted -->
+            <a href="../legal/" class="nav-link"><i class="fas fa-gavel"></i> Legal</a>
+            <a href="../pathway/" class="nav-link"><i class="fas fa-road"></i> Pathway</a>
+        </nav>
+    </header>
 
-  <main>
-    <h1>Token-Lebnani Whitepaper: A Stable Digital Currency for the Lebanese Community</h1>
+    <!-- Main Whitepaper Content -->
+    <main class="main-content">
+        <div class="whitepaper-header">
+            <h1>Token-Lebnani Whitepaper</h1>
+            <p class="subtitle">A Stable Digital Currency for the Lebanese Community</p>
+            <div class="metadata">
+                <span>Version 1.0</span>
+                <span>December 2025</span>
+                <span>Nidal Gharzeddine</span>
+            </div>
+        </div>
 
-    <div class="toc">
-      <h2>Table of Contents</h2>
-      <ul>
-        <li><a href="#executive-summary">1. Executive Summary</a></li>
-        <li><a href="#the-lebanese-challenge-a-path-forward">2. The Lebanese Challenge: A Path Forward</a></li>
-        <li><a href="#introducing-token-lebnani-our-solution">3. Introducing Token-Lebnani: Our Solution</a></li>
-        <li><a href="#how-it-works-the-foundation-of-trust">4. How It Works: The Foundation of Trust</a></li>
-        <li><a href="#the-economic-model-how-value-is-created-and-protected">5. The Economic Model: How Value is Created and Protected</a></li>
-        <li><a href="#real-world-use-cases-making-an-impact">6. Real-World Use Cases: Making an Impact</a></li>
-        <li><a href="#the-ecosystem-building-a-new-economy">7. The Ecosystem: Building a New Economy</a></li>
-        <li><a href="#our-vision-a-new-digital-economy-for-lebanon">8. Our Vision: A New Digital Economy for Lebanon</a></li>
-        <li><a href="#conclusion-join-the-movement">9. Conclusion: Join the Movement</a></li>
-      </ul>
-    </div>
+        <section>
+            <h2>1. Executive Summary</h2>
+            <p>The Lebanese people are facing an unprecedented economic crisis, characterized by a collapsing national currency, a frozen banking sector, and a profound loss of trust in traditional financial institutions. For millions of Lebanese citizens, both at home and in the diaspora, the need for a stable, accessible, and reliable store of value and medium of exchange has never been more critical.</p>
+            <p>Token-Lebnani is a community-driven initiative to introduce a new digital currency, designed specifically to meet this urgent need. Our mission is to empower the Lebanese people with a modern financial tool that is insulated from the volatility of the Lebanese Pound (LBP) and the instability of the current system. Token-Lebnani is built on the principles of stability, security, and community empowerment.</p>
+            <p>This whitepaper outlines the vision, technology, and economic model for Token-Lebnani. We detail how the token will be created, how its value will be maintained, and the real-world applications that will make it a vital part of daily life for the Lebanese community. By providing a stable digital asset and a seamless way to conduct transactions and remittances, Token-Lebnani aims to foster financial inclusion, preserve wealth, and lay the groundwork for a new, resilient digital economy in Lebanon.</p>
+            <p>We invite you to join us in building this future. Token-Lebnani is more than a currency; it is a symbol of hope and a practical solution for a community in need.</p>
+        </section>
 
-    <hr />
+        <section>
+            <h2>2. The Lebanese Challenge: A Path Forward</h2>
+            <p>Lebanon is navigating one of the most severe economic crises in its modern history. The national currency, the Lebanese Pound (LBP), has lost over 90% of its value against the US dollar since late 2019. This hyperinflation has eroded savings, increased the cost of living to unsustainable levels, and pushed a significant portion of the population into poverty.</p>
+            <p>Compounding this crisis is the near-collapse of the traditional banking sector. Strict capital controls imposed by banks have limited citizens' access to their own funds, effectively freezing deposits and severely restricting the ability to conduct basic financial transactions or receive international remittances. This has created a dual economy, where a large segment of the population is excluded from the formal financial system.</p>
+            <p>While these challenges are significant, they have also spurred innovation and a search for alternative solutions. The Lebanese diaspora, estimated at over 15 million people worldwide, remains deeply connected to their homeland and is a primary source of financial support. However, the current methods for sending money are often slow, expensive, and subject to the same banking bottlenecks.</p>
+            <p>Token-Lebnani is presented as a direct response to this crisis. Instead of dwelling on the negative aspects, our focus is on the positive path forward. We aim to provide a clear, stable, and technologically advanced solution that offers a way out of this financial uncertainty. Our goal is to empower individuals and businesses with a tool that restores a degree of financial autonomy and stability.</p>
+        </section>
 
-    <h2 id="executive-summary">1. Executive Summary</h2>
-    <p>The Lebanese people are facing an unprecedented economic crisis, characterized by a collapsing national currency, a frozen banking sector, and a profound loss of trust in traditional financial institutions. For millions of Lebanese citizens, both at home and in the diaspora, the need for a stable, accessible, and reliable store of value and medium of exchange has never been more critical.</p>
-    <p>Token-Lebnani is a community-driven initiative to introduce a new digital currency, designed specifically to meet this urgent need. Our mission is to empower the Lebanese people with a modern financial tool that is insulated from the volatility of the Lebanese Pound (LBP) and the instability of the current system. Token-Lebnani is built on the principles of stability, security, and community empowerment.</p>
-    <p>This whitepaper outlines the vision, technology, and economic model for Token-Lebnani. We detail how the token will be created, how its value will be maintained, and the real-world applications that will make it a vital part of daily life for the Lebanese community. By providing a stable digital asset and a seamless way to conduct transactions and remittances, Token-Lebnani aims to foster financial inclusion, preserve wealth, and lay the groundwork for a new, resilient digital economy in Lebanon.</p>
-    <p>We invite you to join us in building this future. Token-Lebnani is more than a currency; it is a symbol of hope and a practical solution for a community in need.</p>
+        <section>
+            <h2>3. Introducing Token-Lebnani: Our Solution</h2>
+            <p>Token-Lebnani is a digital currency, or cryptocurrency, created with the specific purpose of serving the Lebanese community. It is designed to be a stable, secure, and accessible financial instrument that can be used by anyone, anywhere.</p>
+            
+            <h3>What is Token-Lebnani?</h3>
+            <p>Token-Lebnani (symbol: <code>TLB</code>) is a digital token built on a secure blockchain. It is not a traditional currency issued by a central bank, but a community-owned asset designed to hold its value and facilitate transactions.</p>
+            
+            <h3>Our Mission</h3>
+            <p>Our mission is to provide the Lebanese people with a reliable digital currency that can be used as a stable store of value and a modern medium of exchange. We aim to foster financial inclusion, simplify cross-border remittances, and create a foundation for economic activity that is resilient to the failures of the traditional system.</p>
+            
+            <h3>Who is it for?</h3>
+            <p>Token-Lebnani is for every Lebanese citizen, whether they reside in Lebanon or are part of the global diaspora. It is also for Lebanese businesses, non-governmental organizations (NGOs), and any entity that serves the community and wishes to participate in this new digital economy.</p>
+            
+            <h3>Core Values</h3>
+            <ul>
+                <li><strong>Stability:</strong> Our primary goal is to ensure that the value of Token-Lebnani remains stable, protecting users from the extreme volatility of the LBP.</li>
+                <li><strong>Security:</strong> We are committed to building and maintaining a secure platform, ensuring that users' assets are safe and their transactions are private.</li>
+                <li><strong>Community:</strong> Token-Lebnani is a project by and for the Lebanese community. We believe in the power of collective action and aim to empower our community to build a better financial future.</li>
+            </ul>
+        </section>
 
-    <h2 id="the-lebanese-challenge-a-path-forward">2. The Lebanese Challenge: A Path Forward</h2>
-    <p>Lebanon is navigating one of the most severe economic crises in its modern history. The national currency, the Lebanese Pound (LBP), has lost over 90% of its value against the US dollar since late 2019. This hyperinflation has eroded savings, increased the cost of living to unsustainable levels, and pushed a significant portion of the population into poverty.</p>
-    <p>Compounding this crisis is the near-collapse of the traditional banking sector. Strict capital controls imposed by banks have limited citizens' access to their own funds, effectively freezing deposits and severely restricting the ability to conduct basic financial transactions or receive international remittances. This has created a dual economy, where a large segment of the population is excluded from the formal financial system.</p>
-    <p>While these challenges are significant, they have also spurred innovation and a search for alternative solutions. The Lebanese diaspora, estimated at over 15 million people worldwide, remains deeply connected to their homeland and is a primary source of financial support. However, the current methods for sending money are often slow, expensive, and subject to the same banking bottlenecks.</p>
-    <p>Token-Lebnani is presented as a direct response to this crisis. Instead of dwelling on the negative aspects, our focus is on the positive path forward. We aim to provide a clear, stable, and technologically advanced solution that offers a way out of this financial uncertainty. Our goal is to empower individuals and businesses with a tool that restores a degree of financial autonomy and stability.</p>
+        <section>
+            <h2>4. How It Works: The Foundation of Trust</h2>
+            <p>To be a viable solution, Token-Lebnani must be built on a foundation of trust. This is achieved through a combination of transparent technology and a clear economic model.</p>
+            
+            <h3>Built on a Proven Blockchain</h3>
+            <p>Token-Lebnani is developed on a major, secure blockchain infrastructure. This ensures that the token is resistant to fraud and censorship, and that transactions are recorded immutably and transparently. By leveraging a proven blockchain, we benefit from its security and reliability, which has been established by major digital currencies and decentralized applications.</p>
+            
+            <h3>The Token Standard: ERC-20 Compatibility</h3>
+            <p>Token-Lebnani is an ERC-20 compatible token. This technical standard ensures that TLB is compatible with a vast ecosystem of digital wallets (like MetaMask and Trust Wallet) and decentralized exchanges. This compatibility is crucial for accessibility, allowing any user to easily store, send, and trade TLB without needing specialized software.</p>
+            
+            <h3>Secure & Accessible Digital Wallets</h3>
+            <p>Users will interact with Token-Lebnani through a secure digital wallet. This wallet can be accessed via a web interface or a mobile application, making it easy to use for anyone with an internet connection. The wallet allows users to safely store, send, and receive Token-Lebnani tokens, providing full control over their digital assets without needing a traditional bank account.</p>
+            
+            <h3>Smart Contract Audits & Upgradability</h3>
+            <p>All smart contracts for Token-Lebnani will be audited by at least two reputable, independent blockchain security firms before the public sale and launch. This rigorous process is designed to eliminate vulnerabilities and protect user funds. Furthermore, the project is designed with upgradability in mind. A multi-signature wallet will control the project's treasury, allowing for protocol upgrades and parameter adjustments in a transparent and secure manner, ensuring the project can adapt and improve over time.</p>
+        </section>
 
-    <h2 id="introducing-token-lebnani-our-solution">3. Introducing Token-Lebnani: Our Solution</h2>
-    <p>Token-Lebnani is a digital currency, or cryptocurrency, created with the specific purpose of serving the Lebanese community. It is designed to be a stable, secure, and accessible financial instrument that can be used by anyone, anywhere.</p>
-    <h3>What is Token-Lebnani?</h3>
-    <p>Token-Lebnani (symbol: <code>TLB</code>) is a digital token built on a secure blockchain. It is not a traditional currency issued by a central bank, but a community-owned asset designed to hold its value and facilitate transactions.</p>
-    <h3>Our Mission</h3>
-    <p>Our mission is to provide the Lebanese people with a reliable digital currency that can be used as a stable store of value and a modern medium of exchange. We aim to foster financial inclusion, simplify cross-border remittances, and create a foundation for economic activity that is resilient to the failures of the traditional system.</p>
-    <h3>Who is it for?</h3>
-    <p>Token-Lebnani is for every Lebanese citizen, whether they reside in Lebanon or are part of the global diaspora. It is also for Lebanese businesses, non-governmental organizations (NGOs), and any entity that serves the community and wishes to participate in this new digital economy.</p>
-    <h3>Core Values</h3>
-    <ul>
-      <li><strong>Stability:</strong> Our primary goal is to ensure that the value of Token-Lebnani remains stable, protecting users from the extreme volatility of the LBP.</li>
-      <li><strong>Security:</strong> We are committed to building and maintaining a secure platform, ensuring that users' assets are safe and their transactions are private.</li>
-      <li><strong>Community:</strong> Token-Lebnani is a project by and for the Lebanese community. We believe in the power of collective action and aim to empower our community to build a better financial future.</li>
-    </ul>
+        <section>
+            <h2>5. The Economic Model: How Value is Created and Protected</h2>
+            <p>The economic model is the core of Token-Lebnani's value proposition. It is designed to ensure stability and foster long-term growth. This section details the token's supply, distribution, and the mechanism that will maintain its value.</p>
+            
+            <h3>Total Supply</h3>
+            <p>The total supply of Token-Lebnani is fixed at <strong>100 million TLB</strong>. This finite supply is a key feature designed to protect against inflation and ensure the scarcity of the token, which is a fundamental principle for maintaining value.</p>
+            
+            <h3>Initial Distribution</h3>
+            <p>The initial distribution of the 100 million TLB tokens is planned as follows:</p>
+            <ul>
+                <li><strong>Public Sale (40%):</strong> 40 million TLB will be made available to the public through a token sale event. This allows the wider community to acquire tokens and become stakeholders in the project.</li>
+                <li><strong>Ecosystem Fund (30%):</strong> 30 million TLB will be allocated to the Ecosystem Fund. This fund will be used to support the growth of the Token-Lebnani ecosystem by providing grants, liquidity, and other forms of support to Lebanese startups, businesses, and developers who build on or integrate with the Token-Lebnani platform.</li>
+                <li><strong>Team & Advisors (15%):</strong> 15 million TLB is reserved for the founding team and key advisors as a performance-based incentive to ensure the long-term success and development of the project.</li>
+                <li><strong>Community & Airdrops (10%):</strong> 10 million TLB will be used for community engagement initiatives, including airdrops to the Lebanese diaspora and rewards for early adopters and contributors to the project's growth.</li>
+                <li><strong>Reserve (5%):</strong> 5 million TLB will be held in a secure reserve to manage the stability mechanism and provide liquidity for the token.</li>
+            </ul>
+            <p><em>[Distribution Chart Placeholder: A pie chart would be inserted here visually representing the 40/30/15/10/5 split.]</em></p>
+            
+            <h3>The Stability Mechanism (Detailed)</h3>
+            <p>Maintaining the stability of Token-Lebnani is our most critical responsibility. Our stability mechanism is designed to ensure that the value of each TLB token remains pegged to a stable asset, such as the US Dollar (USD). The specific mechanism will be a hybrid model combining asset backing and algorithmic balancing.</p>
+            <ol>
+                <li><strong>Asset-Backed Foundation:</strong> A significant portion of the Ecosystem Fund and Reserve will be used to acquire and hold stable assets, primarily USD Coin (USDC) or Tether (USDT), which are themselves backed 1:1 by fiat currency reserves. This creates a tangible backing for the token's value.</li>
+                <li><strong>Algorithmic Balancing:</strong> An algorithm will monitor the demand for TLB tokens. If demand increases, the algorithm will make it slightly more expensive to buy, and if demand decreases, it will make it slightly cheaper, helping to stabilize the price around the peg.</li>
+                <li><strong>Transparency and Audits:</strong> The status of the reserve (the amount of USDC/USDT held) will be published in a transparent, publicly accessible dashboard. The reserve will be subject to regular third-party audits by a reputable accounting firm to verify its integrity and ensure it is sufficient to back the circulating supply of tokens.</li>
+            </ol>
+            
+            <h3>Utility</h3>
+            <p>Token-Lebnani is designed to be a functional currency with real-world utility:</p>
+            <ul>
+                <li><strong>Transactions:</strong> Use TLB to pay for goods and services at any business that accepts it.</li>
+                <li><strong>Remittances:</strong> Send TLB to family and friends in Lebanon quickly and with minimal fees.</li>
+                <li><strong>Savings:</strong> Hold TLB as a stable store of value to protect your wealth from inflation.</li>
+                <li><strong>Governance:</strong> As the ecosystem grows, TLB holders may be granted voting rights on key decisions related to the project's future development.</li>
+            </ul>
+        </section>
 
-    <h2 id="how-it-works-the-foundation-of-trust">4. How It Works: The Foundation of Trust</h2>
-    <p>To be a viable solution, Token-Lebnani must be built on a foundation of trust. This is achieved through a combination of transparent technology and a clear economic model.</p>
-    <h3>Built on a Proven Blockchain</h3>
-    <p>Token-Lebnani is developed on a major, secure blockchain infrastructure. This ensures that the token is resistant to fraud and censorship, and that transactions are recorded immutably and transparently. By leveraging a proven blockchain, we benefit from its security and reliability, which has been established by major digital currencies and decentralized applications.</p>
-    <h3>The Token Standard: ERC-20 Compatibility</h3>
-    <p>Token-Lebnani is an ERC-20 compatible token. This technical standard ensures that TLB is compatible with a vast ecosystem of digital wallets (like MetaMask and Trust Wallet) and decentralized exchanges. This compatibility is crucial for accessibility, allowing any user to easily store, send, and trade TLB without needing specialized software.</p>
-    <h3>Secure & Accessible Digital Wallets</h3>
-    <p>Users will interact with Token-Lebnani through a secure digital wallet. This wallet can be accessed via a web interface or a mobile application, making it easy to use for anyone with an internet connection. The wallet allows users to safely store, send, and receive Token-Lebnani tokens, providing full control over their digital assets without needing a traditional bank account.</p>
-    <h3>Smart Contract Audits & Upgradability</h3>
-    <p>All smart contracts for Token-Lebnani will be audited by at least two reputable, independent blockchain security firms before the public sale and launch. This rigorous process is designed to eliminate vulnerabilities and protect user funds. Furthermore, the project is designed with upgradability in mind. A multi-signature wallet will control the project's treasury, allowing for protocol upgrades and parameter adjustments in a transparent and secure manner, ensuring the project can adapt and improve over time.</p>
+        <section>
+            <h2>6. Real-World Use Cases: Making an Impact</h2>
+            <p>The true value of Token-Lebnani will be realized through its practical applications in the daily lives of the Lebanese community.</p>
+            
+            <h3>Sending Money Home</h3>
+            <p>For the millions of Lebanese living abroad, sending financial support to family in Lebanon is a critical act of solidarity. Current methods are often slow, with transactions taking days to clear, and expensive, with high fees deducted at each step. Token-Lebnani offers a solution:</p>
+            <ul>
+                <li><strong>Speed:</strong> Transactions are confirmed on the blockchain in minutes, not days.</li>
+                <li><strong>Low Cost:</strong> The transaction fees are a fraction of what traditional money transfer services charge.</li>
+                <li><strong>Reliability:</strong> Funds are delivered directly to the recipient's digital wallet, bypassing the frozen banking system.</li>
+            </ul>
+            
+            <h3>Everyday Commerce</h3>
+            <p>Local businesses in Lebanon can accept Token-Lebnani as a form of payment. This provides them with a new, stable revenue stream and a way to attract tech-savvy customers. For consumers, it offers a convenient and stable way to pay for everything from groceries to services.</p>
+            
+            <h3>Wealth Preservation</h3>
+            <p>With the LBP losing value daily, preserving savings is a major concern. Token-Lebnani provides a digital asset that is designed to hold its value, allowing individuals to protect their hard-earned money from the ravages of hyperinflation and economic instability.</p>
+            
+            <h3>Illustrative Scenarios:</h3>
+            <ul>
+                <li><strong>Scenario 1: The Diaspora Worker:</strong> Consider a nurse in Canada who wants to send $500 to her mother in Beirut. Using traditional methods, she pays a $25 fee and the money takes 5-7 business days to arrive. Using Token-Lebnani, she pays a $2 network fee, and her mother receives the equivalent value in TLB in her wallet in under 10 minutes, which she can then use to pay for groceries at a local shop that accepts TLB.</li>
+                <li><strong>Scenario 2: The Local Business:</strong> Imagine a small restaurant in Beirut, 'Lebnani Café,' that accepts TLB for payment. By doing so, it attracts a new, tech-savvy customer base and gains a stable revenue stream that is not subject to the volatility of the LBP. It can then use its TLB earnings to pay its suppliers, who may also accept the token, creating a micro-economy.</li>
+            </ul>
+        </section>
 
-    <h2 id="the-economic-model-how-value-is-created-and-protected">5. The Economic Model: How Value is Created and Protected</h2>
-    <p>The economic model is the core of Token-Lebnani's value proposition. It is designed to ensure stability and foster long-term growth. This section details the token's supply, distribution, and the mechanism that will maintain its value.</p>
-    <h3>Total Supply</h3>
-    <p>The total supply of Token-Lebnani is fixed at <strong>100 million TLB</strong>. This finite supply is a key feature designed to protect against inflation and ensure the scarcity of the token, which is a fundamental principle for maintaining value.</p>
-    <h3>Initial Distribution</h3>
-    <p>The initial distribution of the 100 million TLB tokens is planned as follows:</p>
-    <ul>
-      <li><strong>Public Sale (40%):</strong> 40 million TLB will be made available to the public through a token sale event.</li>
-      <li><strong>Ecosystem Fund (30%):</strong> 30 million TLB will be allocated to the Ecosystem Fund to support Lebanese startups, businesses, and developers.</li>
-      <li><strong>Team & Advisors (15%):</strong> 15 million TLB is reserved for the founding team and key advisors.</li>
-      <li><strong>Community & Airdrops (10%):</strong> 10 million TLB for community engagement, airdrops, and early adopter rewards.</li>
-      <li><strong>Reserve (5%):</strong> 5 million TLB held in a secure reserve for stability and liquidity.</li>
-    </ul>
-    <p><em>[Distribution Chart Placeholder: A pie chart would be inserted here visually representing the 40/30/15/10/5 split.]</em></p>
-    <h3>The Stability Mechanism (Detailed)</h3>
-    <p>Maintaining the stability of Token-Lebnani is our most critical responsibility. Our stability mechanism is designed to ensure that the value of each TLB token remains pegged to a stable asset, such as the US Dollar (USD). The specific mechanism will be a hybrid model combining asset backing and algorithmic balancing.</p>
-    <ol>
-      <li><strong>Asset-Backed Foundation:</strong> A significant portion of the Ecosystem Fund and Reserve will be used to acquire and hold stable assets, primarily USD Coin (USDC) or Tether (USDT).</li>
-      <li><strong>Algorithmic Balancing:</strong> An algorithm will monitor demand and adjust pricing dynamics to stabilize the peg.</li>
-      <li><strong>Transparency and Audits:</strong> The reserve status will be published on a public dashboard and subject to regular third-party audits.</li>
-    </ol>
-    <h3>Utility</h3>
-    <p>Token-Lebnani is designed to be a functional currency with real-world utility:</p>
-    <ul>
-      <li><strong>Transactions:</strong> Pay for goods and services at businesses that accept TLB.</li>
-      <li><strong>Remittances:</strong> Send TLB to family in Lebanon quickly and cheaply.</li>
-      <li><strong>Savings:</strong> Hold TLB as a stable store of value.</li>
-      <li><strong>Governance:</strong> Future voting rights on ecosystem decisions.</li>
-    </ul>
+        <section>
+            <h2>7. The Ecosystem: Building a New Economy</h2>
+            <p>Token-Lebnani is not just a currency; it is the foundation for a new digital economy. Our vision extends beyond creating a stable token to fostering a thriving ecosystem of innovation and commerce.</p>
+            
+            <h3>The Ecosystem Fund</h3>
+            <p>The 30 million TLB allocated to the Ecosystem Fund is a critical component of our long-term strategy. This fund will be used to:</p>
+            <ul>
+                <li><strong>Provide Grants:</strong> Offer non-dilutive grants to Lebanese startups and developers building applications, tools, or services that integrate with or enhance the Token-Lebnani ecosystem.</li>
+                <li><strong>Liquidity Provision:</strong> Ensure there is sufficient liquidity for TLB on decentralized and centralized exchanges, making it easy to buy and sell.</li>
+                <li><strong>Partnerships:</strong> Form strategic partnerships with businesses, NGOs, and government entities to expand the use cases and acceptance of Token-Lebnani.</li>
+            </ul>
+            
+            <h3>Community Governance</h3>
+            <p>As the project matures, we envision a system of community governance where TLB holders can vote on key proposals, such as how the Ecosystem Fund is allocated or what new features should be developed. This ensures that the project remains aligned with the needs and desires of the community it serves.</p>
+        </section>
 
-    <h2 id="real-world-use-cases-making-an-impact">6. Real-World Use Cases: Making an Impact</h2>
-    <p>The true value of Token-Lebnani will be realized through its practical applications in the daily lives of the Lebanese community.</p>
-    <h3>Sending Money Home</h3>
-    <p>For the millions of Lebanese living abroad, Token-Lebnani offers:</p>
-    <ul>
-      <li><strong>Speed:</strong> Transactions confirmed in minutes.</li>
-      <li><strong>Low Cost:</strong> Minimal network fees.</li>
-      <li><strong>Reliability:</strong> Direct delivery to digital wallets, bypassing banks.</li>
-    </ul>
-    <h3>Everyday Commerce</h3>
-    <p>Local businesses can accept TLB, gaining a stable revenue stream and attracting tech-savvy customers.</p>
-    <h3>Wealth Preservation</h3>
-    <p>TLB provides a digital asset designed to hold value, shielding users from LBP hyperinflation.</p>
-    <h3>Illustrative Scenarios:</h3>
-    <ul>
-      <li><strong>Scenario 1: The Diaspora Worker:</strong> A nurse in Canada sends $500 to Beirut with $2 in fees and <10-minute delivery.</li>
-      <li><strong>Scenario 2: The Local Business:</strong> 'Lebnani Café' accepts TLB, building a stable micro-economy with suppliers and customers.</li>
-    </ul>
+        <section>
+            <h2>8. Our Vision: A New Digital Economy for Lebanon</h2>
+            <p>Our ultimate vision for Token-Lebnani is to help lay the groundwork for a new, resilient, and innovative digital economy in Lebanon. We see a future where:</p>
+            <ul>
+                <li><strong>Financial Inclusion is Universal:</strong> Every Lebanese citizen has access to a stable and secure financial system, regardless of their location or their relationship with traditional banks.</li>
+                <li><strong>Entrepreneurship Flourishes:</strong> The Ecosystem Fund and community support empower a new generation of Lebanese entrepreneurs to build successful businesses that serve the local and global market.</li>
+                <li><strong>The Diaspora is Empowered:</strong> The 15 million-strong Lebanese diaspora becomes an active and integral part of the homeland's economic recovery, not just through remittances, but by investing in and participating in the new digital economy.</li>
+                <li><strong>Trust is Restored:</strong> Through transparency, security, and consistent performance, Token-Lebnani helps restore a degree of trust in financial systems and instruments within the Lebanese community.</li>
+            </ul>
+            <p>Token-Lebnani is a long-term project with a ambitious vision. We are committed to executing this vision with integrity, transparency, and a focus on the well-being of our community.</p>
+        </section>
 
-    <h2 id="the-ecosystem-building-a-new-economy">7. The Ecosystem: Building a New Economy</h2>
-    <p>Token-Lebnani is not just a currency; it is the foundation for a new digital economy.</p>
-    <h3>The Ecosystem Fund</h3>
-    <p>The 30 million TLB fund will:</p>
-    <ul>
-      <li>Provide non-dilutive grants to Lebanese innovators.</li>
-      <li>Ensure liquidity on exchanges.</li>
-      <li>Drive strategic partnerships.</li>
-    </ul>
-    <h3>Community Governance</h3>
-    <p>TLB holders will eventually vote on key proposals—ensuring the project remains community-driven.</p>
+        <section>
+            <h2>9. Conclusion: Join the Movement</h2>
+            <p>The challenges facing Lebanon are immense, but so is the resilience and ingenuity of its people. Token-Lebnani represents a practical, technology-driven solution born from that resilience.</p>
+            <p>We have outlined a clear plan for a stable digital currency, a transparent economic model, and a vibrant ecosystem designed to serve the Lebanese community. This is an opportunity to be part of something bigger than ourselves—to help build a more stable and prosperous future.</p>
+            <p>We invite you to join the Token-Lebnani movement. Learn more at our website, join our community channels, and consider becoming a part of this historic effort to empower the Lebanese people with a new digital economy.</p>
+            <p>The future is digital. Let's build it together.</p>
+        </section>
 
-    <h2 id="our-vision-a-new-digital-economy-for-lebanon">8. Our Vision: A New Digital Economy for Lebanon</h2>
-    <p>We envision a future where:</p>
-    <ul>
-      <li>Financial inclusion is universal.</li>
-      <li>Entrepreneurship flourishes.</li>
-      <li>The diaspora actively invests in Lebanon’s recovery.</li>
-      <li>Trust in financial systems is restored through transparency.</li>
-    </ul>
-    <p>Token-Lebnani is a long-term project committed to integrity, transparency, and community well-being.</p>
-
-    <h2 id="conclusion-join-the-movement">9. Conclusion: Join the Movement</h2>
-    <p>The challenges facing Lebanon are immense, but so is the resilience and ingenuity of its people. Token-Lebnani represents a practical, technology-driven solution born from that resilience.</p>
-    <p>We have outlined a clear plan for a stable digital currency, a transparent economic model, and a vibrant ecosystem designed to serve the Lebanese community. This is an opportunity to be part of something bigger than ourselves—to help build a more stable and prosperous future.</p>
-    <p>We invite you to join the Token-Lebnani movement. Learn more at our website, join our community channels, and consider becoming a part of this historic effort to empower the Lebanese people with a new digital economy.</p>
-    <p>The future is digital. Let's build it together.</p>
-
-    <div class="disclaimer">
-      <p><strong>Disclaimer:</strong> This whitepaper is for informational purposes only and does not constitute an offer to sell, a solicitation of an offer to buy, or a recommendation for any security or financial instrument. Token-Lebnani is a conceptual project, and its development, implementation, and success are subject to numerous risks and uncertainties. Potential participants should conduct their own due diligence and consult with their own legal, financial, and tax advisors before making any decisions. The information contained herein is based on the materials provided and is believed to be accurate at the time of writing, but no representation or warranty, express or implied, is made as to its accuracy or completeness.</p>
-    </div>
-  </main>
+        <div class="footnote">
+            <p><strong>Disclaimer:</strong> This whitepaper is for informational purposes only and does not constitute an offer to sell, a solicitation of an offer to buy, or a recommendation for any security or financial instrument. Token-Lebnani is a conceptual project, and its development, implementation, and success are subject to numerous risks and uncertainties. Potential participants should conduct their own due diligence and consult with their own legal, financial, and tax advisors before making any decisions. The information contained herein is based on the materials provided and is believed to be accurate at the time of writing, but no representation or warranty, express or implied, is made as to its accuracy or completeness.</p>
+        </div>
+    </main>
 </body>
 </html>
