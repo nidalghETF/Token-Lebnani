@@ -17,7 +17,7 @@
         }
         /* ===== ANIMATED BACKGROUND ===== */
         body {
-            background: #1a365d url('./images/background.png') bottom left repeat-x;
+            background: #1a365d url('./images/background.png') bottom left repeat-x; /* Updated path for assets */
             background-size: 1500px auto;
             animation: bgScroll 80s linear infinite;
         }
@@ -114,6 +114,7 @@
             margin: 2.5rem 0;
             flex-wrap: wrap;
         }
+        /* Clean text links without frames */
         .nav-link {
             color: #D4AF37;
             text-decoration: none;
@@ -151,6 +152,7 @@
         .nav-link:hover i {
             transform: translateX(5px);
         }
+        /* Link descriptions */
         .link-desc {
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.6);
@@ -239,17 +241,18 @@
         <div class="content">
             <!-- Logo & Company Name Header -->
             <div class="header-container">
+                <!-- Company Name Text (LEFT SIDE) -->
                 <div>
                     <div class="company-name-text">TOKEN LEBNANI</div>
                     <div class="slogan-container">
-                        <p class="slogan">A Regulated Path to Fractional Real Estate</p>
+                        <p class="slogan">A Regulated Path to Fractional Real-Estate</p>
                         <p class="slogan">A Stable Digital Currency for the Lebanese Community</p>
                     </div>
                 </div>
-                <img src="./images/logo.png" alt="Token Lebnani Logo" class="logo-img">
+                <!-- Logo Image (RIGHT SIDE) -->
+                <img src="./images/logo.png" alt="Token Lebnani Logo" class="logo-img"> <!-- Updated path for assets -->
             </div>
-
-            <!-- YOUR APPROVED CONTENT -->
+            <!-- Simple Explanation -->
             <div class="explanation">
                 <h3>A New Chapter for Lebanese Wealth</h3>
                 <p>
@@ -262,41 +265,44 @@
                     Capitalized with disciplined efficiency and engineered for scale, Token Lebnani arrives at the inflection point of a global financial transformation: real-world asset (RWA) tokenization is now recognized by the world’s leading financial institutions as the next mega-trend in capital markets. With timing aligned to both technological maturity and strategic opportunity, Token Lebnani is positioned not just to participate—but to lead.
                 </p>
             </div>
-
-            <!-- Navigation Links -->
+            <!-- Navigation Links to OTHER PAGES -->
             <div class="nav-links">
+                <!-- Business Plan -->
                 <div class="nav-item">
-                    <a href="./business-plan/" class="nav-link">
+                    <a href="./business-plan/" class="nav-link"> <!-- Relative path to subdirectory -->
                         <i class="fas fa-file-alt"></i> Business Plan
                     </a>
                     <div class="link-desc">Our strategic roadmap</div>
                 </div>
+                <!-- Mindmap -->
                 <div class="nav-item">
-                    <a href="./mindmap/" class="nav-link">
+                    <a href="./mindmap/" class="nav-link"> <!-- Relative path to subdirectory -->
                         <i class="fas fa-project-diagram"></i> Mindmap
                     </a>
                     <div class="link-desc">Visual project overview</div>
                 </div>
+                <!-- Whitepaper -->
                 <div class="nav-item">
-                    <a href="./whitepaper/" class="nav-link">
+                    <a href="./whitepaper/" class="nav-link"> <!-- Relative path to subdirectory -->
                         <i class="fas fa-book"></i> Whitepaper
                     </a>
                     <div class="link-desc">Technical documentation</div>
                 </div>
+                <!-- Legal -->
                 <div class="nav-item">
-                    <a href="./legal/" class="nav-link">
+                    <a href="./legal/" class="nav-link"> <!-- Relative path to subdirectory -->
                         <i class="fas fa-gavel"></i> Legal
                     </a>
                     <div class="link-desc">Regulatory framework</div>
                 </div>
+                <!-- Pathway -->
                 <div class="nav-item">
-                    <a href="./pathway/" class="nav-link">
+                    <a href="./pathway/" class="nav-link"> <!-- Relative path to subdirectory -->
                         <i class="fas fa-road"></i> Pathway
                     </a>
                     <div class="link-desc">Development journey</div>
                 </div>
             </div>
-
             <!-- Footer Attribution -->
             <div class="attribution">
                 Design based on <a href="https://html5up.net/aerial" target="_blank">Aerial</a> by HTML5 UP |
@@ -305,9 +311,9 @@
             </div>
         </div>
     </div>
-
-    <!-- Interactive Script -->
+    <!-- Simple script for smooth interactions -->
     <script>
+        // Add subtle hover effect
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('mouseenter', function(e) {
                 this.querySelector('i').style.transform = 'translateX(5px)';
@@ -316,6 +322,7 @@
                 this.querySelector('i').style.transform = 'translateX(0)';
             });
         });
+        // Background animation speed based on scroll (optional)
         let speed = 80;
         document.addEventListener('wheel', (e) => {
             if (e.deltaY > 0) speed = Math.min(speed + 5, 150);
