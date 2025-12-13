@@ -17,7 +17,7 @@
         }
         /* ===== ANIMATED BACKGROUND ===== */
         body {
-            background: #1a365d url('./images/background.png') bottom left repeat-x; /* Updated path for assets */
+            background: #1a365d url('./images/background.png') bottom left repeat-x;
             background-size: 1500px auto;
             animation: bgScroll 80s linear infinite;
         }
@@ -114,7 +114,6 @@
             margin: 2.5rem 0;
             flex-wrap: wrap;
         }
-        /* Clean text links without frames */
         .nav-link {
             color: #D4AF37;
             text-decoration: none;
@@ -152,7 +151,6 @@
         .nav-link:hover i {
             transform: translateX(5px);
         }
-        /* Link descriptions */
         .link-desc {
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.6);
@@ -245,59 +243,61 @@
                 <div>
                     <div class="company-name-text">TOKEN LEBNANI</div>
                     <div class="slogan-container">
-                        <p class="slogan">A Regulated Path to Fractional Real-Estate</p>
+                        <p class="slogan">A Regulated, Institutional-Grade Real Estate Tokenization Platform</p>
                     </div>
                 </div>
                 <!-- Logo Image (RIGHT SIDE) -->
-                <img src="./images/logo.png" alt="Token Lebnani Logo" class="logo-img"> <!-- Updated path for assets -->
+                <img src="./images/logo.png" alt="Token Lebnani Logo" class="logo-img">
             </div>
-            <!-- Simple Explanation -->
+
+            <!-- Professional Executive Summary -->
             <div class="explanation">
-                <h3>What is Tokenization?</h3>
+                <h3>Executive Summary</h3>
                 <p>
-                    Imagine owning a small piece of a luxury property instead of needing to buy the whole building.
-                    Tokenization turns real-world assets (like real estate) into digital tokens on a blockchain.
-                    This makes investment accessible, secure, and tradable—democratizing ownership for everyone.
+                    Token Lebnani is an ADGM-regulated real estate tokenization platform that unlocks global investment access to Lebanese property—fractionalizing a diverse portfolio of real estate assets into secure, tradable digital securities. The platform is initiated by Lebanese property owners seeking modern capital solutions, and open to investors worldwide who value stability, transparency, and exposure to Lebanon’s high-yielding real estate market.
+                </p>
+                <p>
+                    Operating under a robust UAE regulatory framework, Token Lebnani assumes no balance sheet risk and owns no assets. It serves solely as a compliant, end-to-end infrastructure—enabling property owners to tokenize, investors to participate, and markets to trade—on a secure, scalable foundation. The model begins with broad retail accessibility to foster inclusive participation, while fully supporting institutional-grade engagement from day one.
+                </p>
+                <p>
+                    Capitalized with disciplined efficiency and engineered for scale, Token Lebnani arrives at the inflection point of a global financial transformation: real-world asset (RWA) tokenization is now recognized by the world’s leading financial institutions as the next mega-trend in capital markets. With timing aligned to both technological maturity and strategic opportunity, Token Lebnani is positioned not just to participate—but to lead.
                 </p>
             </div>
-            <!-- Navigation Links to OTHER PAGES -->
+
+            <!-- Navigation Links -->
             <div class="nav-links">
-                <!-- Business Plan -->
                 <div class="nav-item">
-                    <a href="./business-plan/" class="nav-link"> <!-- Relative path to subdirectory -->
+                    <a href="./business-plan/" class="nav-link">
                         <i class="fas fa-file-alt"></i> Business Plan
                     </a>
-                    <div class="link-desc">Our strategic roadmap</div>
+                    <div class="link-desc">Go-to-market & growth strategy</div>
                 </div>
-                <!-- Mindmap -->
                 <div class="nav-item">
-                    <a href="./mindmap/" class="nav-link"> <!-- Relative path to subdirectory -->
+                    <a href="./mindmap/" class="nav-link">
                         <i class="fas fa-project-diagram"></i> Mindmap
                     </a>
-                    <div class="link-desc">Visual project overview</div>
+                    <div class="link-desc">System architecture overview</div>
                 </div>
-                <!-- Whitepaper -->
                 <div class="nav-item">
-                    <a href="./whitepaper/" class="nav-link"> <!-- Relative path to subdirectory -->
+                    <a href="./whitepaper/" class="nav-link">
                         <i class="fas fa-book"></i> Whitepaper
                     </a>
-                    <div class="link-desc">Technical documentation</div>
+                    <div class="link-desc">Technical & economic architecture</div>
                 </div>
-                <!-- Legal -->
                 <div class="nav-item">
-                    <a href="./legal/" class="nav-link"> <!-- Relative path to subdirectory -->
+                    <a href="./legal/" class="nav-link">
                         <i class="fas fa-gavel"></i> Legal
                     </a>
-                    <div class="link-desc">Regulatory framework</div>
+                    <div class="link-desc">ADGM compliance framework</div>
                 </div>
-                <!-- Pathway -->
                 <div class="nav-item">
-                    <a href="./pathway/" class="nav-link"> <!-- Relative path to subdirectory -->
+                    <a href="./pathway/" class="nav-link">
                         <i class="fas fa-road"></i> Pathway
                     </a>
-                    <div class="link-desc">Development journey</div>
+                    <div class="link-desc">Audited financials & implementation</div>
                 </div>
             </div>
+
             <!-- Footer Attribution -->
             <div class="attribution">
                 Design based on <a href="https://html5up.net/aerial" target="_blank">Aerial</a> by HTML5 UP |
@@ -306,9 +306,9 @@
             </div>
         </div>
     </div>
-    <!-- Simple script for smooth interactions -->
+
+    <!-- Interactive Script -->
     <script>
-        // Add subtle hover effect
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('mouseenter', function(e) {
                 this.querySelector('i').style.transform = 'translateX(5px)';
@@ -317,7 +317,6 @@
                 this.querySelector('i').style.transform = 'translateX(0)';
             });
         });
-        // Background animation speed based on scroll (optional)
         let speed = 80;
         document.addEventListener('wheel', (e) => {
             if (e.deltaY > 0) speed = Math.min(speed + 5, 150);
