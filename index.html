@@ -7,587 +7,151 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* ===== STANDARD BACKGROUND ===== */
+        /* ===== RESET & BASE ===== */
         html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
-            height: 100%;
-            overflow-x: hidden;
-            overflow-y: auto;
+            overflow: hidden;
             font-family: 'Cormorant Garamond', 'Times New Roman', serif;
-            background: #0a192f;
-            color: rgba(255, 255, 255, 0.9);
         }
         
-        /* ===== HEADER WITH NAVIGATION ===== */
-        .site-header {
-            position: fixed;
+        /* ===== ANIMATED BACKGROUND ===== */
+        body {
+            background: #0a192f url('./images/background.png') bottom left repeat-x;
+            background-size: 1500px auto;
+            animation: bgScroll 80s linear infinite;
+        }
+        
+        @keyframes bgScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: -3000px 0; }
+        }
+        
+        /* ===== OVERLAY & CONTAINER ===== */
+        .overlay {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 100;
-            background: rgba(10, 25, 47, 0.85);
-            backdrop-filter: blur(5px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 10px 30px;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            flex-wrap: wrap;
+            justify-content: center;
         }
         
+        /* ===== LOGO CONTAINER ===== */
         .logo-container {
-            display: flex;
-            align-items: center;
-        }
-        
-        .top-logo {
-            height: 50px;
-            width: auto;
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-        
-        .nav-link {
-            color: #D4AF37;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 15px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: white;
-            background: rgba(212, 175, 55, 0.15);
-        }
-        
-        /* ===== MAIN CONTENT ===== */
-        .main-content {
-            margin-top: 80px;
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* ===== HERO SECTION ===== */
-        .hero-section {
             text-align: center;
-            margin-bottom: 80px;
-            padding: 40px 0;
+            padding: 20px;
+            animation: fadeInUp 1s ease-out;
         }
         
-        .hero-headline {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
-            color: #D4AF37;
-            margin: 0 0 20px 0;
-            font-weight: 800;
-            letter-spacing: 1px;
+        .main-logo {
+            width: 400px;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+            margin-bottom: 40px;
         }
         
-        .hero-subheadline {
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.85);
-            margin: 0 0 30px 0;
-            font-weight: 300;
-        }
-        
-        .hero-description {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 800px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-        
-        /* ===== PROBLEM SOLUTION SECTION ===== */
-        .problem-solution-section {
-            margin-bottom: 80px;
-            padding: 50px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 10px;
-            border-left: 4px solid #D4AF37;
-        }
-        
-        .section-title {
-            font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
-            color: #D4AF37;
-            margin: 0 0 30px 0;
-            font-weight: 700;
-        }
-        
-        .section-text {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-        
-        .highlight {
-            color: #D4AF37;
-            font-weight: 600;
-        }
-        
-        /* ===== MOAT SECTION ===== */
-        .moat-section {
-            margin-bottom: 80px;
-        }
-        
-        .moat-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .moat-card {
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 10px;
-            padding: 30px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-        
-        .moat-card:hover {
-            transform: translateY(-5px);
-            border-color: #D4AF37;
-        }
-        
-        .card-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
-            color: #D4AF37;
-            margin: 0 0 20px 0;
-            font-weight: 600;
-        }
-        
-        .card-text {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-        }
-        
-        /* ===== PROCESS SECTION ===== */
-        .process-section {
-            margin-bottom: 80px;
-            padding: 50px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 10px;
-        }
-        
-        .process-intro {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.8);
-            text-align: center;
-            margin-bottom: 50px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            counter-reset: step-counter;
-        }
-        
-        .process-step {
-            background: rgba(212, 175, 55, 0.05);
-            border-radius: 10px;
-            padding: 30px;
-            position: relative;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-        }
-        
-        .process-step:before {
-            counter-increment: step-counter;
-            content: counter(step-counter);
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            background: #D4AF37;
-            color: #0a192f;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Cinzel', serif;
-            font-weight: bold;
-        }
-        
-        .step-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
-            color: #D4AF37;
-            margin: 10px 0 15px 0;
-        }
-        
-        .step-description {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-        }
-        
-        /* ===== PARTNERS SECTION ===== */
-        .partners-section {
-            margin-bottom: 80px;
-            text-align: center;
-        }
-        
-        .partners-text {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 800px;
-            margin: 30px auto;
-            line-height: 1.6;
-        }
-        
-        .partner-list {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-        
-        .partner-item {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 20px 30px;
-            border-radius: 8px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            min-width: 200px;
-        }
-        
-        .partner-name {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            color: #D4AF37;
-            margin: 0 0 10px 0;
-        }
-        
-        .partner-role {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-            font-style: italic;
-        }
-        
-        /* ===== CTA SECTION ===== */
-        .cta-section {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-        
-        .cta-button {
+        /* ===== ENTER BUTTON ===== */
+        .enter-button {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
+            gap: 15px;
+            padding: 18px 40px;
             font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .cta-primary {
-            background: linear-gradient(135deg, #D4AF37, #b8942a);
+            font-size: 1.5rem;
+            font-weight: 700;
             color: #0a192f;
+            background: linear-gradient(135deg, #D4AF37, #b8942a);
+            text-decoration: none;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+            animation: pulse 2s infinite;
         }
         
-        .cta-secondary {
-            background: transparent;
-            color: #D4AF37;
-            border: 2px solid #D4AF37;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .cta-primary:hover {
+        .enter-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
             background: linear-gradient(135deg, #b8942a, #a07d1f);
         }
         
-        .cta-secondary:hover {
-            background: rgba(212, 175, 55, 0.1);
+        .enter-button i {
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
         }
         
-        .tooltip {
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .enter-button:hover i {
+            transform: translateX(5px);
         }
         
-        .cta-button:hover .tooltip {
-            opacity: 1;
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
-        /* ===== FOOTER ===== */
-        .footer {
-            text-align: center;
-            padding: 30px 20px;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-        }
-        
-        .footer a {
-            color: #D4AF37;
-            text-decoration: none;
-        }
-        
-        .footer a:hover {
-            color: white;
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+            }
+            50% {
+                box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+            }
         }
         
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 768px) {
-            .site-header {
-                padding: 10px 15px;
-                flex-direction: column;
-                align-items: center;
+            .main-logo {
+                width: 280px;
+                margin-bottom: 30px;
             }
             
-            .nav-links {
-                width: 100%;
-                margin-top: 15px;
-                gap: 10px;
-                justify-content: center;
+            .enter-button {
+                padding: 15px 30px;
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-logo {
+                width: 220px;
+                margin-bottom: 25px;
             }
             
-            .nav-link {
-                font-size: 1rem;
-                padding: 6px 12px;
-            }
-            
-            .main-content {
-                margin-top: 120px;
-                padding: 20px 15px;
-            }
-            
-            .hero-headline {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subheadline {
+            .enter-button {
+                padding: 12px 25px;
                 font-size: 1.2rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .problem-solution-section,
-            .process-section {
-                padding: 30px 20px;
-            }
-            
-            .moat-cards,
-            .process-steps {
-                grid-template-columns: 1fr;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .cta-button {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header with Navigation -->
-    <header class="site-header">
+    <!-- Dark Overlay -->
+    <div class="overlay">
+        <!-- Logo Container -->
         <div class="logo-container">
-            <img src="./Blue Logo.png" alt="Token Lebnani Logo" class="top-logo">
+            <!-- Large Logo -->
+            <img src="./Blue Logo.png" alt="Token Lebnani Logo" class="main-logo">
+            
+            <!-- Enter Button -->
+            <a href="./home/" class="enter-button">
+                <span>ENTER</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
-        <nav class="nav-links">
-            <a href="./business-plan/" class="nav-link"><i class="fas fa-file-alt"></i> Business Plan</a>
-            <a href="./mindmap/" class="nav-link"><i class="fas fa-project-diagram"></i> Mindmap</a>
-            <a href="./whitepaper/" class="nav-link"><i class="fas fa-book"></i> Whitepaper</a>
-            <a href="./legal/" class="nav-link"><i class="fas fa-gavel"></i> Legal</a>
-            <a href="./pathway/" class="nav-link"><i class="fas fa-road"></i> Pathway</a>
-        </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- HERO SECTION -->
-        <section class="hero-section">
-            <h1 class="hero-headline">Unlock the Value of Lebanese Real Estate.</h1>
-            <p class="hero-subheadline">The ADGM Gateway to Lebanese Real Estate. A Secure, Non-Custodial Marketplace for the Diaspora.</p>
-            <p class="hero-description">The first regulated marketplace of its kind. We wrap illiquid Lebanese assets in the stability of ADGM Law and protect them with Smart Contracts.</p>
-        </section>
-
-        <!-- PROBLEM & SOLUTION SECTION -->
-        <section class="problem-solution-section">
-            <h2 class="section-title">The Liquidity Trap, Solved.</h2>
-            <p class="section-text">High-quality real estate in Lebanon is fundamentally illiquid. Selling is slow, capital controls are strict, and legal friction is high.</p>
-            <p class="section-text">We solve this with a <span class="highlight">Regulated Bridge</span>. By tokenizing property rights within the Abu Dhabi Global Market (ADGM), we provide the GCC and Lebanese Diaspora with a compliant, transparent, and secure route to ownership. No physical hassle. Just digital rights backed by real assets.</p>
-        </section>
-
-        <!-- MOAT SECTION -->
-        <section class="moat-section">
-            <h2 class="section-title">Built for Stability. Built for Growth.</h2>
-            <div class="moat-cards">
-                <div class="moat-card">
-                    <h3 class="card-title">ADGM Regulated</h3>
-                    <p class="card-text">We are domiciled in Abu Dhabi Global Market. Your investment contract is protected by world-class English Common Law and overseen by the FSRA.</p>
-                </div>
-                <div class="moat-card">
-                    <h3 class="card-title">Non-Custodial (Option A)</h3>
-                    <p class="card-text">You hold your own keys. We don't. Connect your MetaMask or Trust Wallet directly. We hold zero custody, eliminating counterparty risk.</p>
-                </div>
-                <div class="moat-card">
-                    <h3 class="card-title">Smart Contract Lock-Up</h3>
-                    <p class="card-text">We enforce a mandatory <strong>2-Year Lock-Up</strong> on all tokens. This prevents short-term panic selling and ensures investors are committed to the asset's long-term performance.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROCESS SECTION -->
-        <section class="process-section">
-            <h2 class="section-title">Investment Flow</h2>
-            <p class="process-intro">From Dubai to Beirut in minutes. Fully compliant, fully digital.</p>
-            <div class="process-steps">
-                <div class="process-step">
-                    <h3 class="step-title">Verify</h3>
-                    <p class="step-description">Pass KYC/AML checks. Restricted to Professional Investors and High-Net-Worth Individuals.</p>
-                </div>
-                <div class="process-step">
-                    <h3 class="step-title">Mint</h3>
-                    <p class="step-description">Smart Contracts create tokens representing your share in the asset. You become a legal owner of a Lebanese property.</p>
-                </div>
-                <div class="process-step">
-                    <h3 class="step-title">Hold</h3>
-                    <p class="step-description">Tokens are locked in your wallet for 2 years (Smart Contract enforced). Your asset is safe and stable.</p>
-                </div>
-                <div class="process-step">
-                    <h3 class="step-title">Earn</h3>
-                    <p class="step-description">Net Operating Income is paid automatically to your wallet via USDT. No need to collect rent manually.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- PARTNERS SECTION -->
-        <section class="partners-section">
-            <h2 class="section-title">Institutional-Grade Infrastructure</h2>
-            <p class="partners-text">We don't build in isolation. We use the best to ensure safety.</p>
-            <div class="partner-list">
-                <div class="partner-item">
-                    <h3 class="partner-name">Digishares</h3>
-                    <p class="partner-role">Technology</p>
-                </div>
-                <div class="partner-item">
-                    <h3 class="partner-name">Waystone</h3>
-                    <p class="partner-role">Compliance</p>
-                </div>
-                <div class="partner-item">
-                    <h3 class="partner-name">Tier-1 Lebanese Law Firms</h3>
-                    <p class="partner-role">Legal</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA SECTION -->
-        <section class="cta-section">
-            <div class="cta-buttons">
-                <a href="#" class="cta-button cta-primary">
-                    <i class="fas fa-user-plus"></i> Join the Waitlist
-                    <span class="tooltip">Apply for Priority Access</span>
-                </a>
-                <a href="./business-plan/" class="cta-button cta-secondary">
-                    <i class="fas fa-chart-line"></i> View Pitch Deck
-                    <span class="tooltip">See the $150 Billion Opportunity</span>
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>Design based on <a href="https://html5up.net/aerial" target="_blank">Aerial</a> by HTML5 UP |
-        Licensed under <a href="https://html5up.net/license" target="_blank">CCA 3.0</a> |
-        Modified for Token Lebnani</p>
-    </footer>
-
-    <script>
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Add subtle animation to process steps on scroll
-        const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '0px 0px -100px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
-        // Observe process steps
-        document.querySelectorAll('.process-step').forEach((step, index) => {
-            step.style.opacity = '0';
-            step.style.transform = 'translateY(20px)';
-            step.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
-            observer.observe(step);
-        });
-    </script>
+    </div>
 </body>
 </html>
