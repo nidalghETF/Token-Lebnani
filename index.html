@@ -39,7 +39,7 @@
             background: rgba(10, 25, 47, 0.85);
             backdrop-filter: blur(5px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 15px 30px;
+            padding: 10px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -49,33 +49,12 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 15px;
         }
         
         .top-logo {
-            width: 50px;
-            height: auto;
+            height: 60px;
+            width: auto;
             filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
-        }
-        
-        .header-brand {
-            font-family: 'Cinzel', serif;
-            color: #D4AF37;
-        }
-        
-        .header-name {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 0;
-            letter-spacing: 1.2px;
-        }
-        
-        .header-tagline {
-            font-size: 0.8rem;
-            font-style: italic;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: 2px;
-            letter-spacing: 0.8px;
         }
         
         .nav-links {
@@ -104,7 +83,7 @@
         
         /* ===== MAIN CONTENT ===== */
         .main-content {
-            margin-top: 100px;
+            margin-top: 80px;
             padding: 40px 20px;
             max-width: 1200px;
             margin-left: auto;
@@ -406,15 +385,16 @@
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 768px) {
             .site-header {
-                padding: 12px 15px;
+                padding: 10px 15px;
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
             }
             
             .nav-links {
                 width: 100%;
                 margin-top: 15px;
-                gap: 15px;
+                gap: 10px;
+                justify-content: center;
             }
             
             .nav-link {
@@ -423,7 +403,7 @@
             }
             
             .main-content {
-                margin-top: 140px;
+                margin-top: 120px;
                 padding: 20px 15px;
             }
             
@@ -467,10 +447,6 @@
     <header class="site-header">
         <div class="logo-container">
             <img src="./Blue logo.png" alt="Token Lebnani Logo" class="top-logo">
-            <div class="header-brand">
-                <h1 class="header-name">TOKEN LEBNANI</h1>
-                <p class="header-tagline">A Regulated Path to Fractional Real-Estate</p>
-            </div>
         </div>
         <nav class="nav-links">
             <a href="./business-plan/" class="nav-link"><i class="fas fa-file-alt"></i> Business Plan</a>
@@ -593,19 +569,11 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 100,
+                        top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
                 }
             });
-        });
-        
-        // Background animation speed adjustment
-        let speed = 80;
-        document.addEventListener('wheel', (e) => {
-            if (e.deltaY > 0) speed = Math.min(speed + 5, 150);
-            else speed = Math.max(speed - 5, 40);
-            document.body.style.animationDuration = speed + 's';
         });
         
         // Add subtle animation to process steps on scroll
