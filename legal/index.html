@@ -257,85 +257,80 @@
 
     <main class="main-content">
         <header class="document-header">
-            <h1 class="document-title">Legal Framework</h1>
+            <h1 class="document-title">Legal & Technical Framework</h1>
             <p class="document-subtitle">Compliance Architecture for Cross-Border Real Estate Tokenization</p>
-            <p class="document-meta">Published: December 11, 2025</p>
         </header>
 
         <section class="section">
-            <h2 class="section-title">I. ADGM Regulatory Framework</h2>
+            <h2 class="section-title">1. THE TECHNICAL ARCHITECTURE (DIGISHARES & SMART CONTRACTS)</h2>
 
-            <h3 class="subsection-title">Regulatory Sandbox Authorization</h3>
-            <p class="content-text">Token-Lebnani operates under the ADGM Financial Services Regulatory Authority (FSRA) Regulatory Laboratory (RegLab), authorized to issue tokens representing fractional ownership in Lebanese real estate SPVs. The structure is fully aligned with ADGM’s December 2025 guidance on Real-World Asset (RWA) tokenization, which explicitly endorses title-backed SPV models.</p>
-
-            <h3 class="subsection-title">Permitted Activities (Year 1)</h3>
+            <h3 class="subsection-title">The Technology Layer: Digishares White-Label</h3>
+            <p class="content-text">We utilize the Digishares Standard White-Label solution to ensure institutional-grade security and compliance. This separates the Platform Operator (Token Lebnani) from the Technology Risk.</p>
+            
             <ul class="content-list">
-                <li>Primary issuance of transfer-restricted tokens (ERC-1404) representing shares in Lebanese SPVs</li>
-                <li>Onboarding of retail and professional investors (excluding U.S. Persons)</li>
-                <li>Collection of issuance and primary market fees</li>
-                <li>KYC/AML verification and investor suitability assessments</li>
+                <li><strong>Issuance Module:</strong> Handles the creation of the Smart Contracts and the minting of ERC-20 tokens (or equivalent standard).</li>
+                <li><strong>Wallet Integration:</strong> Non-custodial connection (WalletConnect) allowing investors to link MetaMask, Trust Wallet, or Ledger hardware wallets directly to the platform. Token Lebnani never touches user private keys.</li>
+                <li><strong>STO Management:</strong> Automates the reporting and compliance checks required for the Security Token Offering.</li>
+                <li><strong>Dormant Secondary Market:</strong> The Digishares platform includes secondary trading modules, but we will hard-disable this feature in Phase 1 via the Smart Contract (see Lock-Up below).</li>
             </ul>
 
-            <h3 class="subsection-title">Operational Boundaries</h3>
+            <h3 class="subsection-title">The Smart Contract Layer: Programmed Equity</h3>
+            <p class="content-text">The token itself is not just a database entry; it is a Smart Contract on a public blockchain.</p>
+            
             <ul class="content-list">
-                <li>No secondary trading until full MTF licensing (Year 2+)</li>
-                <li>Maximum 100 investors per tokenized property</li>
-                <li>Aggregate AUM cap of USD 5 million during sandbox</li>
-                <li>No custody of client assets; investors retain self-custody</li>
+                <li><strong>Lock-Up Mechanism:</strong> A <code>transferEnabled</code> boolean is hard-coded into the contract. For the first 2 years, this function returns <code>false</code>.</li>
+                <li><strong>The Effect:</strong> Even if an investor transfers their tokens to another wallet, the receiving wallet cannot sell or move them. The tokens are "frozen" in the ecosystem until the DAO or Keyholder unlocks them.</li>
+                <li><strong>Dividend Distribution:</strong> The contract includes a <code>distribute</code> function. This allows the SPV's FMC to pay rent revenues in USDT/USDC directly to the token holders' wallets automatically, without Token Lebnani's involvement.</li>
             </ul>
-
-            <div class="validation-box">
-                <strong>Regulatory Confirmation (ADGM, Dec 10, 2025):</strong> ADGM has formally acknowledged that tokenized real estate backed by verified title and SPV equity qualifies for streamlined sandbox onboarding under its RWA pilot program.
-            </div>
         </section>
 
         <section class="section">
-            <h2 class="section-title">II. Lebanese Legal Structure</h2>
+            <h2 class="section-title">2. THE CORPORATE STRUCTURE (THE ASSET LAYER)</h2>
+            <p class="content-text">To ensure perfect risk isolation and legal clarity, we utilize a Multi-Layer Corporate Hierarchy.</p>
 
-            <h3 class="subsection-title">SPV Formation and Ownership</h3>
-            <p class="content-text">Each property is held in a dedicated Lebanese <em>Société à Responsabilité Limitée</em> (S.à.R.L.), a legal entity recognized under Lebanese Commercial Companies Law (Law No. 64/1967). The SPV serves solely as a passive title-holding vehicle with no commercial activity, bank accounts, or operational functions.</p>
-
-            <h3 class="subsection-title">Title Transfer Process</h3>
+            <h3 class="subsection-title">Layer 1: The ADGM Holding Company</h3>
             <ul class="content-list">
-                <li>Property owner executes a notarized deed transferring title to the SPV</li>
-                <li>Deed is registered with the Lebanese Land Registry</li>
-                <li>Statutory 6% transfer tax is paid to the Ministry of Finance</li>
+                <li><strong>Entity:</strong> Token Lebnani (LTD).</li>
+                <li><strong>Role:</strong> The Platform Operator and License Holder.</li>
+                <li><strong>Domicile:</strong> ADGM, Al Maryah Island.</li>
+                <li><strong>Function:</strong> Holds the IP, runs the Digishares platform interface, manages compliance, and holds the Cat 4 License.</li>
+                <li><strong>Risk:</strong> It holds zero assets. If the platform fails, the assets are safe.</li>
             </ul>
 
-            <h3 class="subsection-title">Beneficial Ownership</h3>
-            <p class="content-text">Token holders collectively own 100% of the SPV’s shares. Token-Lebnani holds no equity, voting rights, or control over the SPV or underlying asset. All major decisions require token-holder approval via the ADGM-hosted platform.</p>
+            <h3 class="subsection-title">Layer 2: The Asset SPV (Special Purpose Vehicle)</h3>
+            <ul class="content-list">
+                <li><strong>Entity:</strong> "Property Alpha SPV LLC" (Located in Lebanon).</li>
+                <li><strong>Role:</strong> The legal owner of the physical property.</li>
+                <li><strong>Structure:</strong> The SPV is established specifically to hold title to one building (e.g., a 10-unit apartment block in Beirut).</li>
+                <li><strong>Ownership:</strong> Token Lebnani (Holding Company) does not own the SPV. The Investors (Token Holders) own the SPV collectively.</li>
+                <li><strong>Why it matters:</strong> If Building A has structural issues or lawsuits, the liability dies with that SPV. It cannot bleed into the Holding Company or the SPV for Building B.</li>
+            </ul>
 
-            <div class="validation-box">
-                <strong>Lebanese Central Bank Clarification (Dec 9, 2025):</strong> Foreign ownership of Lebanese real estate through locally incorporated SPVs is legally permissible without Central Bank approval, provided the SPV is a Lebanese legal entity and no LBP or Lebanese banking channels are used.
-            </div>
-
-            <h3 class="subsection-title">Zero Lebanese Banking Model</h3>
-            <p class="content-text">Token-Lebnani maintains no Lebanese bank accounts and conducts no transactions in Lebanese Pounds (LBP). A licensed Lebanese facility management contractor—funded in USD from the investor pool—handles all LBP-denominated obligations (taxes, utilities) on behalf of the SPV. This isolates the platform from currency, banking, and capital control risks.</p>
-
-            <div class="caution-box">
-                <strong>Due Diligence Requirement:</strong> A mandatory legal opinion from a Lebanese-licensed attorney must confirm clear title, transfer validity, and absence of encumbrances prior to each tokenization.
-            </div>
+            <h3 class="subsection-title">Layer 3: The Facilities Management Company (FMC)</h3>
+            <ul class="content-list">
+                <li><strong>Entity:</strong> Independent Third-Party Contractor.</li>
+                <li><strong>Role:</strong> Property Management.</li>
+                <li><strong>Function:</strong> They collect rent, fix elevators, manage tenants, and pay utility bills.</li>
+                <li><strong>The Cash Flow:</strong> Rent is paid into the SPV bank account. The FMC takes their fee, and the Net Operating Income (NOI) is distributed to token holders.</li>
+                <li><strong>Separation:</strong> Token Lebnani (You) does not manage toilets or chase tenants. We outsource this operational headache to professionals to ensure the asset retains value.</li>
+            </ul>
         </section>
 
         <section class="section">
-            <h2 class="section-title">III. Cross-Jurisdictional Compliance</h2>
+            <h2 class="section-title">3. THE LEGAL CONTRACT LAYER</h2>
+            <p class="content-text">The Smart Contract defines the tech rights, but the Token Purchase Agreement (TPA) defines the legal rights. This is the "Other Contract" you must have.</p>
 
-            <h3 class="subsection-title">Governing Law & Dispute Resolution</h3>
+            <h3 class="subsection-title">The Token Purchase Agreement (TPA)</h3>
+            <p class="content-text">Before an investor can buy a token, they must sign/click-accept the TPA. This is a digital contract governed by ADGM Law.</p>
+            
+            <p class="content-text"><strong>Key Clauses:</strong></p>
             <ul class="content-list">
-                <li><strong>Platform operations, token issuance, and investor agreements:</strong> Governed by ADGM law; disputes resolved in ADGM courts.</li>
-                <li><strong>Property title and SPV formation:</strong> Governed by Lebanese law; disputes resolved in Lebanese courts.</li>
+                <li><strong>Representation:</strong> The investor confirms they are a "Professional Investor" or "High Net Worth Individual" and understand the illiquid nature of the asset.</li>
+                <li><strong>Enforceability:</strong> The investor acknowledges that the Token represents a contractual right to the profits of the Lebanese SPV, as per Lebanese Law.</li>
+                <li><strong>Waiver of Liability:</strong> The investor waives liability against Token Lebnani for property-specific issues (e.g., a tenant defaults, a pipe bursts). Their recourse is solely against the SPV assets.</li>
+                <li><strong>Smart Contract Reference:</strong> The TPA explicitly states that the Lock-Up and Dividend functions in the Smart Contract are the mechanical execution of these legal rights.</li>
             </ul>
-
-            <h3 class="subsection-title">Tax Treatment</h3>
-            <p class="content-text">The SPV is subject to Lebanese property and corporate taxation. Token-Lebnani incurs no Lebanese tax liability, as it has no ownership, economic interest, or operational presence in Lebanon. All tax obligations are discharged by the facility management contractor in the SPV’s name.</p>
-
-            <h3 class="subsection-title">Exit to Full Licensing</h3>
-            <p class="content-text">Upon successful sandbox graduation (Month 18–24), Token-Lebnani will apply for a full ADGM Category 3D license to operate a Multilateral Trading Facility (MTF), enabling regulated secondary trading on ADGM-licensed venues such as RealEstate.Exchange.</p>
         </section>
-
-        <p class="footnote">
-            This document constitutes the definitive legal framework for Token-Lebnani as of December 11, 2025. It reflects current regulatory positions in ADGM and Lebanon and is intended for investor and operational guidance. Token-Lebnani is a platform facilitator only; tokens represent shares in Lebanese SPVs and confer no ownership interest in Token-Lebnani or direct title to real estate.
-        </p>
     </main>
 </body>
 </html>
