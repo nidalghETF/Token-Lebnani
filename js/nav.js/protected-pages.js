@@ -1,7 +1,7 @@
 // Passwords are stored as Base64 hashes (not secure but sufficient for basic protection)
 // To generate a hash: btoa("your_password") in browser console
 const protectedPages = {
-    "business-plan": "Z29sZGVuZ29vc2U=" // Example hash for "goldengoose"
+    "business-plan": "Token" // Example hash for "goldengoose"
 };
 
 document.addEventListener('DOMContentLoaded', function() {
