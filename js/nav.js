@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { text: "Home", icon: "fa-home", href: "../" },
         { text: "Buiness Plan", icon: "fa-plan", href: "../business-plan/" },
         { text: "Mindmap", icon: "fa-project-diagram", href: "../mindmap/" },
-        { text: "Go To Market", icon: "fa-chart-line", href: "../whitepaper/" }, // Renamed from Whitepaper
+        { text: "Go To Market", icon: "fa-chart-line", href: "../Go to Market/" },
         { text: "Legal", icon: "fa-gavel", href: "../legal/" },
         { text: "Pathway", icon: "fa-road", href: "../pathway/" }
         // Add or remove items here as needed
