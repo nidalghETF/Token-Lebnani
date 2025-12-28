@@ -6,11 +6,7 @@
     const headerHTML = `
         <header class="site-header">
             <div class="logo-container">
-                <img src="../images/logo.png" alt="Token Lebnani Logo" class="logo-img">
-                <div class="brand-text">
-                    <h1 class="brand-name">TOKEN LEBNANI</h1>
-                    <p class="brand-tagline">A Regulated Path to Fractional Real-Estate</p>
-                </div>
+                <img src="../images/logo.png" alt="Token Lebnani Logo" class="logo-img">                
             </div>
             <nav class="nav-links" id="dynamic-navigation"></nav>
         </header>
