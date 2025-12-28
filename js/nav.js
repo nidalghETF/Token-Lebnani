@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Define your navigation items here (easy to update later)
     const navItems = [
         { text: "Home", icon: "fa-home", href: "../" },
-        { text: "Buiness Plan", icon: "fa-plan", href: "../Business-plan/" },
+        { text: "Buiness Plan", icon: "fa-plan", href: "../business-plan/" },
         { text: "Mindmap", icon: "fa-project-diagram", href: "../mindmap/" },
         { text: "Go To Market", icon: "fa-chart-line", href: "../whitepaper/" }, // Renamed from Whitepaper
         { text: "Legal", icon: "fa-gavel", href: "../legal/" },
