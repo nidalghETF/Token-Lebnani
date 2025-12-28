@@ -4,53 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Token Lebnani - Business Plan</title>
+    
+    <!-- External stylesheet ONLY -->
     <link rel="stylesheet" href="../css/styles.css">
-<script src="../js/header.js"></script>
-<script src="../js/protected-pages.js"></script>
-    <style>
-        /* ===== BASE THEME (Matching Homepage) ===== */
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            font-family: 'Cormorant Garamond', 'Times New Roman', serif;
-            background: #0a192f !important;
-            color: rgba(255, 255, 255, 0.9) !important;
-        }
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0a192f url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230a192f"/><path d="M0 50 Q 50 0 100 50 T 200 50 T 300 50 T 400 50 T 500 50" stroke="%23D4AF37" stroke-width="0.5" fill="none"/></svg>') bottom left repeat-x !important;
-            background-size: 1500px auto !important;
-            animation: bgScroll 80s linear infinite !important;
-            z-index: -2;
-        }
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7) !important;
-            z-index: -1;
-        }
-        @keyframes bgScroll {
-            0% { background-position: 0 0; }
-            100% { background-position: -3000px 0; }
-        }
-        .main-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 1;
-        }        
+    
+    <!-- Scripts -->
+    <script src="../js/header.js"></script>
+    <script src="../js/protected-pages.js"></script>
+</head>
+<body>
+    <!-- Header is auto-injected by header.js -->
+    
+    <div class="main-container">
         /* ===== TOGGLE HEADERS ===== */
         .toggle-header {
             text-align: center;
