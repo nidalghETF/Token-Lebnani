@@ -55,27 +55,12 @@ body::after {
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 1px;
 }
 .logo-img {
     width: 250px;
     height: auto;
     filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
-}
-.brand-name {
-    font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #D4AF37;
-    margin: 0;
-    letter-spacing: 1.2px;
-}
-.brand-tagline {
-    font-size: 0.8rem;
-    font-style: italic;
-    color: rgba(255, 255, 255, 0.7);
-    margin-top: 4px;
-    letter-spacing: 0.8px;
 }
 .nav-links {
     display: flex;
@@ -100,4 +85,5 @@ body::after {
     background: rgba(212, 175, 55, 0.15);
 }
 .nav-link i { font-size: 0.95rem; }
+
 
