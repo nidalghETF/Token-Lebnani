@@ -1,78 +1,102 @@
-/* ===== HEADER & NAVIGATION ===== */
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 10;
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
-            background: rgba(10, 25, 47, 0.85);
-            backdrop-filter: blur(5px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-        }
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .logo-img {
-            width: 50px;
-            height: auto;
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
-        }
-        .brand-name {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #D4AF37;
-            margin: 0;
-            letter-spacing: 1.2px;
-        }
-        .brand-tagline {
-            font-size: 0.8rem;
-            font-style: italic;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: 4px;
-            letter-spacing: 0.8px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .nav-link {
-            color: #D4AF37;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-        .nav-link:hover {
-            color: white;
-            background: rgba(212, 175, 55, 0.15);
-        }
-        .nav-link i { font-size: 0.95rem; }
-<!-- Themed Navigation Header -->
-    <!-- Header with Navigation -->
-<header class="site-header">
-    <div class="logo-container">
-        <img src="../Blue Logo.png" alt="Token Lebnani Logo" class="logo-img">
-        <div class="brand-text">
-            <h1 class="brand-name">TOKEN LEBNANI</h1>
-            <p class="brand-tagline">A Regulated Path to Fractional Real-Estate</p>
-        </div>
-    </div>
-    <nav class="nav-links" id="dynamic-navigation"></nav>
-</header>
+/* ===== BASE & ANIMATED BACKGROUND ===== */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Cormorant Garamond', serif;
+    background: #0a192f;
+    color: rgba(255, 255, 255, 0.9);
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a192f url('../images/background.png') bottom left repeat-x;
+    background-size: 1500px auto;
+    animation: bgScroll 80s linear infinite;
+    z-index: -2;
+}
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+@keyframes bgScroll {
+    0% { background-position: 0 0; }
+    100% { background-position: -3000px 0; }
+}
 
+/* ===== HEADER & NAVIGATION ===== */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    background: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.logo-img {
+    width: 50px;
+    height: auto;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+}
+.brand-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #D4AF37;
+    margin: 0;
+    letter-spacing: 1.2px;
+}
+.brand-tagline {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 4px;
+    letter-spacing: 0.8px;
+}
+.nav-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.nav-link {
+    color: #D4AF37;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+.nav-link:hover {
+    color: white;
+    background: rgba(212, 175, 55, 0.15);
+}
+.nav-link i { font-size: 0.95rem; }
