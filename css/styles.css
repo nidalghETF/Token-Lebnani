@@ -35,22 +35,85 @@ body::after {
     100% { background-position: -3000px 0; }
 }
 
-/* ===== HEADER & NAVIGATION ===== */
-.site-header {
+/* ===== HEADER & NAVIGATION (HIGH SPECIFICITY) ===== */
+body > header.site-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 10;
+    z-index: 1000;
     padding: 8px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 15px;
-    background: rgba(10, 25, 47, 0.85);
-    backdrop-filter: blur(5px);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    background: rgba(10, 25, 47, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body > header.site-header .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+body > header.site-header .logo-img {
+    width: 250px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: block;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+
+body > header.site-header .nav-links {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+body > header.site-header .nav-link {
+    color: #D4AF37;
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+}
+
+body > header.site-header .nav-link:hover {
+    color: white;
+    background: rgba(212, 175, 55, 0.25);
+    transform: translateY(-2px);
+}
+
+body > header.site-header .nav-link i {
+    font-size: 1.05rem;
+}
+
+/* Ensure content doesn't hide behind fixed header */
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+    margin-top: 100px; /* Increased to accommodate large logo */
 }
 .logo-container {
     display: flex;
@@ -330,3 +393,4 @@ body::after {
 .nav-link i {
     font-size: 0.95rem !important;
 }
+
