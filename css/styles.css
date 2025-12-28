@@ -58,7 +58,7 @@ body::after {
     gap: 12px;
 }
 .logo-img {
-    width: 50px;
+    width: 250px;
     height: auto;
     filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
 }
@@ -100,3 +100,4 @@ body::after {
     background: rgba(212, 175, 55, 0.15);
 }
 .nav-link i { font-size: 0.95rem; }
+
