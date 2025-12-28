@@ -1,8 +1,8 @@
 // js/header.js
-function injectHeader() {
-    // Only inject if site-header doesn't already exist
+(function() {
+    // Prevent duplicate injection
     if (document.querySelector('.site-header')) return;
-    
+
     const headerHTML = `
         <header class="site-header">
             <div class="logo-container">
@@ -15,24 +15,13 @@ function injectHeader() {
             <nav class="nav-links" id="dynamic-navigation"></nav>
         </header>
     `;
-    
-    // Insert header at top of body
+
+    // Inject at top of body
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
-    
-    // Load navigation after header is added
-    loadScript('../js/nav.js');
-}
 
-function loadScript(src) {
-    if (document.querySelector(`script[src="${src}"]`)) return;
+    // Load navigation script dynamically
     const script = document.createElement('script');
-    script.src = src;
+    script.src = '../js/nav.js';
+    script.defer = true;
     document.head.appendChild(script);
-}
-
-// Run when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', injectHeader);
-} else {
-    injectHeader();
-}
+})();
