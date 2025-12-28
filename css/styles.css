@@ -100,3 +100,170 @@ body::after {
     z-index: 1;
     margin-top: 80px; /* Prevent content from hiding under fixed header */
 }
+
+/* ===== TOGGLE HEADERS (for Business Plan Page) ===== */
+.toggle-header {
+    text-align: center;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.toggle-btn {
+    background: rgba(212, 175, 55, 0.15);
+    color: #D4AF37;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 10px 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 220px;
+}
+.toggle-btn:hover, .toggle-btn.active {
+    background: rgba(212, 175, 55, 0.3);
+    color: white;
+}
+
+/* ===== DOCUMENT CONTAINER ===== */
+.document-container {
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.03) 0%,
+        rgba(212, 175, 55, 0.03) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+    padding: 50px;
+    margin-bottom: 50px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+.content-section {
+    display: none;
+}
+.content-section.active {
+    display: block;
+    animation: fadeInUp 0.6s ease-out;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== STYLES FOR BOTH DOCUMENTS ===== */
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: #D4AF37;
+    margin: 0 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    font-weight: 600;
+}
+.section-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    color: rgba(212, 175, 55, 0.9);
+    margin: 25px 0 15px 0;
+    font-weight: 500;
+}
+.section-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+.section-list {
+    color: rgba(255, 255, 255, 0.9);
+    padding-left: 20px;
+    margin: 15px 0;
+}
+.section-list li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    position: relative;
+}
+.section-list li::before {
+    content: '•';
+    color: #D4AF37;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    font-size: 1.2em;
+}
+.section-list strong {
+    color: #D4AF37;
+    font-weight: 600;
+}
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.data-table th {
+    background: rgba(212, 175, 55, 0.2);
+    color: #D4AF37;
+    font-weight: 600;
+    padding: 18px 20px;
+    text-align: left;
+    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+}
+.data-table td {
+    color: rgba(255, 255, 255, 0.9);
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.data-table tr:hover {
+    background: rgba(212, 175, 55, 0.05);
+}
+.info-box {
+    background: rgba(212, 175, 55, 0.08);
+    border-left: 4px solid #D4AF37;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 0 6px 6px 0;
+}
+.note-box {
+    background: rgba(212, 175, 55, 0.05);
+    border-left: 4px solid rgba(212, 175, 55, 0.6);
+    padding: 18px;
+    margin: 20px 0;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+}
+.document-footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+}
+.site-footer {
+    text-align: center;
+    padding: 25px 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+.site-footer a {
+    color: #D4AF37;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.site-footer a:hover {
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .toggle-header { gap: 15px; }
+    .toggle-btn { font-size: 1rem; padding: 8px 16px; min-width: 160px; }
+    .document-container { padding: 20px; }
+}
