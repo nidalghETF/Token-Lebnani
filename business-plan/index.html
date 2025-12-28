@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Token Lebnani - Business Plan</title>
-    
-    <!-- External stylesheet ONLY -->
-    <link rel="stylesheet" href="../css/styles.css">    
-    
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header is auto-injected by header.js -->
@@ -626,7 +625,52 @@
             link.addEventListener('mouseenter', () => link.style.transform = 'translateY(-2px)');
             link.addEventListener('mouseleave', () => link.style.transform = 'translateY(0)');
         });
-    </script>
+    <!-- Scripts at bottom to ensure header injects correctly -->
+    <script src="../js/header.js"></script>
     <script src="../js/nav.js"></script>
+
+    <div class="main-container">
+        <!-- Toggle Headers -->
+        <div class="toggle-header">
+            <button class="toggle-btn active" data-target="value-prop">Value Proposition (The Pitch)</button>
+            <button class="toggle-btn" data-target="business-plan">Professional Business Plan</button>
+        </div>
+
+        <!-- Document Container -->
+        <main class="document-container">
+            <!-- VALUE PROPOSITION SECTION -->
+            <div id="value-prop" class="content-section active">
+                <!-- Your full Value Prop content here (from your file) -->
+                <!-- ... (all the sections you already have) ... -->
+            </div>
+
+            <!-- BUSINESS PLAN SECTION -->
+            <div id="business-plan" class="content-section">
+                <!-- Your full Business Plan content here (from your file) -->
+                <!-- ... (all the sections you already have) ... -->
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <p>Design based on <a href="https://html5up.net/aerial" target="_blank">Aerial</a> by HTML5 UP |
+            Licensed under <a href="https://html5up.net/license" target="_blank">CCA 3.0</a> |
+            Modified for Token Lebnani</p>
+        </footer>
+    </div>
+
+    <!-- Toggle JS (keep this) -->
+    <script>
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.content-section').forEach(sec => {
+                    sec.classList.remove('active');
+                });
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
