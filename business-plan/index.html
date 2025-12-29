@@ -60,11 +60,13 @@
         
         /* ===== MOBILE OPTIMIZATION ===== */
         @media (max-width: 768px) {
-            /* Compact header for mobile */
-            .site-header {
-                height: 60px !important;
-                padding: 8px 15px !important;
-            }
+    /* Target the nav-links inside your site header specifically */
+    .site-header .nav-links {
+        display: flex !important;
+        overflow-x: auto !important;
+        /* ... keep the rest of your styles ... */
+    }
+}
             
             .logo-container {
                 height: 44px !important;
