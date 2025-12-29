@@ -11,7 +11,8 @@
     <style>
         /* ===== DYNAMIC HEADER ADJUSTMENT ===== */
         :root {
-            --header-height: 100px; /* Default, will be updated by JS */
+            --header-height: 80px; /* Default, will be updated by JS */
+            --toggle-height: 60px; /* Height of toggle container */
             --primary-color: #D4AF37;
             --secondary-color: #D4AF37;
             --accent-color: #D4AF37;
@@ -19,6 +20,35 @@
             --light-bg: rgba(0, 0, 0, 0.4);
             --warning-color: #f6ad55;
             --success-color: #48bb78;
+        }
+        
+        /* ===== FIXED HEADER FOR MOBILE ===== */
+        @media (max-width: 768px) {
+            .site-header {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 60px !important;
+                padding: 8px 15px !important;
+                background: #0a192f !important;
+                border-bottom: 1px solid var(--border-color) !important;
+                z-index: 1000 !important;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            }
+            
+            .logo-container {
+                height: 44px !important;
+            }
+            
+            .logo-img {
+                height: 40px !important;
+                width: auto !important;
+            }
+            
+            .nav-links {
+                display: none !important; /* Hide nav on mobile, show hamburger if needed */
+            }
         }
         
         /* ===== BASE & ANIMATED BACKGROUND ===== */
@@ -58,28 +88,20 @@
             100% { background-position: -3000px 0; }
         }
         
-        /* ===== MAIN CONTENT AREA WITH DYNAMIC HEADER ADJUSTMENT ===== */
-        .main-content {
-            padding: 20px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            color: white;
-            transition: margin-top 0.3s ease;
-        }
-        
-        /* ===== TOGGLE SWITCH CONTAINER ===== */
+        /* ===== FIXED TOGGLE CONTAINER ===== */
         .toggle-container {
-            position: sticky;
-            top: calc(var(--header-height) + 10px);
-            z-index: 100;
-            display: flex;
-            justify-content: center;
-            margin: 20px auto 40px auto;
-            background: rgba(10, 25, 47, 0.9);
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.97);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
             padding: 10px 0;
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         .section-toggle {
@@ -126,6 +148,17 @@
         
         .toggle-slider.right {
             transform: translateX(calc(100% + 6px));
+        }
+        
+        /* ===== MAIN CONTENT AREA ===== */
+        .main-content {
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         /* ===== CONTENT SECTIONS ===== */
@@ -363,88 +396,125 @@
             transform: rotate(180deg);
         }
         
-        /* ===== RESPONSIVE DESIGN ===== */
+        /* ===== RESPONSIVE DESIGN - DEBUGGED ===== */
         @media (max-width: 768px) {
-            .site-header {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 12px;
-            }
+            /* Fixed header already set above */
             
-            .nav-links {
-                width: 100%;
-                justify-content: flex-start;
-                overflow-x: auto;
-                padding: 5px 0;
-            }
-            
-            .brand-name { 
-                font-size: 1.5rem; 
-            }
-            
-            .document-header h1 { 
-                font-size: 2.2em; 
-            }
-            
-            .metadata { 
-                flex-direction: column; 
-                gap: 10px; 
-            }
-            
-            .main-content { 
-                padding: 15px;
-            }
-            
+            /* Ensure toggle is visible and properly positioned */
             .toggle-container {
-                position: static;
-                margin-top: 10px;
+                position: fixed !important;
+                top: 60px !important; /* Below fixed header */
+                height: 50px !important;
+                padding: 5px 0 !important;
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
             }
             
             .section-toggle {
-                flex-direction: column;
-                border-radius: 8px;
-                padding: 0;
+                flex-direction: row !important;
+                width: 95% !important;
+                margin: 0 auto !important;
+                display: flex !important;
             }
             
             .toggle-option {
-                padding: 15px;
-                border-bottom: 1px solid var(--border-color);
-            }
-            
-            .toggle-option:last-child {
-                border-bottom: none;
+                padding: 10px 15px !important;
+                font-size: 0.9em !important;
+                display: block !important;
+                visibility: visible !important;
             }
             
             .toggle-slider {
-                display: none;
+                display: block !important;
+                visibility: visible !important;
+            }
+            
+            /* Adjust content spacing for fixed elements */
+            .main-content {
+                margin-top: 120px !important; /* header + toggle height */
+                padding: 15px !important;
+            }
+            
+            .document-header h1 { 
+                font-size: 2.2em !important;
+                margin-top: 10px !important;
+            }
+            
+            .metadata { 
+                flex-direction: column !important; 
+                gap: 10px !important;
             }
             
             h2 {
-                font-size: 1.6em;
+                font-size: 1.6em !important;
+                margin-top: 30px !important;
             }
             
             h3 {
-                font-size: 1.3em;
+                font-size: 1.3em !important;
             }
             
             .highlight-box, .key-point, .financial-highlight, .risk-highlight {
-                padding: 15px;
-                margin: 20px 0;
+                padding: 15px !important;
+                margin: 20px 0 !important;
+            }
+            
+            /* Fix for very small screens */
+            @media (max-width: 480px) {
+                .toggle-container {
+                    top: 60px !important;
+                    height: 45px !important;
+                }
+                
+                .section-toggle {
+                    width: 98% !important;
+                }
+                
+                .toggle-option {
+                    padding: 8px 12px !important;
+                    font-size: 0.85em !important;
+                }
+                
+                .main-content {
+                    margin-top: 115px !important;
+                }
+                
+                .document-header h1 {
+                    font-size: 1.8em !important;
+                }
+                
+                .document-subtitle {
+                    font-size: 1.1em !important;
+                }
+            }
+            
+            /* Fix for landscape mode */
+            @media (max-height: 500px) and (orientation: landscape) {
+                .site-header {
+                    height: 50px !important;
+                    padding: 5px 15px !important;
+                }
+                
+                .toggle-container {
+                    top: 50px !important;
+                    height: 40px !important;
+                }
+                
+                .main-content {
+                    margin-top: 100px !important;
+                }
             }
         }
         
-        @media (max-width: 480px) {
-            .document-header h1 {
-                font-size: 1.8em;
+        /* Desktop adjustments */
+        @media (min-width: 769px) {
+            .toggle-container {
+                top: var(--header-height);
             }
             
-            .document-subtitle {
-                font-size: 1.1em;
-            }
-            
-            .toggle-option {
-                font-size: 0.9em;
-                padding: 12px;
+            .main-content {
+                margin-top: calc(var(--header-height) + var(--toggle-height) + 20px);
             }
         }
     </style>
@@ -452,7 +522,7 @@
 <body>
     <script src="../js/header.js"></script>
 
-    <!-- Toggle Container (Sticky below header) -->
+    <!-- Fixed Toggle Container -->
     <div class="toggle-container">
         <div class="section-toggle" id="sectionToggle">
             <div class="toggle-option active" data-section="business-plan">Business Plan</div>
@@ -1068,14 +1138,26 @@
         // Dynamic Header Height Adjustment
         function updateHeaderHeight() {
             const header = document.querySelector('.site-header');
+            const toggleContainer = document.querySelector('.toggle-container');
+            const mainContent = document.querySelector('.main-content');
+            
             if (header) {
                 const headerHeight = header.offsetHeight;
-                document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+                const toggleHeight = toggleContainer ? toggleContainer.offsetHeight : 60;
                 
-                // Update main content margin
-                const mainContent = document.querySelector('.main-content');
-                if (mainContent) {
-                    mainContent.style.marginTop = `${headerHeight + 60}px`; // Header + toggle container
+                // Update CSS variables
+                document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+                document.documentElement.style.setProperty('--toggle-height', `${toggleHeight}px`);
+                
+                // Update toggle position
+                if (toggleContainer) {
+                    toggleContainer.style.top = `${headerHeight}px`;
+                }
+                
+                // Update main content margin for desktop
+                if (mainContent && window.innerWidth >= 769) {
+                    const totalHeight = headerHeight + toggleHeight + 20;
+                    mainContent.style.marginTop = `${totalHeight}px`;
                 }
             }
         }
@@ -1088,6 +1170,11 @@
                 'business-plan': document.getElementById('business-plan-section'),
                 'value-proposition': document.getElementById('value-proposition-section')
             };
+            
+            if (!toggleOptions.length || !toggleSlider || !sections['business-plan']) {
+                console.error('Toggle elements not found');
+                return;
+            }
             
             // Initialize active section
             let activeSection = 'business-plan';
@@ -1114,23 +1201,21 @@
                     const currentSection = sections[activeSection];
                     const nextSection = sections[sectionId];
                     
-                    currentSection.classList.remove('active');
-                    setTimeout(() => {
-                        currentSection.style.display = 'none';
-                        nextSection.style.display = 'block';
+                    if (currentSection && nextSection) {
+                        currentSection.classList.remove('active');
                         setTimeout(() => {
-                            nextSection.classList.add('active');
-                        }, 10);
-                    }, 300);
-                    
-                    // Update active section
-                    activeSection = sectionId;
-                    
-                    // Scroll to top of content
-                    document.querySelector('.main-content').scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                            currentSection.style.display = 'none';
+                            nextSection.style.display = 'block';
+                            setTimeout(() => {
+                                nextSection.classList.add('active');
+                                // Update URL hash without page jump
+                                history.replaceState(null, null, `#${sectionId}`);
+                            }, 10);
+                        }, 300);
+                        
+                        // Update active section
+                        activeSection = sectionId;
+                    }
                 });
             });
             
@@ -1145,31 +1230,49 @@
             
             // Auto-expand first expandable section in each section for better UX
             document.querySelectorAll('.content-section.active .expandable-section:first-child')
-                .forEach(section => section.classList.add('active'));
+                .forEach(section => {
+                    if (section) section.classList.add('active');
+                });
+        }
+
+        // Check URL hash on load
+        function checkUrlHash() {
+            if (window.location.hash === '#value-proposition') {
+                const valuePropToggle = document.querySelector('[data-section="value-proposition"]');
+                if (valuePropToggle) {
+                    setTimeout(() => valuePropToggle.click(), 300);
+                }
+            }
         }
 
         // Initialize everything when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
-            // Update header height immediately
+            // Initial header height update
             updateHeaderHeight();
             
-            // Update on window resize (for responsive changes)
-            window.addEventListener('resize', updateHeaderHeight);
-            
-            // Initialize toggle after a small delay to ensure DOM is fully ready
+            // Initialize toggle
             setTimeout(initializeToggle, 100);
             
-            // Check for any hash in URL (for direct linking to sections)
-            if (window.location.hash === '#value-proposition') {
-                const valuePropToggle = document.querySelector('[data-section="value-proposition"]');
-                if (valuePropToggle) {
-                    setTimeout(() => valuePropToggle.click(), 200);
-                }
-            }
+            // Check URL hash
+            checkUrlHash();
+            
+            // Update on window resize
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(updateHeaderHeight, 100);
+            });
+            
+            // Update when images load
+            window.addEventListener('load', function() {
+                updateHeaderHeight();
+                // Re-check after everything loads
+                setTimeout(updateHeaderHeight, 500);
+            });
         });
 
-        // Update header height when images load (logo might load late)
-        window.addEventListener('load', updateHeaderHeight);
+        // Fallback for dynamic content loading
+        setTimeout(updateHeaderHeight, 1000);
     </script>
 </body>
 </html>
