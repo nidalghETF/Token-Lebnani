@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
+        /* ===== DYNAMIC HEADER ADJUSTMENT ===== */
+        :root {
+            --header-height: 100px; /* Default, will be updated by JS */
+            --primary-color: #D4AF37;
+            --secondary-color: #D4AF37;
+            --accent-color: #D4AF37;
+            --border-color: rgba(212, 175, 55, 0.3);
+            --light-bg: rgba(0, 0, 0, 0.4);
+            --warning-color: #f6ad55;
+            --success-color: #48bb78;
+        }
+        
         /* ===== BASE & ANIMATED BACKGROUND ===== */
         html, body {
             margin: 0;
@@ -46,31 +58,34 @@
             100% { background-position: -3000px 0; }
         }
         
-        /* ===== MAIN CONTENT AREA ===== */
+        /* ===== MAIN CONTENT AREA WITH DYNAMIC HEADER ADJUSTMENT ===== */
         .main-content {
-            margin-top: 100px;
             padding: 20px;
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
             color: white;
-        }
-        :root {
-            --primary-color: #D4AF37;
-            --secondary-color: #D4AF37;
-            --accent-color: #D4AF37;
-            --border-color: rgba(212, 175, 55, 0.3);
-            --light-bg: rgba(0, 0, 0, 0.4);
-            --warning-color: #f6ad55;
-            --success-color: #48bb78;
+            transition: margin-top 0.3s ease;
         }
         
-        /* ===== TOGGLE SWITCH ===== */
-        .section-toggle {
+        /* ===== TOGGLE SWITCH CONTAINER ===== */
+        .toggle-container {
+            position: sticky;
+            top: calc(var(--header-height) + 10px);
+            z-index: 100;
             display: flex;
             justify-content: center;
             margin: 20px auto 40px auto;
+            background: rgba(10, 25, 47, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 10px 0;
+        }
+        
+        .section-toggle {
+            display: flex;
             max-width: 500px;
+            width: 90%;
             background: var(--light-bg);
             border-radius: 50px;
             padding: 6px;
@@ -224,6 +239,14 @@
             padding-bottom: 1px;
         }
         
+        blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 20px;
+            margin: 25px 0;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
         .highlight-box {
             background: var(--light-bg);
             border-left: 4px solid var(--accent-color);
@@ -369,15 +392,18 @@
             }
             
             .main-content { 
-                margin-top: 160px; 
                 padding: 15px;
+            }
+            
+            .toggle-container {
+                position: static;
+                margin-top: 10px;
             }
             
             .section-toggle {
                 flex-direction: column;
                 border-radius: 8px;
                 padding: 0;
-                max-width: 300px;
             }
             
             .toggle-option {
@@ -390,7 +416,7 @@
             }
             
             .toggle-slider {
-                display: none; /* Hide slider on mobile */
+                display: none;
             }
             
             h2 {
@@ -426,11 +452,13 @@
 <body>
     <script src="../js/header.js"></script>
 
-    <!-- Section Toggle Switch -->
-    <div class="section-toggle" id="sectionToggle">
-        <div class="toggle-option active" data-section="business-plan">Business Plan 2026</div>
-        <div class="toggle-option" data-section="value-proposition">Value Proposition</div>
-        <div class="toggle-slider"></div>
+    <!-- Toggle Container (Sticky below header) -->
+    <div class="toggle-container">
+        <div class="section-toggle" id="sectionToggle">
+            <div class="toggle-option active" data-section="business-plan">Business Plan</div>
+            <div class="toggle-option" data-section="value-proposition">Value Proposition</div>
+            <div class="toggle-slider"></div>
+        </div>
     </div>
 
     <!-- Main Content Area -->
@@ -449,7 +477,7 @@
             </div>
 
             <section>
-                <h2>1. EXECUTIVE SUMMARY</h2>
+                <h2>EXECUTIVE SUMMARY</h2>
                 <p><strong>Token Lebnani</strong> is a regulated investment vehicle designed to solve the <u>\$150 billion liquidity trap</u> in Lebanese real estate. We act as a bridge, moving illiquid physical assets in Lebanon into the regulated, stable jurisdiction of the <strong>Abu Dhabi Global Market (ADGM)</strong>.</p>
                 
                 <div class="highlight-box">
@@ -462,13 +490,13 @@
                         <li><strong>Market Opportunity:</strong> Unlocking <u>\$150B+</u> in trapped Diaspora wealth.</li>
                         <li><strong>Regulatory Moat:</strong> ADGM-regulated entity with strategic partnerships (Waystone, YazConsult).</li>
                         <li><strong>Strategic Pivot:</strong> Immediate liquidity via ADGM-licensed MTFs (no lock-up periods).</li>
-                        <li><strong>Capital Efficiency:</strong> Lean operational model utilizing 3 FTEs and B2B2C partnerships.</li>
+                        <li><strong>Operational Excellence:</strong> Lean operational model utilizing 3 FTEs and B2B2C partnerships.</li>
                     </ul>
                 </div>
             </section>
 
             <section>
-                <h2>2. MARKET ANALYSIS</h2>
+                <h2>MARKET ANALYSIS</h2>
                 
                 <h3>The Problem: The \$150 Billion Liquidity Trap</h3>
                 <p>The Lebanese Diaspora holds vast wealth, but the home market is frozen due to systemic failures:</p>
@@ -495,28 +523,36 @@
                     <ul>
                         <li><strong>Total Addressable Market (TAM):</strong> Lebanese Diaspora Wealth (<u>\$150B+</u>)</li>
                         <li><strong>Serviceable Market (SAM):</strong> GCC-based Lebanese & Regional HNWIs seeking asset diversification outside of banking sectors</li>
-                        <li><strong>The Gap:</strong> No current platform offers ADGM-regulated, non-custodial access to Lebanese assets with immediate liquidity</li>
+                        <li><strong>The Gap:</strong> No current platform offers ADGM-regulated, non-custodial access to Lebanese assets with immediate liquidity.</li>
                     </ul>
                 </div>
             </section>
 
             <section>
-                <h2>3. THE SOLUTION & PRODUCT</h2>
+                <h2>THE SOLUTION & PRODUCT</h2>
                 
                 <h3>The Regulated Bridge</h3>
                 <p>Token Lebnani is not merely a property marketplace; it is a complex cross-border legal infrastructure project. We convert physical property rights into digital, tradeable security tokens wrapped in the legal certainty of ADGM law.</p>
 
                 <h3>3-Step Fractionalization Process</h3>
-                <ol>
-                    <li><strong>Acquisition:</strong> A property is acquired by a dedicated Lebanese Special Purpose Vehicle (SPV). This ensures risk isolation.</li>
-                    <li><strong>Tokenization:</strong> The ADGM Holding Company issues digital tokens representing the equity of that SPV.</li>
-                    <li><strong>Distribution:</strong> Investors purchase tokens via a secure dashboard, receiving legal rights to the property's income and capital appreciation.</li>
-                </ol>
+                <div class="expandable-section">
+                    <div class="expandable-header">
+                        <h4>Detailed Process Flow</h4>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="expandable-content">
+                        <ol>
+                            <li><strong>Acquisition:</strong> A property is acquired by a dedicated Lebanese Special Purpose Vehicle (SPV). This ensures risk isolation.</li>
+                            <li><strong>Tokenization:</strong> The ADGM Holding Company issues digital tokens representing the equity of that SPV.</li>
+                            <li><strong>Distribution:</strong> Investors purchase tokens via a secure dashboard, receiving legal rights to the property's income and capital appreciation.</li>
+                        </ol>
+                    </div>
+                </div>
 
                 <div class="highlight-box">
                     <h4>Competitive Advantages:</h4>
                     <ul>
-                        <li><strong>Asset-First Model:</strong> The SPV owns the physical property <em>before</em> a single token is minted. Zero counterparty risk compared to synthetic competitors.</li>
+                        <li><strong>Asset-First Model:</strong> The SPV owns the physical property before a single token is minted. Zero counterparty risk compared to synthetic competitors.</li>
                         <li><strong>Immediate Liquidity:</strong> Unlike competitors who impose long lock-ups, our tokens are listed on partner ADGM-licensed MTFs from Day 1.</li>
                         <li><strong>Non-Custodial Security:</strong> Investors hold their own assets in private wallets. We eliminate counterparty risk.</li>
                     </ul>
@@ -524,7 +560,7 @@
             </section>
 
             <section>
-                <h2>4. GO-TO-MARKET STRATEGY (YEAR 1)</h2>
+                <h2>GO-TO-MARKET STRATEGY (YEAR 1)</h2>
                 
                 <h3>The High-Ticket Concierge Model</h3>
                 <p>We deploy a High-Ticket Concierge Model targeting ultra-high-net-worth diaspora and strategic partners.</p>
@@ -532,23 +568,31 @@
                 <div class="financial-highlight">
                     <ul>
                         <li><strong>Average Ticket Size:</strong> <u>\$65,000+</u> (vs. \$50–\$500 industry standard)</li>
-                        <li><strong>Objective:</strong> Secure <u>\$10M USD</u> in committed capital within ADGM's hard cap of 200 end-investors</li>
+                        <li><strong>Objective:</strong> Secure committed capital within the regulatory framework</li>
                     </ul>
                 </div>
 
                 <h3>Dual Acquisition Engine (B2B2C)</h3>
-                <ul>
-                    <li><strong>B2C (Direct Sales):</strong> Direct sales to vetted HNWIs via high-touch "Living Room" meetings in Riyadh, Dubai, and Beirut.</li>
-                    <li><strong>B2B2C (Partnerships):</strong>
+                <div class="expandable-section">
+                    <div class="expandable-header">
+                        <h4>Sales Channel Strategy</h4>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="expandable-content">
                         <ul>
-                            <li>REAs (Lebanon): Exclusive asset listings (90-day lock). Incentive: 1.25% on closed sales.</li>
-                            <li>IWAs (GCC): Independent Wealth Advisors refer pre-qualified clients. Incentive: 1.25% on closed sales.</li>
+                            <li><strong>B2C (Direct Sales):</strong> Direct sales to vetted HNWIs via high-touch "Living Room" meetings in Riyadh, Dubai, and Beirut.</li>
+                            <li><strong>B2B2C (Partnerships):</strong>
+                                <ul>
+                                    <li>REAs (Lebanon): Exclusive asset listings. Incentivized on closed sales.</li>
+                                    <li>IWAs (GCC): Independent Wealth Advisors refer pre-qualified clients. Incentivized on closed sales.</li>
+                                </ul>
+                            </li>
                         </ul>
-                    </li>
-                </ul>
+                    </div>
+                </div>
                 
                 <div class="key-point">
-                    <p><strong>Compliance Firewall:</strong> All partners route clients to TLB's ADGM portal. Partners never handle KYC, funds, or client data.</p>
+                    <p><strong>Compliance Firewall:</strong> All partners route clients to TLB's ADGM portal. Partners never handle KYC, funds, or client data. They serve strictly as marketing conduits.</p>
                 </div>
 
                 <h3>Sales Phases</h3>
@@ -559,7 +603,7 @@
                     </div>
                     <div class="expandable-content">
                         <ol>
-                            <li><strong>Book Building (Months 1–3):</strong> GCC Hunter networks with gatekeepers to secure 50+ soft commitments (\$3M+ LOIs).</li>
+                            <li><strong>Book Building (Months 1–3):</strong> GCC Hunter networks with gatekeepers to secure soft commitments (LOIs) and pre-vetted REA/IWA partners.</li>
                             <li><strong>Private Viewing (Months 4–6):</strong> Exclusive dinners in key cities. Collateral: High-end brochures/videos and ADGM license presentation.</li>
                             <li><strong>White Glove Handoff (Months 6–9):</strong> Client Services Coordinator takes over via WhatsApp/Zoom to handle KYC, Wallet Setup, and TPA Signing.</li>
                         </ol>
@@ -568,7 +612,7 @@
             </section>
 
             <section>
-                <h2>5. REGULATORY & LEGAL STRATEGY</h2>
+                <h2>REGULATORY & LEGAL STRATEGY</h2>
                 
                 <h3>Regulatory Architecture</h3>
                 <p>Token Lebnani is pursuing a capital-efficient regulatory pathway within the ADGM FSRA RegLab Sandbox.</p>
@@ -576,7 +620,7 @@
                 <div class="highlight-box">
                     <ul>
                         <li><strong>Target License:</strong> Category 4 (Arranging Deals in Investments)</li>
-                        <li><strong>Capital Requirement:</strong> \$10,000 USD (vs. \$4M for Custody), allowing lean launch</li>
+                        <li><strong>Capital Efficiency:</strong> Leveraging regulatory frameworks to minimize unnecessary capital burdens while maintaining full compliance</li>
                         <li><strong>Liquidity Strategy:</strong> Secondary liquidity is immediately provided via partnerships with ADGM-licensed MTFs, allowing investors to trade tokens without Token Lebnani incurring Exchange capital costs</li>
                     </ul>
                 </div>
@@ -590,11 +634,21 @@
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </div>
                     <div class="expandable-content">
+                        <h4>Tier-1 Legal Opinion:</h4>
                         <ul>
-                            <li><strong>Tier-1 Legal Opinion:</strong> Confirming the enforceability of the "ADGM SPV owns Lebanese Property" structure</li>
-                            <li><strong>Listing Agreements:</strong> Drafting the framework for listing tokens on MTFs</li>
-                            <li><strong>Cross-Border Enforceability:</strong> Ensuring a token holder in ADGM has legal recourse to underlying assets in Beirut</li>
+                            <li>Confirming the enforceability of the "ADGM SPV owns Lebanese Property" structure.</li>
                         </ul>
+                        
+                        <h4>Listing Agreements:</h4>
+                        <ul>
+                            <li>Drafting the framework for listing tokens on MTFs.</li>
+                        </ul>
+                        
+                        <h4>Cross-Border Enforceability:</h4>
+                        <ul>
+                            <li>Ensuring a token holder in ADGM has legal recourse to underlying assets in Beirut.</li>
+                        </ul>
+                        
                         <p><strong>Key Deliverables:</strong> SPV Incorporation, Token Purchase Agreement (TPA), and Facilities Management Agreements</p>
                     </div>
                 </div>
@@ -603,20 +657,28 @@
                     <h4>Compliance Oversight</h4>
                     <ul>
                         <li><strong>Partner:</strong> Waystone (MLRO)</li>
-                        <li><strong>Role:</strong> Ensures 100% AML/CFT compliance and regulatory "Fit and Proper" status</li>
+                        <li><strong>Role:</strong> Ensures 100% AML/CFT compliance and regulatory "Fit and Proper" status.</li>
                     </ul>
                 </div>
             </section>
 
             <section>
-                <h2>6. OPERATIONAL PLAN</h2>
+                <h2>OPERATIONAL PLAN</h2>
                 
                 <h3>Technology & Infrastructure</h3>
-                <ul>
-                    <li><strong>Technology Partner:</strong> Digishares (Standard White-Label Solution)</li>
-                    <li><strong>Features:</strong> Issuance Platform, Investor Dashboard, Integrated AML/KYC</li>
-                    <li><strong>Operations:</strong> Independent Facilities Management Company (FMC) handles all property maintenance and tenant relations, keeping the SPV passive</li>
-                </ul>
+                <div class="expandable-section">
+                    <div class="expandable-header">
+                        <h4>Technology Stack</h4>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="expandable-content">
+                        <ul>
+                            <li><strong>Technology Partner:</strong> Digishares (Standard White-Label Solution)</li>
+                            <li><strong>Features:</strong> Issuance Platform, Investor Dashboard, Integrated AML/KYC</li>
+                            <li><strong>Operations:</strong> Independent Facilities Management Company (FMC) handles all property maintenance and tenant relations, keeping the SPV passive</li>
+                        </ul>
+                    </div>
+                </div>
 
                 <h3>Organizational Structure</h3>
                 <p>We operate a Lean 3-FTE Core supported by institutional partners.</p>
@@ -639,7 +701,7 @@
 
                 <div class="expandable-section">
                     <div class="expandable-header">
-                        <h4>Operational Execution Team</h4>
+                        <h4>Operational Execution Team:</h4>
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </div>
                     <div class="expandable-content">
@@ -654,41 +716,30 @@
             </section>
 
             <section>
-                <h2>7. BUSINESS MODEL & FINANCIALS</h2>
+                <h2>BUSINESS MODEL & FINANCIALS</h2>
                 
                 <h3>Revenue Streams</h3>
-                <ul>
-                    <li><strong>Issuance Fees:</strong> Percentage of funds raised on primary offerings</li>
-                    <li><strong>Asset Management Fees:</strong> Annual percentage of Net Operating Income (NOI)</li>
-                </ul>
-
-                <div class="financial-highlight">
-                    <h4>Capital Efficiency</h4>
-                    <ul>
-                        <li><strong>Total commissions:</strong> Capped at 1.35% per deal (vs. 3–5% industry average)</li>
-                        <li><strong>Net Cost:</strong> \$0 cost for structuring/taxes — recovered in real-time via embedded token mechanics</li>
-                    </ul>
+                <div class="expandable-section">
+                    <div class="expandable-header">
+                        <h4>Revenue Model Details</h4>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="expandable-content">
+                        <ul>
+                            <li><strong>Issuance Fees:</strong> Percentage of funds raised on primary offerings</li>
+                            <li><strong>Asset Management Fees:</strong> Annual percentage of Net Operating Income (NOI)</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <h3>The Ask: Seed Round</h3>
-                <div class="highlight-box">
-                    <ul>
-                        <li><strong>Seeking:</strong> <u>\$1,000,000</u> (Seed Round)</li>
-                        <li><strong>Condition:</strong> Contingent upon receipt of ADGM Sandbox Invitation</li>
-                    </ul>
-                    
-                    <h4>Allocation of Funds:</h4>
-                    <ul>
-                        <li><strong>40% (\$400k):</strong> Licensing & Legal Costs (ADGM, Lebanese Opinions, YazConsult)</li>
-                        <li><strong>30% (\$300k):</strong> Talent Acquisition (Full-time CEO, CTO, Core Team)</li>
-                        <li><strong>20% (\$200k):</strong> Technology Integration (Digishares Customization)</li>
-                        <li><strong>10% (\$100k):</strong> Marketing & Business Development</li>
-                    </ul>
+                <div class="financial-highlight">
+                    <h4>Operational Efficiency</h4>
+                    <p><strong>Token Lebnani operates a Net Zero Cost Model for the asset onboarding phases.</strong> While establishing the legal structures and SPVs requires upfront capital allocation, these costs are treated as a bridge and are fully recoverable from the service fees of the first closed deals. This ensures that the operational launch imposes zero long-term debt or sunk costs on the company.</p>
                 </div>
             </section>
 
             <section>
-                <h2>8. ROADMAP</h2>
+                <h2>ROADMAP</h2>
                 
                 <div class="expandable-section">
                     <div class="expandable-header">
@@ -699,7 +750,7 @@
                         <ul>
                             <li>ADGM Sandbox Entry</li>
                             <li>Launch of MVP (Lebanese Real Estate)</li>
-                            <li>Focus: Compliance, Trust, and securing \$10M in commitments</li>
+                            <li>Focus: Compliance, Trust, and securing commitments via the High-Ticket Concierge Model</li>
                             <li>Enforcement of Primary Issuance standards</li>
                         </ul>
                     </div>
@@ -714,6 +765,14 @@
                         <ul>
                             <li><strong>Horizontal:</strong> Entry into Egypt (Mega-market with similar liquidity issues)</li>
                             <li><strong>Vertical:</strong> Tokenizing SME Equity</li>
+                        </ul>
+                        
+                        <div class="key-point">
+                            <h4>Strategic Pivot: Opening the "Flood Gates"</h4>
+                            <p>Following the establishment of the institutional-grade platform and high-net-worth base, Year 2 will see the opening of the platform to a broader investor base, lowering entry barriers while maintaining compliance.</p>
+                        </div>
+                        
+                        <ul>
                             <li><strong>Operations:</strong> Scaling the concierge team and partner network</li>
                         </ul>
                     </div>
@@ -735,7 +794,7 @@
             </section>
 
             <section>
-                <h2>9. RISK MANAGEMENT</h2>
+                <h2>RISK MANAGEMENT</h2>
                 
                 <div class="risk-highlight">
                     <h4>Legal Risk</h4>
@@ -760,8 +819,7 @@
             </section>
 
             <div class="footnote">
-                <p><strong>Document End</strong></p>
-                <p><em>Confidential • For Internal Use Only</em></p>
+                <p><strong>Confidential • For Internal Use Only</strong></p>
             </div>
         </div>
 
@@ -779,11 +837,11 @@
             </div>
 
             <div class="highlight-box" style="text-align: center; font-size: 1.2em; font-style: italic;">
-                <p>"We don't sell crypto. We sell ADGM-regulated Lebanese legacy assets — with white-glove concierge service."</p>
+                <p><strong>"We don't sell crypto. We sell ADGM-regulated Lebanese legacy assets — with white-glove concierge service."</strong></p>
             </div>
 
             <section>
-                <h2>SECTION 1: THE PROBLEM</h2>
+                <h2>THE PROBLEM</h2>
                 <h3>The \$150 Billion Liquidity Trap</h3>
                 <p>The Lebanese Diaspora holds over <strong>\$150 Billion</strong> in wealth, yet much of it sits frozen in low-yield Western accounts. The desire to invest in home-country real estate is high, but the barriers are too steep.</p>
                 
@@ -798,7 +856,7 @@
             </section>
 
             <section>
-                <h2>SECTION 2: THE SOLUTION</h2>
+                <h2>THE SOLUTION</h2>
                 <h3>A Regulated Bridge for Real Estate</h3>
                 <p>We have engineered a solution that bridges the physical asset in Lebanon with the regulatory safety of the UAE. <strong>We are not a crowdfunding platform; we are a regulated investment vehicle.</strong></p>
                 
@@ -812,7 +870,7 @@
             </section>
 
             <section>
-                <h2>SECTION 3: THE 3-STEP PROCESS</h2>
+                <h2>THE 3-STEP PROCESS</h2>
                 <h3>The 3-Step Fractionalization Process</h3>
                 <p>The mechanics are straightforward. We turn a brick-and-mortar asset into a liquid digital security.</p>
                 
@@ -822,17 +880,17 @@
                         <i class="fas fa-chevron-down expand-icon"></i>
                     </div>
                     <div class="expandable-content">
-                        <ol>
+                        <ul>
                             <li><strong>Acquisition:</strong> A property is acquired by a dedicated Lebanese Special Purpose Vehicle (SPV). This isolates risk.</li>
                             <li><strong>Tokenization:</strong> The ADGM Holding Company issues digital tokens representing the equity of that SPV. You are buying the legal right to the income generated by that building.</li>
                             <li><strong>Distribution:</strong> Investors purchase tokens via a secure dashboard, receiving legal rights to the property's income and capital appreciation.</li>
-                        </ol>
+                        </ul>
                     </div>
                 </div>
             </section>
 
             <section>
-                <h2>SECTION 4: THE INVESTOR EXPERIENCE</h2>
+                <h2>THE INVESTOR EXPERIENCE</h2>
                 <h3>White-Glove Service for Institutional Investors</h3>
                 <p>Token Lebnani operates a <strong>High-Ticket Concierge Model</strong> designed for Ultra-High-Net-Worth Individuals (UHNWI).</p>
 
@@ -845,7 +903,7 @@
                     <div class="expandable-content">
                         <ul>
                             <li><strong>Phase 1: Book Building</strong> Private viewings and meetings in Riyadh, Dubai, or Beirut. Review of Grade A assets with institutional-grade data.</li>
-                            <li><strong>Phase 2: The Compliance Handshake</strong> Our Client Services Coordinator guides you through every step—KYC, wallet setup, and fiat-to-currency conversion.</li>
+                            <li><strong>Phase 2: The Compliance Handshake</strong> Our Client Services Coordinator guides you through every step—KYC, wallet setup, and fiat-to-currency conversion. We handle the tech; you own the asset.</li>
                             <li><strong>Phase 3: Asset Ownership</strong> You receive tokens representing your share of the SPV. You hold the keys. We manage the property via independent Facilities Management Companies.</li>
                         </ul>
                     </div>
@@ -862,21 +920,21 @@
             </section>
 
             <section>
-                <h2>SECTION 5: REGULATORY STRATEGY</h2>
+                <h2>REGULATORY STRATEGY</h2>
                 <h3>Regulatory Engineering for Capital Efficiency</h3>
                 <p>We have preempted the major risks and engineered our model for maximum security and efficiency.</p>
                 
                 <div class="key-point">
                     <ul>
                         <li><strong>Target License:</strong> ADGM FSRA Category 4 (Arranging Deals in Investments)</li>
-                        <li><strong>Capital Requirement:</strong> Requires only <u>\$10,000</u> Capital (vs. \$4M for Custody), allowing us to launch lean and pass savings to investors</li>
-                        <li><strong>Secondary Liquidity:</strong> We operate as a Category 4 Arranger. Secondary liquidity is immediately provided via our partnership with ADGM-licensed MTFs</li>
+                        <li><strong>Capital Efficiency:</strong> We leverage a capital-efficient regulatory pathway, utilizing a lean operational structure.</li>
+                        <li><strong>Secondary Liquidity:</strong> We operate as a Category 4 Arranger. Secondary liquidity is immediately provided via our partnership with ADGM-licensed MTFs.</li>
                     </ul>
                 </div>
             </section>
 
             <section>
-                <h2>SECTION 6: THE TEAM & PARTNERS</h2>
+                <h2>THE TEAM & PARTNERS</h2>
                 <h3>Governance, Execution & Operational Excellence</h3>
                 
                 <div class="expandable-section">
@@ -911,7 +969,7 @@
             </section>
 
             <section>
-                <h2>SECTION 7: BUSINESS MODEL & ROADMAP</h2>
+                <h2>BUSINESS MODEL & ROADMAP</h2>
                 <h3>Phased Approach to Revenue</h3>
                 
                 <div class="highlight-box">
@@ -922,6 +980,11 @@
                     </ul>
                 </div>
 
+                <div class="financial-highlight">
+                    <h4>Operational Efficiency:</h4>
+                    <p><strong>Token Lebnani operates a Net Zero Cost Model for the asset onboarding phases.</strong> While establishing legal structures and SPVs requires upfront allocation, these costs are fully recoverable from initial transaction fees, resulting in no long-term sunk costs for the setup.</p>
+                </div>
+
                 <h4>Timeline:</h4>
                 <div class="expandable-section">
                     <div class="expandable-header">
@@ -930,8 +993,8 @@
                     </div>
                     <div class="expandable-content">
                         <ul>
-                            <li><strong>Year 1:</strong> ADGM Sandbox Entry. Launch of MVP (Lebanese Real Estate). \$10M Capital Target.</li>
-                            <li><strong>Year 2:</strong> Horizontal Expansion (Entry into Egypt). Vertical Expansion (Tokenizing SME Equity).</li>
+                            <li><strong>Year 1:</strong> ADGM Sandbox Entry. Launch of MVP (Lebanese Real Estate). High-Ticket Concierge Model focus.</li>
+                            <li><strong>Year 2:</strong> Horizontal Expansion (Entry into Egypt). Vertical Expansion (Tokenizing SME Equity). Opening of the "Flood Gates" to accommodate smaller investors.</li>
                             <li><strong>Year 3:</strong> Full Category 4 License. Activation of full Secondary Market Trading.</li>
                         </ul>
                     </div>
@@ -939,7 +1002,7 @@
             </section>
 
             <section>
-                <h2>SECTION 8: RISK MANAGEMENT</h2>
+                <h2>RISK MANAGEMENT</h2>
                 <h3>Mitigated Risks & Safety</h3>
                 <p>We have built defensive moats around the investment.</p>
                 
@@ -966,7 +1029,7 @@
             </section>
 
             <section>
-                <h2>SECTION 9: FAQ</h2>
+                <h2>FAQ</h2>
                 
                 <div class="expandable-section">
                     <div class="expandable-header">
@@ -1002,8 +1065,23 @@
     <script src="../js/protected-pages.js"></script>
     
     <script>
+        // Dynamic Header Height Adjustment
+        function updateHeaderHeight() {
+            const header = document.querySelector('.site-header');
+            if (header) {
+                const headerHeight = header.offsetHeight;
+                document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+                
+                // Update main content margin
+                const mainContent = document.querySelector('.main-content');
+                if (mainContent) {
+                    mainContent.style.marginTop = `${headerHeight + 60}px`; // Header + toggle container
+                }
+            }
+        }
+
         // Toggle Switch Functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        function initializeToggle() {
             const toggleOptions = document.querySelectorAll('.toggle-option');
             const toggleSlider = document.querySelector('.toggle-slider');
             const sections = {
@@ -1032,13 +1110,16 @@
                         toggleSlider.classList.remove('right');
                     }
                     
-                    // Switch content sections
-                    sections[activeSection].classList.remove('active');
+                    // Switch content sections with animation
+                    const currentSection = sections[activeSection];
+                    const nextSection = sections[sectionId];
+                    
+                    currentSection.classList.remove('active');
                     setTimeout(() => {
-                        sections[activeSection].style.display = 'none';
-                        sections[sectionId].style.display = 'block';
+                        currentSection.style.display = 'none';
+                        nextSection.style.display = 'block';
                         setTimeout(() => {
-                            sections[sectionId].classList.add('active');
+                            nextSection.classList.add('active');
                         }, 10);
                     }, 300);
                     
@@ -1065,18 +1146,30 @@
             // Auto-expand first expandable section in each section for better UX
             document.querySelectorAll('.content-section.active .expandable-section:first-child')
                 .forEach(section => section.classList.add('active'));
-        });
-        
-        // Update protected-pages.js to include business-plan
-        // This ensures the password protection works
-        // Note: You need to update your actual protected-pages.js file too
-        window.addEventListener('load', function() {
-            // This is a fallback in case the protected-pages.js doesn't include business-plan
-            const currentPath = window.location.pathname;
-            if (currentPath.includes('business-plan') || currentPath.includes('business-plan/')) {
-                console.log('Business Plan page loaded - password protected');
+        }
+
+        // Initialize everything when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update header height immediately
+            updateHeaderHeight();
+            
+            // Update on window resize (for responsive changes)
+            window.addEventListener('resize', updateHeaderHeight);
+            
+            // Initialize toggle after a small delay to ensure DOM is fully ready
+            setTimeout(initializeToggle, 100);
+            
+            // Check for any hash in URL (for direct linking to sections)
+            if (window.location.hash === '#value-proposition') {
+                const valuePropToggle = document.querySelector('[data-section="value-proposition"]');
+                if (valuePropToggle) {
+                    setTimeout(() => valuePropToggle.click(), 200);
+                }
             }
         });
+
+        // Update header height when images load (logo might load late)
+        window.addEventListener('load', updateHeaderHeight);
     </script>
 </body>
 </html>
