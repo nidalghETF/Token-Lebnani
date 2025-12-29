@@ -19,22 +19,30 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
     
-    // Get current page path
-    const path = window.location.pathname;
-    let pageName = '';
-    
-    // Extract page name from path (handles different URL formats)
-    const pathParts = path.split('/').filter(part => part && part !== 'index.html');
-    
-    if (pathParts.length > 0) {
-        // Get the last non-empty part that's not index.html
-        pageName = pathParts[pathParts.length - 1];
-        
-        // Handle home page special case
-        if (path === '/' || path.endsWith('index.html') || path.endsWith('/')) {
-            pageName = 'home';
-        }
-    }
+   // Replace this block (around line 25-35)
+const path = window.location.pathname;
+let pageName = '';
+const pathParts = path.split('/').filter(part => part && part !== 'index.html');
+if (pathParts.length > 0) {
+  pageName = pathParts[pathParts.length - 1];
+  if (path === '/' || path.endsWith('index.html') || path.endsWith('/')) {
+    pageName = 'home';
+  }
+}
+
+// With this improved version:
+const path = window.location.pathname;
+let pageName = 'home'; // default
+
+// Check for data-page attribute first (most reliable)
+if (document.body.dataset.page) {
+  pageName = document.body.dataset.page;
+} 
+// Fallback to URL detection
+else if (path.includes('business-plan')) {
+  pageName = 'business-plan';
+}
+// Add other page detections as needed
     
     console.log('Checking protection for page:', pageName, 'from path:', path);
     
